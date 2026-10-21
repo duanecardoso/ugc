@@ -38,7 +38,8 @@
   --sombra-forte:0 30px 60px -22px rgba(107,69,55,.35);
   --r-grande:32px;
   --r:22px;
-  --topo:68px;
+  --faixa-bf:40px;
+  --topo:108px;
   --mola:cubic-bezier(.2,.9,.25,1.15);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -89,7 +90,16 @@ section{padding:96px 0}
 .placeholder .legenda{background:rgba(255,252,247,.92);color:var(--texto);font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:999px;text-align:center;line-height:1.3}
 
 /* ===================== MENU FIXO ===================== */
-.topo{position:fixed;top:10px;left:0;right:0;z-index:100;padding:0 12px}
+.topo{position:fixed;top:calc(var(--faixa-bf) + 10px);left:0;right:0;z-index:100;padding:0 12px}
+/* Faixa da Black Friday */
+.faixa-bf{position:fixed;top:0;left:0;right:0;height:var(--faixa-bf);z-index:110;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 12px;background:var(--marrom);color:#fff;font-size:.86rem;white-space:nowrap;overflow:hidden}
+.bf-selo{background:var(--manteiga);color:var(--marrom);font-size:.66rem;font-weight:800;letter-spacing:.14em;padding:4px 11px;border-radius:999px}
+.faixa-bf strong{font-weight:700}
+.bf-extra{opacity:.85}
+.bf-sep{opacity:.5}
+.bf-link{color:var(--manteiga);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;min-height:32px}
+.bf-link:hover{text-decoration:underline;text-underline-offset:3px}
+.bf-curto{display:none}
 .barra{max-width:1160px;margin:0 auto;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 10px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;text-decoration:none;white-space:nowrap;letter-spacing:-.03em}
 .logo .app{width:36px;height:36px;border-radius:50%;font-size:.72rem;overflow:hidden;padding:0}
@@ -402,7 +412,7 @@ section{padding:96px 0}
 }
 @media (max-width:860px){
   .menu-botao{display:inline-flex}
-  .menu{position:fixed;top:74px;left:12px;right:12px;border-radius:24px;display:none;padding:8px;background:rgba(255,252,247,.96);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);box-shadow:var(--sombra-forte);border:1px solid var(--linha)}
+  .menu{position:fixed;top:calc(var(--faixa-bf) + 74px);left:12px;right:12px;border-radius:24px;display:none;padding:8px;background:rgba(255,252,247,.96);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);box-shadow:var(--sombra-forte);border:1px solid var(--linha)}
   .menu.aberto{display:block;animation:subir .4s var(--mola)}
   .menu ul{flex-direction:column}
   .menu a{padding:14px 16px;font-size:1.05rem;border-radius:14px}
@@ -429,6 +439,8 @@ section{padding:96px 0}
   .seg{padding:8px 12px;font-size:.88rem}
   .post-it{width:120px;font-size:.78rem;padding:12px}
   .selo{width:66px;height:66px;font-size:.64rem}
+  .bf-extra,.bf-sep{display:none}
+  .faixa-bf{gap:10px;font-size:.8rem}
   .idioma button{padding:6px 9px}
   .idioma button svg{display:none}
   .logo{font-size:.95rem}
@@ -444,6 +456,16 @@ section{padding:96px 0}
   .caso-numeros span{font-size:.6rem}
 }
 
+@media (max-width:480px){
+  .bf-selo,.bf-longo{display:none}
+  .bf-curto{display:inline}
+}
+/* Botão cheio dentro do card de captura */
+.alerta .botao-cheio{display:block;width:calc(100% - 44px);margin:0 22px 6px;border:0;border-radius:16px;background:var(--marrom);color:#fff;font-weight:800;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;padding:16px;min-height:54px;cursor:pointer;text-decoration:none;text-align:center;box-shadow:0 10px 22px -10px rgba(107,69,55,.7);transition:background .2s,transform .3s var(--mola)}
+.alerta .botao-cheio:hover{background:var(--marrom-escuro)}
+.alerta .botao-cheio:active{transform:scale(.97)}
+.alerta .botao-cheio + .alerta-botao{border-top:0;margin-top:4px}
+
 /* Quem prefere menos movimento: sem animações */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -455,6 +477,15 @@ section{padding:96px 0}
 </head>
 <body>
 <a class="pular" href="#conteudo" data-i18n="pular">Pular para o conteúdo</a>
+
+<!-- ===================== FAIXA DA BLACK FRIDAY (contagem automática) ===================== -->
+<div class="faixa-bf" role="region" aria-label="Black Friday">
+  <span class="bf-selo">BLACK FRIDAY</span>
+  <strong id="bf-contagem">Faltam dias pra Black Friday</strong>
+  <span class="bf-sep" aria-hidden="true">·</span>
+  <span class="bf-extra" data-i18n="bf-extra">conteúdo UGC que vende no dia</span>
+  <a class="bf-link" href="#contato"><span class="bf-longo" data-i18n="bf-longo">reservar agenda</span><span class="bf-curto" data-i18n="bf-curto">reservar</span>&nbsp;→</a>
+</div>
 
 <!-- ===================== MENU FIXO ===================== -->
 <header class="topo">
@@ -760,7 +791,7 @@ section{padding:96px 0}
   <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram"><span class="app c-rosa-claro" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff"/></svg></span><span class="dica" aria-hidden="true">Instagram</span></a>
   <a href="https://www.tiktok.com/@aanecardoso/" target="_blank" rel="noopener" aria-label="TikTok"><span class="app c-marrom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></span><span class="dica" aria-hidden="true">TikTok</span></a>
   <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail"><span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span><span class="dica" aria-hidden="true">E-mail</span></a>
-  <button type="button" id="abrir-kit" aria-label="Pedir mídia kit" data-i18n-attr="aria-label:a-kit"><span class="app c-branco" aria-hidden="true" style="font-size:1.4rem">📁</span><span class="dica" aria-hidden="true" data-i18n="dica-kit">Mídia kit</span></button>
+  <button type="button" id="abrir-kit" aria-label="Pedir tabela de investimento" data-i18n-attr="aria-label:a-kit"><span class="app c-branco" aria-hidden="true" style="font-size:1.4rem">💌</span><span class="dica" aria-hidden="true" data-i18n="dica-kit">Tabela e pacotes</span></button>
 </nav>
 
 <!-- ===================== PLAYER DE VÍDEO ===================== -->
@@ -796,22 +827,26 @@ section{padding:96px 0}
     <div class="avatar" aria-hidden="true"><img src="fotos/avatar.webp" alt="" width="88" height="88" loading="lazy"></div>
     <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar" data-i18n-attr="aria-label:a-fechar"><span aria-hidden="true">×</span></button>
     <div class="modal-rolagem" id="modal-conteudo">
-      <!-- Assim como o formulário de contato, este card ainda não envia para nenhum lugar.
-           Coloque o endereço do seu Formspree (ou similar) no atributo action para receber os pedidos. -->
+      <!-- Ao enviar, este card abre o WhatsApp da Duane com a mensagem pronta (número em "whatsappNumero" no script).
+           Se quiser receber também por e-mail, coloque o endereço do seu Formspree (ou similar) no atributo action. -->
       <form id="form-kit" action="" novalidate>
-        <h3 id="modal-titulo" data-i18n="kit-h3">Quer meu mídia kit completo?</h3>
-        <p class="sub" id="modal-desc" data-i18n="kit-p">Deixe seu nome e e-mail e eu te envio valores, formatos e mais trabalhos.</p>
+        <h3 id="modal-titulo" data-i18n="kit-h3">Quer receber minha tabela de investimento + opções de pacotes UGC?</h3>
+        <p class="sub" id="modal-desc" data-i18n="kit-p">Preencha seus dados e eu te envio tudo por WhatsApp. 💌</p>
         <div class="campos">
           <div class="campo">
-            <label for="k-nome" data-i18n="lb-knome">Nome</label>
+            <label for="k-nome" data-i18n="lb-knome">Seu nome</label>
             <input id="k-nome" name="nome" type="text" autocomplete="name" required>
           </div>
           <div class="campo">
-            <label for="k-email" data-i18n="lb-kemail">E-mail</label>
-            <input id="k-email" name="email" type="email" autocomplete="email" required>
+            <label for="k-marca" data-i18n="lb-kmarca">Nome da marca</label>
+            <input id="k-marca" name="marca" type="text" autocomplete="organization" required>
+          </div>
+          <div class="campo">
+            <label for="k-whats">WhatsApp</label>
+            <input id="k-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required minlength="8" placeholder="(00) 00000-0000">
           </div>
         </div>
-        <button class="alerta-botao" type="submit" data-i18n="bt-quero">Quero receber</button>
+        <button class="botao-cheio" type="submit" data-i18n="bt-quero">Quero receber</button>
         <button class="alerta-botao leve" type="button" id="kit-agora-nao" data-i18n="bt-agora-nao">Agora não</button>
       </form>
     </div>
@@ -825,6 +860,9 @@ section{padding:96px 0}
    Não precisa mexer no HTML.
    Campos terminados em _en são a versão em inglês (botão PT | EN do topo).
    ===================================================================== */
+
+/* WHATSAPP: número que recebe os pedidos do card de captura (com 55 + DDD, só números) */
+const whatsappNumero = "5561993823059";
 
 /* MARCAS: viram os ícones da faixa da capa */
 const marcas = [
@@ -1085,8 +1123,8 @@ const traducoes = {
   "a-redes": "My social media",
   "direitos": "All rights reserved.",
   "a-dock": "Contact shortcuts",
-  "a-kit": "Request media kit",
-  "dica-kit": "Media kit",
+  "a-kit": "Request rate card",
+  "dica-kit": "Rates & packages",
   "a-vid-ant": "Previous video",
   "a-vid-prox": "Next video",
   "bt-youtube": "Open on YouTube",
@@ -1095,12 +1133,15 @@ const traducoes = {
   "a-foto-ant": "Previous photo",
   "a-foto-prox": "Next photo",
   "a-fechar": "Close",
-  "kit-h3": "Want my full media kit?",
-  "kit-p": "Leave your name and email and I'll send you rates, formats and more work.",
-  "lb-knome": "Name",
-  "lb-kemail": "Email",
+  "kit-h3": "Want my rate card + UGC package options?",
+  "kit-p": "Fill in your details and I'll send everything over WhatsApp. 💌",
+  "lb-knome": "Your name",
+  "lb-kmarca": "Brand name",
   "bt-quero": "Send it to me",
-  "bt-agora-nao": "Not now"
+  "bt-agora-nao": "Not now",
+  "bf-extra": "UGC content that sells on the day",
+  "bf-longo": "book your slot",
+  "bf-curto": "book"
 };
 
 /* =====================================================================
@@ -1164,6 +1205,23 @@ function atualizarRelogio() {
   document.getElementById("data-hoje").textContent = data.charAt(0).toUpperCase() + data.slice(1);
 }
 setInterval(atualizarRelogio, 15000);
+
+/* ---------- Contagem para a Black Friday (sexta depois da 4ª quinta de novembro) ---------- */
+function dataBlackFriday(ano) {
+  const diaSemana = new Date(ano, 10, 1).getDay();
+  const primeiraQuinta = 1 + ((4 - diaSemana + 7) % 7);
+  return new Date(ano, 10, primeiraQuinta + 22);
+}
+function atualizarBlackFriday() {
+  const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+  let bf = dataBlackFriday(hoje.getFullYear());
+  if (hoje > bf) bf = dataBlackFriday(hoje.getFullYear() + 1);
+  const dias = Math.round((bf - hoje) / 86400000);
+  document.getElementById("bf-contagem").textContent =
+    dias === 0 ? tr("É hoje! Black Friday", "Black Friday is today!") :
+    dias === 1 ? tr("Falta 1 dia pra Black Friday", "1 day to Black Friday") :
+    tr(`Faltam ${dias} dias pra Black Friday`, `${dias} days to Black Friday`);
+}
 
 /* ---------- Faixa de marcas (não muda com o idioma) ---------- */
 const listaFaixa = `<ul>${marcas.map((m, i) => `<li><span class="app ${coresApp[i % coresApp.length]}">${esc(iniciais(m))}</span>${esc(m)}</li>`).join("")}</ul>`;
@@ -1331,6 +1389,7 @@ function aplicarIdioma(novo, salvar) {
   aplicarTextosFixos();
   desenharTudo();
   atualizarRelogio();
+  atualizarBlackFriday();
   atualizarAriaMenu();
   /* contadores: os que já animaram mostram o valor final no novo idioma */
   document.querySelectorAll(".contador").forEach(c => {
@@ -1498,12 +1557,21 @@ const formKit = document.getElementById("form-kit");
 formKit.addEventListener("submit", e => {
   e.preventDefault();
   if (!formKit.checkValidity()) { formKit.reportValidity(); return; }
-  const nome = formKit.nome.value.trim().split(" ")[0];
+  const nomeCompleto = formKit.nome.value.trim();
+  const nome = nomeCompleto.split(" ")[0];
+  const marca = formKit.marca.value.trim();
+  const whats = formKit.whatsapp.value.trim();
+  const texto = tr(
+    `Oi, Duane! Aqui é ${nomeCompleto}, da marca ${marca}. Quero receber sua tabela de investimento e as opções de pacotes UGC. Meu WhatsApp: ${whats}`,
+    `Hi Duane! This is ${nomeCompleto} from ${marca}. I'd like to receive your rate card and UGC package options. My WhatsApp: ${whats}`);
+  const link = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(texto)}`;
+  window.open(link, "_blank", "noopener"); // abre na hora do clique para o navegador não bloquear
   enviar(formKit).then(() => {
     document.getElementById("modal-conteudo").innerHTML = `
-      <h3 id="modal-titulo" tabindex="-1">${tr("Pedido feito", "Request sent")}, ${esc(nome)}!</h3>
-      <p class="sub">${tr("Meu mídia kit completo vai chegar no seu e-mail em breve.", "My full media kit will reach your inbox soon.")}</p>
-      <button class="alerta-botao" type="button" id="kit-ok" style="border-radius:0 0 32px 32px">${tr("Voltar ao portfólio", "Back to the portfolio")}</button>`;
+      <h3 id="modal-titulo" tabindex="-1">${tr("Prontinho", "All set")}, ${esc(nome)}! 💌</h3>
+      <p class="sub">${tr("Abri o WhatsApp com a sua mensagem pronta. É só tocar em enviar que eu te mando a tabela e os pacotes.", "I opened WhatsApp with your message ready. Just tap send and I'll share my rates and packages.")}</p>
+      <a class="botao-cheio" href="${link}" target="_blank" rel="noopener">${tr("Abrir o WhatsApp", "Open WhatsApp")}</a>
+      <button class="alerta-botao leve" type="button" id="kit-ok">${tr("Voltar ao portfólio", "Back to the portfolio")}</button>`;
     document.getElementById("kit-ok").addEventListener("click", fecharModal);
     document.getElementById("modal-titulo").focus();
   });
