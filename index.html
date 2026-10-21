@@ -239,6 +239,20 @@ section{padding:96px 0}
 .thumb .t-info span{display:block;font-size:.78rem;opacity:.92}
 @keyframes surgir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
+/* ===================== FOTOS UGC ===================== */
+.galeria{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:34px 12px;padding-bottom:18px}
+.foto-ugc{position:relative;display:block;width:100%;aspect-ratio:4/5;border:0;padding:0;border-radius:20px;overflow:hidden;cursor:zoom-in;background:var(--rosa-suave);box-shadow:var(--sombra);transition:transform .35s var(--mola),box-shadow .3s}
+.foto-ugc:nth-child(even){transform:translateY(18px)}
+.foto-ugc:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--sombra-forte)}
+.foto-ugc:nth-child(even):hover{transform:translateY(14px) scale(1.02)}
+.foto-ugc img{width:100%;height:100%;object-fit:cover}
+.foto-ugc .rotulo-foto{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+.foto-ugc .rotulo-foto b{background:rgba(255,252,247,.92);color:var(--texto);font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px}
+.foto-ugc .rotulo-foto span{background:var(--marrom);color:#fff;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:999px}
+.galeria-nota{margin-top:40px;color:var(--texto-2);font-size:.95rem}
+.foto-grande{width:min(520px,calc(100vw - 32px),calc((100vh - 150px) * 4 / 5));aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:#000;box-shadow:var(--sombra-forte)}
+.foto-grande img{width:100%;height:100%;object-fit:cover}
+
 /* ===================== 5. SERVIÇOS ===================== */
 .servicos-topo{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
 .polaroid{flex:none;width:170px;background:#fff;padding:10px 10px 34px;border-radius:6px;box-shadow:var(--sombra-forte);transform:rotate(5deg);margin:0 20px 30px 0;position:relative}
@@ -391,6 +405,9 @@ section{padding:96px 0}
   .foto-sobre{max-width:420px;width:100%;margin:0 auto}
   .destaques-grade{grid-template-columns:1fr;max-width:400px;margin:0 auto}
   .servicos-grade,.notificacoes,.resultados,.caso{grid-template-columns:1fr}
+  .galeria{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:0}
+  .foto-ugc:nth-child(even){transform:none}
+  .foto-ugc:nth-child(even):hover{transform:translateY(-4px) scale(1.02)}
   .caso{padding:20px}
 }
 @media (max-width:560px){
@@ -438,6 +455,7 @@ section{padding:96px 0}
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#destaques">Destaques</a></li>
         <li><a href="#trabalhos">Trabalhos</a></li>
+        <li><a href="#fotos">Fotos</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#numeros">Números</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -559,6 +577,19 @@ section{padding:96px 0}
     <p class="sr-only" id="feed-aviso" aria-live="polite"></p>
     <!-- As seções são geradas a partir dos arrays "nichos" e "videos" no script -->
     <div id="nichos"></div>
+  </div>
+</section>
+
+<!-- ===================== FOTOS UGC ===================== -->
+<section id="fotos" aria-labelledby="titulo-fotos">
+  <div class="container">
+    <div class="titulo-secao revelar">
+      <span class="rotulo-sec">Fotos</span>
+      <h2 id="titulo-fotos">Fotos <em>UGC</em></h2>
+      <p>Produto na mão, em uso e no corpo, pronto para feed, site, marketplace e anúncio. Toque para ampliar.</p>
+    </div>
+    <!-- A galeria é gerada a partir do array "fotosUgc" no script -->
+    <div class="galeria" id="galeria"></div>
   </div>
 </section>
 
@@ -727,6 +758,19 @@ section{padding:96px 0}
   </div>
 </div>
 
+<!-- ===================== VISUALIZADOR DE FOTO ===================== -->
+<div class="player-fundo" id="foto-fundo" aria-hidden="true">
+  <div class="player" role="dialog" aria-modal="true" aria-labelledby="foto-titulo">
+    <p class="player-titulo" id="foto-titulo">Foto</p>
+    <div class="foto-grande"><img id="foto-img" src="" alt=""></div>
+    <div class="player-barra">
+      <button type="button" id="foto-anterior" aria-label="Foto anterior">‹</button>
+      <button type="button" class="player-fechar" id="foto-fechar">Fechar</button>
+      <button type="button" id="foto-proxima" aria-label="Próxima foto">›</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===================== CARD DE CAPTURA (mídia kit) ===================== -->
 <div class="modal-fundo" id="modal-fundo" aria-hidden="true">
   <div class="alerta" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-desc">
@@ -835,6 +879,21 @@ const videos = [
   { nicho: "tech", categoria: "", marca: "Reclame Aqui", produto: "Aplicativo e serviço", link: "https://youtube.com/shorts/c1vmPbmJ7r8" },
   { nicho: "tech", categoria: "", marca: "",             produto: "Bastão de LED",        link: "https://youtube.com/shorts/82jBYR9iPQ4" },
   { nicho: "tech", categoria: "", marca: "",             produto: "Pistola de massagem",  link: "https://youtube.com/shorts/URuykdM1Kr8" }
+];
+
+/* FOTOS UGC (na ordem em que aparecem; poses parecidas ficam separadas)
+   arquivo = foto vertical 4:5 dentro da pasta fotos | marca e tipo = o que aparece na etiqueta */
+const fotosUgc = [
+  { arquivo: "ugc-vestido.webp",           marca: "Moda",        tipo: "Vestido floral",             alt: "Duane de vestido longo floral lilás, ao ar livre" },
+  { arquivo: "ugc-dermachem-seruns.webp",  marca: "Dermachem",   tipo: "Séruns de skincare",         alt: "Duane segurando os séruns Peptídeos e Rosa Mosqueta da Dermachem" },
+  { arquivo: "ugc-academia.webp",          marca: "Fitness",     tipo: "Roupa de treino",            alt: "Duane sorrindo na academia, com conjunto preto de treino" },
+  { arquivo: "ugc-muriel.webp",            marca: "Muriel",      tipo: "Linha Lisos & Soltos",       alt: "Duane com a linha Lisos e Soltos da Muriel, com mãos segurando os produtos em volta" },
+  { arquivo: "ugc-teeva.webp",             marca: "Teeva",       tipo: "Capinha personalizada",      alt: "Capinha de celular Teeva com as iniciais DC sobre as caixas da marca" },
+  { arquivo: "ugc-prohall.webp",           marca: "Prohall",     tipo: "Miracle Therapy",            alt: "Duane segurando o spray Miracle Therapy da Prohall perto do rosto" },
+  { arquivo: "ugc-creatina.webp",          marca: "Thermolife",  tipo: "Creatina",                   alt: "Duane de macacão preto segurando o pote de creatina Thermolife" },
+  { arquivo: "ugc-camiseta.webp",          marca: "Moda",        tipo: "Camiseta estampada",         alt: "Duane de camiseta branca estampada, com a mão no cabelo" },
+  { arquivo: "ugc-dermachem-micelar.webp", marca: "Dermachem",   tipo: "Micelar e esfoliante",       alt: "Duane segurando a água micelar e o esfoliante com ácido salicílico da Dermachem" },
+  { arquivo: "ugc-cappuccino.webp",        marca: "Thermolife",  tipo: "Super Cappuccino",           alt: "Duane de top vermelho segurando o Super Cappuccino da Thermolife" }
 ];
 
 /* SERVIÇOS (seis). cor = c-rosa, c-manteiga, c-rosa-claro, c-marrom ou c-branco */
@@ -1141,7 +1200,7 @@ function fecharModal() {
   if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
 }
 if (!jaViu()) setTimeout(function tentar() {
-  if (playerFundo.classList.contains("aberto")) return setTimeout(tentar, 4000);
+  if (playerFundo.classList.contains("aberto") || document.getElementById("foto-fundo").classList.contains("aberto")) return setTimeout(tentar, 4000);
   abrirModal(false);
 }, 7000);
 
@@ -1224,6 +1283,56 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowLeft") tocar(posPlayer - 1);
   if (e.key === "Tab") {
     const focaveis = playerFundo.querySelectorAll("button, a[href], iframe");
+    const primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+  }
+});
+
+/* ---------- Galeria de fotos UGC + visualizador ---------- */
+const galeria = document.getElementById("galeria");
+galeria.innerHTML = fotosUgc.map((f, i) => `
+  <button class="foto-ugc" type="button" data-i="${i}" aria-label="Ampliar foto: ${esc(f.marca)}, ${esc(f.tipo)}">
+    <img src="fotos/${esc(f.arquivo)}" alt="${esc(f.alt)}" width="800" height="1000" loading="lazy" decoding="async">
+    <span class="rotulo-foto" aria-hidden="true"><b>${esc(f.marca)}</b><span>${esc(f.tipo)}</span></span>
+  </button>`).join("");
+
+const fotoFundo = document.getElementById("foto-fundo");
+let posFoto = 0, focoAntesFoto = null;
+function mostrarFoto(i) {
+  posFoto = (i + fotosUgc.length) % fotosUgc.length;
+  const f = fotosUgc[posFoto];
+  const img = document.getElementById("foto-img");
+  img.src = "fotos/" + f.arquivo;
+  img.alt = f.alt;
+  document.getElementById("foto-titulo").textContent = `${f.marca} · ${f.tipo}`;
+}
+function fecharFoto() {
+  if (!fotoFundo.classList.contains("aberto")) return;
+  fotoFundo.classList.remove("aberto");
+  fotoFundo.setAttribute("aria-hidden", "true");
+  if (focoAntesFoto) focoAntesFoto.focus();
+}
+galeria.addEventListener("click", e => {
+  const b = e.target.closest(".foto-ugc");
+  if (!b) return;
+  focoAntesFoto = b;
+  mostrarFoto(Number(b.dataset.i));
+  fotoFundo.classList.add("aberto");
+  fotoFundo.setAttribute("aria-hidden", "false");
+  document.getElementById("foto-fechar").focus();
+});
+document.getElementById("foto-fechar").addEventListener("click", fecharFoto);
+document.getElementById("foto-anterior").addEventListener("click", () => mostrarFoto(posFoto - 1));
+document.getElementById("foto-proxima").addEventListener("click", () => mostrarFoto(posFoto + 1));
+fotoFundo.addEventListener("click", e => { if (e.target === fotoFundo) fecharFoto(); });
+document.addEventListener("keydown", e => {
+  if (!fotoFundo.classList.contains("aberto")) return;
+  if (e.key === "Escape") fecharFoto();
+  if (e.key === "ArrowRight") mostrarFoto(posFoto + 1);
+  if (e.key === "ArrowLeft") mostrarFoto(posFoto - 1);
+  if (e.key === "Tab") {
+    const focaveis = fotoFundo.querySelectorAll("button");
     const primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
     if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
     else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
