@@ -230,8 +230,7 @@ section{padding:96px 0}
 .card-video:hover .play{transform:translate(-50%,-50%) scale(1.12);background:var(--rosa)}
 /* Descrição do vídeo no formato de notificação de mensagem do iPhone */
 .card-video .info{position:relative;z-index:2;display:flex;gap:11px;align-items:flex-start;margin:-74px 10px 0;padding:11px 13px 12px;border-radius:20px;background:rgba(250,250,249,.82);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.8);box-shadow:0 12px 28px -10px rgba(0,0,0,.28);transition:transform .45s var(--mola)}
-.ios-app{flex:none;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(180deg,#5ef27c,#2ac54a);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
-.ios-app svg{width:21px;height:21px}
+.ios-app{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:1.25rem;line-height:1;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 2px 6px rgba(0,0,0,.12)}
 .ios-corpo{flex:1;min-width:0}
 .ios-topo{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;font-weight:600;color:var(--texto-2);text-transform:uppercase;letter-spacing:.03em;line-height:1.2}
 .ios-topo time{text-transform:none;letter-spacing:0;font-weight:500}
@@ -262,9 +261,14 @@ section{padding:96px 0}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(46,31,26,.85));pointer-events:none}
 .thumb .mini-play{position:absolute;top:10px;right:10px;z-index:2;width:30px;height:30px;border-radius:50%;background:rgba(255,252,247,.9);display:grid;place-items:center}
 .thumb .mini-play svg{width:12px;height:12px;fill:var(--rosa);margin-left:2px}
-.thumb .t-info{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;line-height:1.25}
-.thumb .t-info b{display:block;font-size:.95rem;font-weight:700}
-.thumb .t-info span{display:block;font-size:.78rem;opacity:.92}
+/* Legenda dos vídeos no formato de notificação de mensagem do iPhone */
+.thumb .t-info{position:absolute;left:7px;right:7px;bottom:7px;z-index:2;display:flex;gap:7px;align-items:flex-start;padding:8px 9px;border-radius:14px;background:rgba(250,250,249,.84);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.75);box-shadow:0 8px 20px -8px rgba(0,0,0,.35);color:var(--texto);line-height:1.2;transition:transform .45s var(--mola)}
+.thumb .t-info .ios-app{width:26px;height:26px;border-radius:7px;font-size:.9rem}
+.thumb .t-corpo{flex:1;min-width:0}
+.thumb .ios-topo{font-size:.56rem}
+.thumb .t-info b{display:block;font-size:.8rem;font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb .t-sub{display:block;font-size:.7rem;color:var(--texto-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (hover:hover) and (pointer:fine){ .thumb:hover .t-info{transform:translateY(-4px)} }
 @keyframes surgir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 /* ===================== FOTOS UGC ===================== */
@@ -513,7 +517,7 @@ section{padding:96px 0}
 .assinatura{color:var(--texto)}
 .moldura{background:linear-gradient(145deg,#2b2b2b,#141414);box-shadow:inset 0 0 0 2px #3a3a3a}
 .capa-video,.thumb,.foto-ugc{background:var(--cinza-2)}
-.thumb::after{background:linear-gradient(transparent 50%,rgba(0,0,0,.72))}
+.thumb::after{background:linear-gradient(transparent 60%,rgba(0,0,0,.25))}
 .seg small{color:var(--texto-2)}
 .formato-titulo{color:var(--texto)}
 .formato-titulo span{background:var(--cinza)}
@@ -1147,13 +1151,14 @@ const metricas = [
    link = AQUI ENTRA O LINK DO VÍDEO (YouTube Shorts, Reels ou TikTok)
    capa = AQUI ENTRA A CAPA: caminho de uma imagem vertical 9:16, ex.: "capa-01.jpg".
           Deixe "" para usar a capa do próprio YouTube automaticamente.
-   São os vídeos que eu considero os melhores (sem números de resultado). */
+   São os vídeos que eu considero os melhores (sem números de resultado).
+   emoji e cor = ícone da notificação (cor: c-rosa, c-rosa-claro, c-manteiga, c-marrom ou c-branco) */
 const destaques = [
-  { titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
+  { emoji: "💇‍♀️", cor: "c-rosa-claro", titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
     contexto: "O produto em uso no cabelo, com textura e resultado na hora.", contexto_en: "The product in use on the hair, showing texture and results in real time.", link: "https://youtube.com/shorts/pEPI7L7Gc6c", capa: "" },
-  { titulo: "Moda · vestido", titulo_en: "Fashion · dress",
+  { emoji: "👗", cor: "c-manteiga", titulo: "Moda · vestido", titulo_en: "Fashion · dress",
     contexto: "Vestido no corpo real, com caimento e movimento.", contexto_en: "A dress on a real body, with fit and movement.", link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
-  { titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
+  { emoji: "📣", cor: "c-marrom", titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
     contexto: "Vídeo no formato de anúncio para tráfego pago.", contexto_en: "Video in ad format for paid traffic.", link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
 ];
 
@@ -1277,6 +1282,13 @@ const depoimentos = [
     { texto: "Bom diaaa, tudo bem?", texto_en: "Good morninggg, how are you?", hora: "10:33" },
     { texto: "Super aprovado 💖 Amamos!", texto_en: "Super approved 💖 We loved it!", hora: "10:33" } ] }
 ];
+
+/* ÍCONE DA NOTIFICAÇÃO EM CADA VÍDEO DOS TRABALHOS (por categoria; sem categoria usa o emoji do nicho) */
+const emojiCategoria = {
+  "Haircare": "💇‍♀️", "Bodycare": "🧴", "Skincare": "🧖‍♀️",
+  "Roupas": "👗", "Bolsas e acessórios": "👜",
+  "Suplementos": "🥤", "Roupas fitness": "🏋️‍♀️"
+};
 
 /* TERMOS EM INGLÊS: tradução de palavras curtas usadas nas listas acima
    (categorias, produtos, etiquetas das fotos e selos dos depoimentos).
@@ -1525,7 +1537,7 @@ function desenharTudo() {
         <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
       </div></div>
       <div class="info notificacao-ios">
-        <span class="ios-app" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span>
+        <span class="ios-app ${d.cor || "c-rosa"}" aria-hidden="true">${d.emoji || "💌"}</span>
         <div class="ios-corpo">
           <p class="ios-topo" aria-hidden="true"><span>${tr("Mensagens", "Messages")}</span><time>${tr("agora", "now")}</time></p>
           <h3>${esc(campo(d, "titulo"))}</h3>
@@ -1549,7 +1561,10 @@ function desenharTudo() {
       return `<li><a class="thumb" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="${tr("Assistir", "Watch")}: ${esc(titulo)}, ${esc(sub)}">
         ${capaVideo("", v.link, "")}
         <span class="mini-play" aria-hidden="true">${iconePlay}</span>
-        <span class="t-info" aria-hidden="true"><b>${esc(titulo)}</b><span>${esc(sub)}</span></span>
+        <span class="t-info" aria-hidden="true">
+          <span class="ios-app ${n.cor}">${emojiCategoria[v.categoria] || n.emoji}</span>
+          <span class="t-corpo"><span class="ios-topo"><span>${tr("Mensagens", "Messages")}</span><time>${tr("agora", "now")}</time></span><b>${esc(titulo)}</b><span class="t-sub">${esc(sub)}</span></span>
+        </span>
       </a></li>`;
     };
     const plural = lista.length === 1 ? tr("vídeo", "video") : tr("vídeos", "videos");
