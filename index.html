@@ -177,6 +177,9 @@ section{padding:96px 0}
 .faixa-trilho ul{display:flex;align-items:center}
 .faixa-trilho li{display:flex;align-items:center;gap:10px;padding:0 20px;font-weight:700;font-size:.92rem;white-space:nowrap;color:var(--marrom)}
 .faixa-trilho .app{width:30px;height:30px;border-radius:9px;font-size:.64rem;box-shadow:none}
+.faixa-trilho .logo-marca{background:#fff;border:1px solid var(--linha);overflow:hidden;padding:3px}
+.faixa-trilho .logo-marca img{width:100%;height:100%;object-fit:contain}
+.faixa-trilho .app.reserva{display:none}
 @keyframes rolar{to{transform:translateX(-50%)}}
 
 /* ===================== 2. SOBRE MIM ===================== */
@@ -330,7 +333,7 @@ section{padding:96px 0}
 
 /* ===================== 7. CONTATO ===================== */
 .contato-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
-.alerta{position:relative;border-radius:var(--r-grande);background:#f8f3ec;border:1px solid var(--linha);box-shadow:var(--sombra-forte);padding-top:58px;margin-top:44px;text-align:center}
+.alerta{position:relative;border-radius:var(--r-grande);background:#f8f3ec;border:1px solid var(--linha);box-shadow:var(--sombra-forte);padding-top:34px;text-align:center}
 .alerta .avatar{position:absolute;top:-44px;left:50%;transform:translateX(-50%);width:88px;height:88px;border-radius:24px;overflow:hidden;border:4px solid #fff;box-shadow:var(--sombra)}
 .alerta .avatar img{width:100%;height:100%;object-fit:cover}
 .alerta .avatar .placeholder .legenda{font-size:.55rem;padding:3px 6px}
@@ -710,10 +713,6 @@ section{padding:96px 0}
     </div>
     <div class="contato-grade">
       <div class="alerta revelar">
-        <div class="avatar" aria-hidden="true">
-          <!-- MINI FOTO: arquivo fotos/rosto.webp (quadrada 1:1) -->
-          <img src="fotos/rosto.webp" alt="" width="88" height="88" loading="lazy">
-        </div>
         <!-- Este formulário mostra a confirmação na tela, mas ainda não envia para nenhum lugar.
              Para receber as mensagens no seu e-mail, crie um formulário grátis no Formspree
              e coloque o endereço dele no atributo action abaixo (o script já cuida do resto). -->
@@ -823,7 +822,6 @@ section{padding:96px 0}
 <!-- ===================== CARD DE CAPTURA (mídia kit) ===================== -->
 <div class="modal-fundo" id="modal-fundo" aria-hidden="true">
   <div class="alerta" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-desc">
-    <div class="avatar" aria-hidden="true"><img src="fotos/rosto.webp" alt="" width="88" height="88" loading="lazy"></div>
     <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar" data-i18n-attr="aria-label:a-fechar"><span aria-hidden="true">×</span></button>
     <div class="modal-rolagem" id="modal-conteudo">
       <!-- Ao enviar, este card abre o WhatsApp da Duane com a mensagem pronta (número em "whatsappNumero" no script).
@@ -863,12 +861,41 @@ section{padding:96px 0}
 /* WHATSAPP: número que recebe os pedidos do card de captura (com 55 + DDD, só números) */
 const whatsappNumero = "5561993823059";
 
-/* MARCAS: viram os ícones da faixa da capa */
+/* MARCAS: viram os ícones da faixa da capa.
+   site = endereço do site da marca, sem "https://" (ex.: "dove.com"). O site busca a logo
+   sozinho a partir dele. Deixe "" para mostrar só as iniciais.
+   Para usar uma logo sua, coloque o arquivo na pasta fotos e escreva em logo, ex.: logo: "fotos/logo-teeva.png". */
 const marcas = [
-  "Dove", "Pantene", "Eudora", "Niely", "CeraVe", "L’Oréal Elseve", "Phero", "Hey Vera",
-  "Prohall", "Yummy", "Teeva", "Dom Casero", "Garnier", "Desinblue", "Muriel", "Dermachem",
-  "Reclame Aqui", "Thermolife", "Thera Clínica", "Vhita", "Nomma", "Aura Beauty", "Matrix",
-  "Sace Lady", "Cif", "Bigboom", "Bauny", "Arvensis", "Lady Beauty", "Gota Brasil"
+  { nome: "Dove", site: "dove.com" },
+  { nome: "Pantene", site: "pantene.com.br" },
+  { nome: "Eudora", site: "eudora.com.br" },
+  { nome: "Niely", site: "niely.com.br" },
+  { nome: "CeraVe", site: "cerave.com.br" },
+  { nome: "L’Oréal Elseve", site: "lorealparis.com.br" },
+  { nome: "Phero", site: "phero.com.br" },
+  { nome: "Hey Vera", site: "" },
+  { nome: "Prohall", site: "prohall.com.br" },
+  { nome: "Yummy", site: "" },
+  { nome: "Teeva", site: "" },
+  { nome: "Dom Casero", site: "" },
+  { nome: "Garnier", site: "garnier.com.br" },
+  { nome: "Desinblue", site: "" },
+  { nome: "Muriel", site: "muriel.com.br" },
+  { nome: "Dermachem", site: "" },
+  { nome: "Reclame Aqui", site: "reclameaqui.com.br" },
+  { nome: "Thermolife", site: "" },
+  { nome: "Thera Clínica", site: "" },
+  { nome: "Vhita", site: "" },
+  { nome: "Nomma", site: "" },
+  { nome: "Aura Beauty", site: "" },
+  { nome: "Matrix", site: "matrix.com" },
+  { nome: "Sace Lady", site: "" },
+  { nome: "Cif", site: "" },
+  { nome: "Bigboom", site: "" },
+  { nome: "Bauny", site: "" },
+  { nome: "Arvensis", site: "arvensis.com.br" },
+  { nome: "Lady Beauty", site: "" },
+  { nome: "Gota Brasil", site: "" }
 ];
 
 /* MÉTRICAS: as três marcadas com capa:true aparecem também como notificações na capa.
@@ -887,8 +914,8 @@ const metricas = [
           Deixe "" para usar a capa do próprio YouTube automaticamente.
    numero = troque "+00K" pelo número real de views ou resultado do vídeo */
 const destaques = [
-  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "L’Oréal · protetor solar com cor", titulo_en: "L’Oréal · tinted sunscreen",
-    contexto: "Aplicação na pele, com textura e acabamento na hora.", contexto_en: "Applied on the skin, showing texture and finish in real time.", link: "https://youtube.com/shorts/_D2ZceAxQHg", capa: "" },
+  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
+    contexto: "O produto em uso no cabelo, com textura e resultado na hora.", contexto_en: "The product in use on the hair, showing texture and results in real time.", link: "https://youtube.com/shorts/pEPI7L7Gc6c", capa: "" },
   { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Moda · vestido", titulo_en: "Fashion · dress",
     contexto: "Vestido no corpo real, com caimento e movimento.", contexto_en: "A dress on a real body, with fit and movement.", link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
   { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
@@ -1223,9 +1250,22 @@ function atualizarBlackFriday() {
 }
 
 /* ---------- Faixa de marcas (não muda com o idioma) ---------- */
-const listaFaixa = `<ul>${marcas.map((m, i) => `<li><span class="app ${coresApp[i % coresApp.length]}">${esc(iniciais(m))}</span>${esc(m)}</li>`).join("")}</ul>`;
-document.getElementById("faixa").innerHTML = listaFaixa + listaFaixa;
-document.getElementById("marcas-lista").textContent = marcas.join(", ") + ".";
+function iconeMarca(m, i) {
+  const fonte = m.logo || (m.site ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(m.site)}&sz=128` : "");
+  const letras = `<span class="app ${coresApp[i % coresApp.length]}">${esc(iniciais(m.nome))}</span>`;
+  if (!fonte) return letras;
+  return `<span class="app logo-marca"><img src="${esc(fonte)}" alt="" width="30" height="30" loading="lazy" decoding="async"></span>${letras.replace('class="app ', 'class="app reserva ')}`;
+}
+const listaFaixa = `<ul>${marcas.map((m, i) => `<li>${iconeMarca(m, i)}${esc(m.nome)}</li>`).join("")}</ul>`;
+const faixa = document.getElementById("faixa");
+faixa.innerHTML = listaFaixa + listaFaixa;
+/* Se a logo não carregar (ou vier só o ícone genérico), mostra as iniciais */
+faixa.querySelectorAll(".logo-marca img").forEach(img => {
+  const usarIniciais = () => { const caixa = img.parentElement; caixa.style.display = "none"; caixa.nextElementSibling.classList.remove("reserva"); };
+  img.addEventListener("error", usarIniciais);
+  img.addEventListener("load", () => { if (img.naturalWidth < 32 && !img.src.includes("fotos/")) usarIniciais(); });
+});
+document.getElementById("marcas-lista").textContent = marcas.map(m => m.nome).join(", ") + ".";
 
 /* ---------- Partes geradas a partir dos dados (redesenhadas ao trocar o idioma) ---------- */
 const gradeDestaques = document.getElementById("destaques-grade");
