@@ -542,7 +542,7 @@ section{padding:96px 0}
     <div class="titulo-secao revelar">
       <span class="rotulo-sec">Trabalhos</span>
       <h2 id="titulo-trabalhos">Trabalhos por <em>nicho</em></h2>
-      <p>Escolha um nicho para ver só os vídeos daquela categoria, separados por formato.</p>
+      <p>Escolha um nicho para ver só os vídeos daquela categoria.</p>
     </div>
     <div class="segmentado" id="abas" role="group" aria-label="Filtrar trabalhos por nicho"></div>
     <p class="sr-only" id="feed-aviso" aria-live="polite"></p>
@@ -769,8 +769,8 @@ const metricas = [
           Deixe "" para usar a capa do próprio YouTube automaticamente.
    numero = troque "+00K" pelo número real de views ou resultado do vídeo */
 const destaques = [
-  { numero: "+00K", rotulo: "views", titulo: "L’Oréal · demonstração", contexto: "O produto em uso, com textura e aplicação na hora.", link: "https://youtube.com/shorts/_D2ZceAxQHg", capa: "" },
-  { numero: "+00K", rotulo: "views", titulo: "Moda · provador",        contexto: "Vestido no corpo real, com caimento e movimento.",   link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
+  { numero: "+00K", rotulo: "views", titulo: "L’Oréal · haircare", contexto: "O produto em uso, com textura e aplicação na hora.", link: "https://youtube.com/shorts/_D2ZceAxQHg", capa: "" },
+  { numero: "+00K", rotulo: "views", titulo: "Moda · vestido",          contexto: "Vestido no corpo real, com caimento e movimento.",   link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
   { numero: "+00K", rotulo: "views", titulo: "Reclame Aqui · anúncio", contexto: "Vídeo no formato de anúncio para tráfego pago.",       link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
 ];
 
@@ -785,37 +785,39 @@ const nichos = [
 ];
 
 /* VÍDEOS (lista completa)
-   A ordem aqui é a ordem no site: dentro de cada nicho, os formatos aparecem na ordem
-   em que surgem na lista, e os melhores vídeos de cada formato vêm primeiro.
+   A ordem aqui é a ordem no site. Dentro de cada nicho, os vídeos são agrupados por
+   categoria (ex.: Haircare, Skincare, Bodycare), na ordem em que a categoria aparece na lista.
+   Os melhores vídeos de cada categoria vêm primeiro.
+   categoria = deixe "" para o nicho aparecer sem subdivisão (como em Tech)
    marca = deixe "" se não quiser mostrar | produto = o que aparece no vídeo
    link = endereço do Shorts (a capa é puxada sozinha do YouTube) */
 const videos = [
   /* BELEZA */
-  { nicho: "beleza", formato: "Demonstração", marca: "L’Oréal",  produto: "Demonstração de produto", link: "https://youtube.com/shorts/_D2ZceAxQHg" },
-  { nicho: "beleza", formato: "Demonstração", marca: "Dove",     produto: "Óleo sérum corporal",     link: "https://youtube.com/shorts/kTGDmgkuPlM" },
-  { nicho: "beleza", formato: "Demonstração", marca: "Dove",     produto: "Óleo sérum corporal",     link: "https://youtube.com/shorts/2tDTWOUjDoM" },
-  { nicho: "beleza", formato: "Demonstração", marca: "Garnier",  produto: "Hidratante",              link: "https://youtube.com/shorts/9XgO6tjbF8k" },
-  { nicho: "beleza", formato: "Demonstração", marca: "",         produto: "Esfoliante",              link: "https://youtube.com/shorts/bserwEeUEuw" },
-  { nicho: "beleza", formato: "Tutorial",     marca: "L’Oréal",  produto: "Finalização",             link: "https://youtube.com/shorts/uFUFWKUoUfc" },
-  { nicho: "beleza", formato: "Review",       marca: "Dove",     produto: "Desodorante body care",   link: "https://youtube.com/shorts/3D3aVYfw3KA" },
-  { nicho: "beleza", formato: "Review",       marca: "Dove",     produto: "Body care",               link: "https://youtube.com/shorts/dc1VKvnPzG0" },
-  { nicho: "beleza", formato: "Review",       marca: "Eudora",   produto: "Beleza",                  link: "https://youtube.com/shorts/pEPI7L7Gc6c" },
-  { nicho: "beleza", formato: "Review",       marca: "Arvensis", produto: "Cabelos",                 link: "https://youtube.com/shorts/b0d1a7PBOhU" },
+  { nicho: "beleza", categoria: "Haircare", marca: "L’Oréal",  produto: "Cabelos",                 link: "https://youtube.com/shorts/_D2ZceAxQHg" },
+  { nicho: "beleza", categoria: "Haircare", marca: "L’Oréal",  produto: "Finalização",             link: "https://youtube.com/shorts/uFUFWKUoUfc" },
+  { nicho: "beleza", categoria: "Haircare", marca: "Arvensis", produto: "Cabelos",                 link: "https://youtube.com/shorts/b0d1a7PBOhU" },
+  { nicho: "beleza", categoria: "Bodycare", marca: "Dove",     produto: "Óleo sérum corporal",     link: "https://youtube.com/shorts/kTGDmgkuPlM" },
+  { nicho: "beleza", categoria: "Bodycare", marca: "Dove",     produto: "Óleo sérum corporal",     link: "https://youtube.com/shorts/2tDTWOUjDoM" },
+  { nicho: "beleza", categoria: "Bodycare", marca: "Dove",     produto: "Desodorante",             link: "https://youtube.com/shorts/3D3aVYfw3KA" },
+  { nicho: "beleza", categoria: "Bodycare", marca: "Dove",     produto: "Body care",               link: "https://youtube.com/shorts/dc1VKvnPzG0" },
+  { nicho: "beleza", categoria: "Bodycare", marca: "Eudora",   produto: "Beleza",                  link: "https://youtube.com/shorts/pEPI7L7Gc6c" },
+  { nicho: "beleza", categoria: "Skincare", marca: "Garnier",  produto: "Hidratante",              link: "https://youtube.com/shorts/9XgO6tjbF8k" },
+  { nicho: "beleza", categoria: "Skincare", marca: "",         produto: "Esfoliante",              link: "https://youtube.com/shorts/bserwEeUEuw" },
   /* MODA */
-  { nicho: "moda", formato: "Provador",   marca: "", produto: "Vestido",     link: "https://youtube.com/shorts/dC3cfngqx-g" },
-  { nicho: "moda", formato: "Provador",   marca: "", produto: "Vestido",     link: "https://youtube.com/shorts/gVZDlC9YPh0" },
-  { nicho: "moda", formato: "Provador",   marca: "", produto: "Casacos",     link: "https://youtube.com/shorts/e2Prll2ls1I" },
-  { nicho: "moda", formato: "Achadinhos", marca: "", produto: "Bolsas",      link: "https://youtube.com/shorts/AXmkA3sm4HE" },
-  { nicho: "moda", formato: "Achadinhos", marca: "", produto: "Acessórios",  link: "https://youtube.com/shorts/u2gbF8c-wZI" },
-  { nicho: "moda", formato: "Achadinhos", marca: "", produto: "Acessórios",  link: "https://youtube.com/shorts/hbch7H4Li60" },
+  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Vestido",    link: "https://youtube.com/shorts/dC3cfngqx-g" },
+  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Vestido",    link: "https://youtube.com/shorts/gVZDlC9YPh0" },
+  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Casacos",    link: "https://youtube.com/shorts/e2Prll2ls1I" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Bolsas",     link: "https://youtube.com/shorts/AXmkA3sm4HE" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/u2gbF8c-wZI" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/hbch7H4Li60" },
   /* FITNESS */
-  { nicho: "fitness", formato: "Review",   marca: "", produto: "Creatina",    link: "https://youtube.com/shorts/J0F4rpBC8is" },
-  { nicho: "fitness", formato: "Review",   marca: "", produto: "Cappuccino",  link: "https://youtube.com/shorts/-_G1ITunHDg" },
-  { nicho: "fitness", formato: "Provador", marca: "", produto: "Macaquinho",  link: "https://youtube.com/shorts/3oBvDX_Co94" },
+  { nicho: "fitness", categoria: "Suplementos",   marca: "", produto: "Creatina",   link: "https://youtube.com/shorts/J0F4rpBC8is" },
+  { nicho: "fitness", categoria: "Suplementos",   marca: "", produto: "Cappuccino", link: "https://youtube.com/shorts/-_G1ITunHDg" },
+  { nicho: "fitness", categoria: "Roupas fitness", marca: "", produto: "Macaquinho", link: "https://youtube.com/shorts/3oBvDX_Co94" },
   /* TECH */
-  { nicho: "tech", formato: "Anúncio",      marca: "Reclame Aqui", produto: "Anúncio para tráfego pago", link: "https://youtube.com/shorts/c1vmPbmJ7r8" },
-  { nicho: "tech", formato: "Review",       marca: "",             produto: "Bastão de LED",             link: "https://youtube.com/shorts/82jBYR9iPQ4" },
-  { nicho: "tech", formato: "Demonstração", marca: "",             produto: "Pistola de massagem",       link: "https://youtube.com/shorts/URuykdM1Kr8" }
+  { nicho: "tech", categoria: "", marca: "Reclame Aqui", produto: "Aplicativo e serviço", link: "https://youtube.com/shorts/c1vmPbmJ7r8" },
+  { nicho: "tech", categoria: "", marca: "",             produto: "Bastão de LED",        link: "https://youtube.com/shorts/82jBYR9iPQ4" },
+  { nicho: "tech", categoria: "", marca: "",             produto: "Pistola de massagem",  link: "https://youtube.com/shorts/URuykdM1Kr8" }
 ];
 
 /* SERVIÇOS (seis). cor = c-rosa, c-manteiga, c-rosa-claro, c-marrom ou c-branco */
@@ -925,7 +927,7 @@ gradeDestaques.innerHTML = destaques.map(d => `
   </a>`).join("");
 ativarReservas(gradeDestaques);
 
-/* ---------- Trabalhos: seções por nicho, separadas por formato ---------- */
+/* ---------- Trabalhos: seções por nicho, separadas por categoria ---------- */
 const abas = document.getElementById("abas");
 const nichosComVideo = nichos.filter(n => videos.some(v => v.nicho === n.id));
 abas.innerHTML = [{ id: "todos", nome: "Todos" }, ...nichosComVideo].map((n, i) => {
@@ -937,29 +939,27 @@ const iconePlay = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 
 const caixaNichos = document.getElementById("nichos");
 caixaNichos.innerHTML = nichosComVideo.map(n => {
   const lista = videos.filter(v => v.nicho === n.id);
-  const formatos = [...new Set(lista.map(v => v.formato))];
+  const categorias = [...new Set(lista.map(v => v.categoria || ""))];
+  const cartao = v => {
+    const titulo = v.marca || v.produto;
+    const sub = v.marca ? v.produto : (v.categoria || n.nome);
+    return `<li><a class="thumb" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(titulo)}, ${esc(sub)}">
+      ${capaVideo("", v.link, "")}
+      <span class="mini-play" aria-hidden="true">${iconePlay}</span>
+      <span class="t-info" aria-hidden="true"><b>${esc(titulo)}</b><span>${esc(sub)}</span></span>
+    </a></li>`;
+  };
   return `
   <article class="nicho" data-nicho="${n.id}" aria-labelledby="nicho-${n.id}">
     <div class="nicho-topo">
       <span class="app ${n.cor}" aria-hidden="true">${n.emoji}</span>
-      <h3 id="nicho-${n.id}">${esc(n.nome)}<small>${lista.length} ${lista.length === 1 ? "vídeo" : "vídeos"} · ${formatos.length} ${formatos.length === 1 ? "formato" : "formatos"}</small></h3>
+      <h3 id="nicho-${n.id}">${esc(n.nome)}<small>${lista.length} ${lista.length === 1 ? "vídeo" : "vídeos"}</small></h3>
     </div>
     <p class="nicho-frase">${esc(n.frase)}</p>
-    ${formatos.map(f => {
-      const doFormato = lista.filter(v => v.formato === f);
-      return `
-      <h4 class="formato-titulo">${esc(f)} <span>${doFormato.length}</span></h4>
-      <ul class="videos">
-        ${doFormato.map(v => {
-          const titulo = v.marca || v.produto;
-          const sub = v.marca ? v.produto : f;
-          return `<li><a class="thumb" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(f)}, ${esc(titulo)}${v.marca ? ", " + esc(v.produto) : ""}">
-            ${capaVideo("", v.link, "")}
-            <span class="mini-play" aria-hidden="true">${iconePlay}</span>
-            <span class="t-info" aria-hidden="true"><b>${esc(titulo)}</b><span>${esc(sub)}</span></span>
-          </a></li>`;
-        }).join("")}
-      </ul>`;
+    ${categorias.map(c => {
+      const daCategoria = lista.filter(v => (v.categoria || "") === c);
+      const titulo = c ? `<h4 class="formato-titulo">${esc(c)} <span>${daCategoria.length}</span></h4>` : "";
+      return `${titulo}<ul class="videos"${c ? "" : ' style="margin-top:18px"'}>${daCategoria.map(cartao).join("")}</ul>`;
     }).join("")}
   </article>`;
 }).join("");
