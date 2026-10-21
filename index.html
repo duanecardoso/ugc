@@ -300,13 +300,18 @@ section{padding:96px 0}
 .resultado .rot{font-weight:700;margin-top:6px}
 .resultado p{color:var(--texto-2);font-size:.9rem;margin-top:4px}
 .resultado .grafico{height:44px;margin-top:14px;width:100%}
-.notificacoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.notificacao{display:flex;gap:12px;align-items:flex-start;border-radius:24px;padding:16px}
-.notificacao .app{width:40px;height:40px;border-radius:11px;font-size:.78rem}
-.notificacao .cab{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
-.notificacao .cab time{font-size:.74rem;color:var(--texto-2);white-space:nowrap;font-weight:700;text-transform:uppercase}
-.notificacao .empresa{font-size:.82rem;color:var(--texto-2);font-weight:600}
-.notificacao blockquote p{font-size:.95rem;margin-top:4px}
+.notificacoes{columns:3 300px;column-gap:16px}
+.conversa{break-inside:avoid;margin:0 0 16px;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--linha);box-shadow:var(--sombra)}
+.conversa-topo{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--linha);background:#fff}
+.conversa-topo .app{width:36px;height:36px;border-radius:50%;font-size:1rem}
+.conversa-topo b{display:block;font-size:.92rem}
+.conversa-topo small{display:block;font-size:.74rem;color:var(--texto-2);font-weight:600}
+.conversa-topo .selo-ok{margin-left:auto;background:var(--manteiga);color:var(--marrom);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.conversa-corpo{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:16px 14px 18px;margin:0;background:linear-gradient(160deg,var(--rosa-suave),var(--manteiga-suave))}
+.balao{max-width:92%;background:#fff;border-radius:6px 18px 18px 18px;padding:9px 12px 7px;font-size:.95rem;line-height:1.4;box-shadow:0 1px 1px rgba(107,69,55,.08)}
+.balao + .balao{border-radius:18px}
+.balao time{display:block;text-align:right;font-size:.68rem;color:var(--texto-2);margin-top:2px}
+.reacao{margin:-4px 0 0 10px;background:#fff;border-radius:999px;padding:2px 8px;font-size:.85rem;box-shadow:0 1px 3px rgba(107,69,55,.15)}
 
 /* ===================== 7. CONTATO ===================== */
 .contato-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
@@ -404,7 +409,7 @@ section{padding:96px 0}
   .post-it{bottom:auto;top:44%;left:-1%}
   .foto-sobre{max-width:420px;width:100%;margin:0 auto}
   .destaques-grade{grid-template-columns:1fr;max-width:400px;margin:0 auto}
-  .servicos-grade,.notificacoes,.resultados,.caso{grid-template-columns:1fr}
+  .servicos-grade,.resultados,.caso{grid-template-columns:1fr}
   .galeria{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:0}
   .foto-ugc:nth-child(even){transform:none}
   .foto-ugc:nth-child(even):hover{transform:translateY(-4px) scale(1.02)}
@@ -913,12 +918,27 @@ const resultados = [
   { numero: "0,0x", rotulo: "de retorno sobre o anúncio", cliente: "Cliente 03", descricao: "Conte em uma linha o que foi feito e qual foi o resultado." }
 ];
 
-/* DEPOIMENTOS (troque pelo texto real de cada cliente) */
+/* DEPOIMENTOS (mensagens reais que as marcas mandaram no WhatsApp)
+   marca = nome que aparece no topo ("Marca parceira" quando não quiser mostrar o nome)
+   selo = etiqueta curta | mensagens = cada balão, com o horário | reacao = emoji opcional */
 const depoimentos = [
-  { texto: "Cole aqui o depoimento real da Cliente 01: o que ela achou do roteiro, da entrega e do resultado.",  nome: "Nome do contato", empresa: "Cliente 01" },
-  { texto: "Cole aqui o depoimento real da Cliente 02: como foi trabalhar com você do briefing ao vídeo final.",   nome: "Nome do contato", empresa: "Cliente 02" },
-  { texto: "Cole aqui o depoimento real da Cliente 03: o que mudou nas vendas ou no engajamento depois do vídeo.", nome: "Nome do contato", empresa: "Cliente 03" },
-  { texto: "Cole aqui o depoimento real da Cliente 04: por que ela indicaria o seu trabalho para outra marca.",     nome: "Nome do contato", empresa: "Cliente 04" }
+  { marca: "Marca parceira", selo: "vídeo aprovado", reacao: "❤️", mensagens: [
+    { texto: "Oiee boa tarde", hora: "14:00" },
+    { texto: "Amiga que lindo ver esse vídeo, sério tá magnífico dms, amo a maneira como você fala do produto indicando sem aquela pressão sabe? Aquece meu coraçãozinho 🥹🥹", hora: "14:01" } ] },
+  { marca: "Marca parceira", selo: "vídeos e fotos", reacao: "", mensagens: [
+    { texto: "bomm dia ✨💜", hora: "08:20" },
+    { texto: "Mulher do céu, super aprovado os vídeos e fotos!!! Era bem nesse estilo que eu queria mesmo, arrasou", hora: "08:21" },
+    { texto: "Pode colocar lá no drive??", hora: "08:22" } ] },
+  { marca: "Marca parceira", selo: "contrato fechado", reacao: "", mensagens: [
+    { texto: "Uauuu", hora: "10:07" },
+    { texto: "Contrato fechado kkkk", hora: "10:07" },
+    { texto: "Top demais", hora: "10:07" },
+    { texto: "Gostei demais viu", hora: "10:08" } ] },
+  { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "", mensagens: [
+    { texto: "Aprovadoo! Nós amamos a narrativa, ficou ótima 😍", hora: "13:48" } ] },
+  { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "❤️", mensagens: [
+    { texto: "Bom diaaa, tudo bem?", hora: "10:33" },
+    { texto: "Super aprovado 💖 Amamos!", hora: "10:33" } ] }
 ];
 
 /* =====================================================================
@@ -1081,14 +1101,18 @@ document.getElementById("resultados").innerHTML = resultados.map(r => `
     ${grafico}
   </article>`).join("");
 
+const emojisConversa = ["💬", "✨", "💖", "🎬", "📩"];
 document.getElementById("depoimentos").innerHTML = depoimentos.map((d, i) => `
-  <figure class="notificacao cartao revelar">
-    <span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${esc(iniciais(d.empresa))}</span>
-    <div style="flex:1">
-      <figcaption class="cab"><strong>${esc(d.nome)}</strong><time>agora</time></figcaption>
-      <p class="empresa">${esc(d.empresa)}</p>
-      <blockquote><p>${esc(d.texto)}</p></blockquote>
-    </div>
+  <figure class="conversa revelar">
+    <figcaption class="conversa-topo">
+      <span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${emojisConversa[i % emojisConversa.length]}</span>
+      <span><b>${esc(d.marca)}</b><small>WhatsApp</small></span>
+      <span class="selo-ok">${esc(d.selo)}</span>
+    </figcaption>
+    <blockquote class="conversa-corpo">
+      ${d.mensagens.map(m => `<p class="balao">${esc(m.texto)}<time>${esc(m.hora)}</time></p>`).join("")}
+      ${d.reacao ? `<span class="reacao" role="img" aria-label="reação ${esc(d.reacao)}">${d.reacao}</span>` : ""}
+    </blockquote>
   </figure>`).join("");
 
 /* ---------- Contador animado ---------- */
