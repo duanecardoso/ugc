@@ -307,7 +307,8 @@ section{padding:96px 0}
 .caso-celular .capa-video .views{position:absolute;left:12px;bottom:14px;z-index:2;display:flex;align-items:center;gap:6px;color:#fff;font-weight:800;font-size:1.05rem;text-shadow:0 1px 4px rgba(0,0,0,.35)}
 .caso-celular .capa-video .views svg{width:20px;height:20px}
 .caso-celular .capa-video .perfil{position:absolute;top:40px;left:12px;right:12px;z-index:2;display:flex;align-items:center;gap:8px;background:rgba(255,252,247,.88);border-radius:14px;padding:8px 10px;font-size:.78rem;font-weight:700;color:var(--texto)}
-.caso-celular .capa-video .perfil i{width:26px;height:26px;border-radius:50%;background:var(--rosa-claro);flex:none}
+.caso-celular .capa-video .perfil i{width:26px;height:26px;border-radius:50%;flex:none;overflow:hidden}
+.caso-celular .capa-video .perfil i img{position:static;width:100%;height:100%}
 .caso-celular .capa-video .perfil small{display:block;font-weight:500;color:var(--texto-2);font-size:.68rem}
 .resultado{border-radius:var(--r);padding:20px}
 .resultado .cli{font-size:.85rem;font-weight:700;color:var(--texto-2)}
@@ -677,20 +678,18 @@ section{padding:96px 0}
         <p data-i18n="caso-p1">Criei o conteúdo para apresentar o perfume de um jeito natural e despertar a curiosidade do público, ligando o produto a uma experiência de uso e ao interesse por fragrâncias com feromônios.</p>
         <p data-i18n="caso-p2">O vídeo alcançou mais de 700 mil visualizações no perfil da marca, aumentou a visibilidade do produto e mostrou o potencial do UGC para gerar interesse de forma orgânica.</p>
         <ul class="caso-numeros">
-          <li><b data-i18n="caso-n1">700 mil+</b><span>views</span></li>
+          <li><b data-i18n="caso-n1">793 mil</b><span>views</span></li>
           <li><b>↑</b><span data-i18n="caso-n2">vendas</span></li>
           <li><b>Phero</b><span data-i18n="caso-n3">marca do projeto</span></li>
         </ul>
       </div>
-      <!-- CELULAR DO CASO: para mostrar a capa real, troque o bloco "placeholder" por
-           <img src="capa-phero.jpg" alt="Capa do vídeo da Phero" loading="lazy"> (vertical 9:16).
+      <!-- CELULAR DO CASO: capa real em fotos/caso-phero.webp.
            Para abrir o vídeo, troque <div class="caso-celular"> por <a class="caso-celular" href="LINK DO VÍDEO" target="_blank" rel="noopener"> e feche com </a>. -->
       <div class="caso-celular">
         <div class="moldura"><div class="capa-video">
-          <div class="placeholder" role="img" aria-label="Espaço para a capa do vídeo da Phero" data-i18n-attr="aria-label:a-caso-capa"><span class="legenda" data-i18n="legenda-capa">capa do vídeo 9:16</span></div>
+          <img src="fotos/caso-phero.webp" alt="Capa do vídeo UGC para a Phero, com 793 mil visualizações" data-i18n-attr="alt:a-caso-capa" width="432" height="754" loading="lazy" decoding="async">
           <span class="mini-ilha" aria-hidden="true"></span>
-          <span class="perfil" aria-hidden="true"><i></i><span>phero.com.br<small data-i18n="caso-perfil">perfil da marca</small></span></span>
-          <span class="views" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span data-i18n="caso-n1b">700 mil+</span></span>
+          <span class="perfil" aria-hidden="true"><i><img src="fotos/logos/logo-coracao.webp" alt="" width="26" height="26"></i><span>phero.com.br<small data-i18n="caso-perfil">perfil da marca</small></span></span>
         </div></div>
       </div>
     </article>
@@ -899,7 +898,7 @@ const logosEsteira = [
   { arquivo: "logo-muriel.webp",           nome: "Muriel" },
   { arquivo: "logo-e.webp",                nome: "Marca parceira" },
   { arquivo: "logo-colorida.webp",         nome: "Marca parceira" },
-  { arquivo: "logo-coracao.webp",          nome: "Marca parceira" }
+  { arquivo: "logo-coracao.webp",          nome: "Phero" }
 ];
 
 /* MARCAS: lista completa de marcas atendidas (lida por leitores de tela).
@@ -1161,13 +1160,12 @@ const traducoes = {
   "caso-h4": "How a UGC video passed 700K views on the profile of Phero, a pheromone perfume brand",
   "caso-p1": "I created the content to present the perfume naturally and spark the audience's curiosity, linking the product to a real-use experience and to the interest in pheromone fragrances.",
   "caso-p2": "The video reached over 700K views on the brand's profile, boosted the product's visibility and showed how UGC can drive interest organically.",
-  "caso-n1": "700K+",
+  "caso-n1": "793K",
   "caso-n2": "sales",
   "caso-n3": "project brand",
-  "a-caso-capa": "Space for the Phero video cover",
+  "a-caso-capa": "Cover of the UGC video for Phero, with 793K views",
   "legenda-capa": "video cover 9:16",
   "caso-perfil": "brand profile",
-  "caso-n1b": "700K+",
   "cont-rot": "Contact",
   "cont-h2": "Let's create <em>together</em>",
   "cont-p": "Tell me about your product and campaign. I'll reply with a script idea.",
