@@ -175,7 +175,9 @@ section{padding:96px 0}
 .notif .n-rot{display:block;font-size:.8rem;color:var(--texto-2);line-height:1.25}
 
 /* Faixa fina com as marcas */
-.faixa{margin-top:72px;overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marcas-titulo{margin:72px 0 0;display:flex;align-items:center;justify-content:center;gap:14px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--texto-2);text-align:center;padding:0 16px}
+.marcas-titulo::before,.marcas-titulo::after{content:"";height:1px;width:min(80px,12vw);background:var(--linha)}
+.faixa{margin-top:6px;overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .faixa-trilho{display:flex;width:max-content;animation:rolar 45s linear infinite}
 .faixa:hover .faixa-trilho{animation-play-state:paused}
 .faixa-trilho ul{display:flex;align-items:center}
@@ -740,7 +742,7 @@ section{padding:96px 0}
   </div>
 
   <!-- Faixa fina com as marcas (gerada a partir do array "marcas") -->
-  <h2 class="sr-only" data-i18n="sr-marcas">Marcas com quem já trabalhei</h2>
+  <h2 class="marcas-titulo" data-i18n="sr-marcas">Marcas que confiaram</h2>
   <p class="sr-only" id="marcas-lista"></p>
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
 </section>
@@ -1305,7 +1307,7 @@ const traducoes = {
   "a-capa": "Duane Cardoso holding a phone in a bright studio",
   "postit": "<small>reminder</small>script approved before filming ✓",
   "a-numeros": "My numbers",
-  "sr-marcas": "Brands I've worked with",
+  "sr-marcas": "Brands that trusted me",
   "a-nichos": "Niches I work with",
   "etiqueta1": "Beauty & self-care",
   "etiqueta2": "Fashion & accessories",
