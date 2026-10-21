@@ -223,9 +223,7 @@ section{padding:96px 0}
 .play svg{width:24px;height:24px;fill:#fff;margin-left:4px}
 .card-video:hover .play{transform:translate(-50%,-50%) scale(1.12);background:var(--rosa)}
 .card-video .info{padding:18px 6px 0}
-.card-video .numero{font-size:2.3rem;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--marrom)}
-.card-video .rotulo{display:inline-block;margin-top:8px;font-size:.78rem;font-weight:700;color:var(--marrom);background:var(--manteiga);padding:3px 10px;border-radius:999px}
-.card-video h3{font-size:1.12rem;font-weight:700;margin-top:14px;letter-spacing:-.02em}
+.card-video h3{font-size:1.12rem;font-weight:700;margin-top:0;letter-spacing:-.02em}
 .card-video .contexto{font-size:.92rem;color:var(--texto-2);margin-top:4px}
 
 /* ===================== 4. TRABALHOS POR NICHO ===================== */
@@ -293,6 +291,7 @@ section{padding:96px 0}
 .metrica strong{display:block;font-size:clamp(2.3rem,5vw,3.3rem);font-weight:800;letter-spacing:-.055em;line-height:1;margin-top:18px}
 .metrica > span{display:block;margin-top:6px;font-weight:600;color:var(--texto-2);font-size:.92rem}
 .subtitulo{font-size:1.45rem;font-weight:800;margin:56px 0 16px;letter-spacing:-.03em}
+.resultados:empty{display:none}
 .resultados{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
 .caso{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:center;padding:30px;border-radius:var(--r-grande);background:linear-gradient(135deg,#fff 40%,var(--rosa-suave));border:1px solid var(--linha);box-shadow:var(--sombra)}
 .caso-rotulo{display:inline-flex;align-items:center;gap:8px;background:var(--rosa);color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
@@ -670,7 +669,7 @@ section{padding:96px 0}
     <div class="metricas" id="metricas"></div>
 
     <h3 class="subtitulo revelar" data-i18n="sub-resultados">Resultados de campanha</h3>
-    <!-- ESTUDO DE CASO: Phero (é o primeiro dos três resultados; os outros dois vêm do array "resultados") -->
+    <!-- ESTUDO DE CASO: Phero (outros resultados, quando houver, vêm do array "resultados") -->
     <article class="caso revelar" aria-labelledby="caso-titulo">
       <div>
         <span class="caso-rotulo" data-i18n="caso-rot">Estudo de caso · Phero</span>
@@ -743,8 +742,6 @@ section{padding:96px 0}
       </div>
 
       <div class="canais revelar">
-        <!-- FOTO DO CONTATO: arquivo fotos/contato.webp -->
-        <figure class="foto-contato"><img src="fotos/contato.webp" alt="Duane Cardoso falando em um microfone e sorrindo" data-i18n-attr="alt:a-contato" width="640" height="800" loading="lazy" decoding="async"><figcaption data-i18n="contato-foto">Bora gravar?</figcaption></figure>
         <a class="canal" href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener">
           <span class="app c-rosa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5zm5 13.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.2.5.1.6-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span>
           <span><b>WhatsApp</b><small>(61) 99382-3059</small></span><span class="seta" aria-hidden="true">›</span>
@@ -870,6 +867,7 @@ const logosEsteira = [
   { arquivo: "logo-prohall.webp",          nome: "Prohall" },
   { arquivo: "logo-nomma.webp",            nome: "Nomma" },
   { arquivo: "logo-pantene.webp",          nome: "Pantene" },
+  { arquivo: "logo-cerave.webp",           nome: "CeraVe" },
   { arquivo: "logo-teeva.webp",            nome: "Teeva" },
   { arquivo: "logo-bigboom.webp",          nome: "Bigboom" },
   { arquivo: "logo-garnier.webp",          nome: "Garnier" },
@@ -877,11 +875,13 @@ const logosEsteira = [
   { arquivo: "logo-r.webp",                nome: "Marca parceira" },
   { arquivo: "logo-sace-lady.webp",        nome: "Sace Lady" },
   { arquivo: "logo-dermachem.webp",        nome: "Dermachem" },
+  { arquivo: "logo-gota-verde.webp",       nome: "Marca parceira" },
   { arquivo: "logo-arvensis.webp",         nome: "Arvensis" },
   { arquivo: "logo-aura-beauty.webp",      nome: "Aura Beauty" },
   { arquivo: "logo-desinblue.webp",        nome: "Desinblue" },
   { arquivo: "logo-bravus.webp",           nome: "Academia Bravus" },
   { arquivo: "logo-coracao-vermelho.webp", nome: "Marca parceira" },
+  { arquivo: "logo-cicatribem.webp",       nome: "Cicatribem" },
   { arquivo: "logo-bauny.webp",            nome: "Bauny" },
   { arquivo: "logo-yummy-fit.webp",        nome: "Yummy Fit" },
   { arquivo: "logo-cif.webp",              nome: "Cif" },
@@ -898,6 +898,7 @@ const logosEsteira = [
   { arquivo: "logo-matrix.webp",           nome: "Matrix" },
   { arquivo: "logo-muriel.webp",           nome: "Muriel" },
   { arquivo: "logo-e.webp",                nome: "Marca parceira" },
+  { arquivo: "logo-colorida.webp",         nome: "Marca parceira" },
   { arquivo: "logo-coracao.webp",          nome: "Marca parceira" }
 ];
 
@@ -952,13 +953,13 @@ const metricas = [
    link = AQUI ENTRA O LINK DO VÍDEO (YouTube Shorts, Reels ou TikTok)
    capa = AQUI ENTRA A CAPA: caminho de uma imagem vertical 9:16, ex.: "capa-01.jpg".
           Deixe "" para usar a capa do próprio YouTube automaticamente.
-   numero = troque "+00K" pelo número real de views ou resultado do vídeo */
+   São os vídeos que eu considero os melhores (sem números de resultado). */
 const destaques = [
-  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
+  { titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
     contexto: "O produto em uso no cabelo, com textura e resultado na hora.", contexto_en: "The product in use on the hair, showing texture and results in real time.", link: "https://youtube.com/shorts/pEPI7L7Gc6c", capa: "" },
-  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Moda · vestido", titulo_en: "Fashion · dress",
+  { titulo: "Moda · vestido", titulo_en: "Fashion · dress",
     contexto: "Vestido no corpo real, com caimento e movimento.", contexto_en: "A dress on a real body, with fit and movement.", link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
-  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
+  { titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
     contexto: "Vídeo no formato de anúncio para tráfego pago.", contexto_en: "Video in ad format for paid traffic.", link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
 ];
 
@@ -1052,14 +1053,11 @@ const servicos = [
     descricao_en: "A fixed number of videos per month, with an agreed calendar and priority delivery." }
 ];
 
-/* RESULTADOS DE CAMPANHA (troque pelos seus dados reais)
-   O primeiro resultado é o estudo de caso da Phero, que fica direto no HTML da seção de números. */
-const resultados = [
-  { numero: "+00K", rotulo: "de alcance orgânico", rotulo_en: "organic reach", cliente: "Cliente 02", cliente_en: "Client 02",
-    descricao: "Conte em uma linha o que foi feito e qual foi o resultado.", descricao_en: "Describe in one line what was done and what the result was." },
-  { numero: "0,0x", rotulo: "de retorno sobre o anúncio", rotulo_en: "return on ad spend", cliente: "Cliente 03", cliente_en: "Client 03",
-    descricao: "Conte em uma linha o que foi feito e qual foi o resultado.", descricao_en: "Describe in one line what was done and what the result was." }
-];
+/* RESULTADOS DE CAMPANHA (além do estudo de caso da Phero, que fica direto no HTML da seção de números)
+   Quando tiver outro resultado real, adicione aqui, por exemplo:
+   { numero: "+30%", rotulo: "em vendas", rotulo_en: "in sales", cliente: "Nome da marca", cliente_en: "Brand name",
+     descricao: "O que foi feito e qual foi o resultado.", descricao_en: "What was done and the result." } */
+const resultados = [];
 
 /* DEPOIMENTOS (mensagens reais que as marcas mandaram no WhatsApp)
    marca = nome que aparece no topo | selo = etiqueta curta | reacao = emoji opcional
@@ -1332,8 +1330,6 @@ function desenharTudo() {
         <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
       </div></div>
       <div class="info">
-        <p class="numero">${esc(d.numero)}</p>
-        <p class="rotulo">${esc(campo(d, "rotulo"))}</p>
         <h3>${esc(campo(d, "titulo"))}</h3>
         <p class="contexto">${esc(campo(d, "contexto"))}</p>
       </div>
