@@ -219,7 +219,7 @@ section{padding:96px 0}
 
 /* ===================== 3. CONTEÚDOS DE DESTAQUE ===================== */
 .destaques-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.card-video{display:flex;flex-direction:column;text-decoration:none;border-radius:var(--r-grande);padding:16px 16px 22px;background:var(--branco);border:1px solid var(--linha);box-shadow:var(--sombra);transition:transform .45s var(--mola),box-shadow .3s}
+.card-video{display:flex;flex-direction:column;text-decoration:none;border-radius:var(--r-grande);padding:16px 16px 16px;background:var(--branco);border:1px solid var(--linha);box-shadow:var(--sombra);transition:transform .45s var(--mola),box-shadow .3s}
 .card-video:hover{transform:translateY(-6px);box-shadow:var(--sombra-forte)}
 .moldura{border-radius:34px;padding:8px;background:linear-gradient(145deg,#4a3029,#2e1f1a);box-shadow:inset 0 0 0 2px #6b4537}
 .capa-video{position:relative;aspect-ratio:9/16;border-radius:27px;overflow:hidden;background:linear-gradient(165deg,var(--manteiga-suave),var(--rosa-claro))}
@@ -228,9 +228,16 @@ section{padding:96px 0}
 .play{position:absolute;top:50%;left:50%;width:68px;height:68px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;z-index:1;background:rgba(46,31,26,.3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);transition:transform .4s var(--mola),background .3s}
 .play svg{width:24px;height:24px;fill:#fff;margin-left:4px}
 .card-video:hover .play{transform:translate(-50%,-50%) scale(1.12);background:var(--rosa)}
-.card-video .info{padding:18px 6px 0}
-.card-video h3{font-size:1.12rem;font-weight:700;margin-top:0;letter-spacing:-.02em}
-.card-video .contexto{font-size:.92rem;color:var(--texto-2);margin-top:4px}
+/* Descrição do vídeo no formato de notificação de mensagem do iPhone */
+.card-video .info{position:relative;z-index:2;display:flex;gap:11px;align-items:flex-start;margin:-74px 10px 0;padding:11px 13px 12px;border-radius:20px;background:rgba(250,250,249,.82);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.8);box-shadow:0 12px 28px -10px rgba(0,0,0,.28);transition:transform .45s var(--mola)}
+.ios-app{flex:none;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(180deg,#5ef27c,#2ac54a);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.ios-app svg{width:21px;height:21px}
+.ios-corpo{flex:1;min-width:0}
+.ios-topo{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;font-weight:600;color:var(--texto-2);text-transform:uppercase;letter-spacing:.03em;line-height:1.2}
+.ios-topo time{text-transform:none;letter-spacing:0;font-weight:500}
+.card-video h3{font-size:.95rem;font-weight:700;margin-top:3px;letter-spacing:-.01em;line-height:1.25}
+.card-video .contexto{font-size:.86rem;line-height:1.35;color:var(--texto);margin-top:2px}
+@media (hover:hover) and (pointer:fine){ .card-video:hover .info{transform:translateY(-6px)} }
 
 /* ===================== 4. TRABALHOS POR NICHO ===================== */
 .segmentado{display:flex;gap:2px;padding:4px;border-radius:14px;background:rgba(107,69,55,.07);width:max-content;max-width:100%;overflow-x:auto;margin:0 0 28px;scrollbar-width:none}
@@ -1517,9 +1524,13 @@ function desenharTudo() {
         <span class="mini-ilha" aria-hidden="true"></span>
         <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
       </div></div>
-      <div class="info">
-        <h3>${esc(campo(d, "titulo"))}</h3>
-        <p class="contexto">${esc(campo(d, "contexto"))}</p>
+      <div class="info notificacao-ios">
+        <span class="ios-app" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span>
+        <div class="ios-corpo">
+          <p class="ios-topo" aria-hidden="true"><span>${tr("Mensagens", "Messages")}</span><time>${tr("agora", "now")}</time></p>
+          <h3>${esc(campo(d, "titulo"))}</h3>
+          <p class="contexto">${esc(campo(d, "contexto"))}</p>
+        </div>
       </div>
     </a>`).join("");
   ativarReservas(gradeDestaques);
