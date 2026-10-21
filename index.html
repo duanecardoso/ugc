@@ -99,6 +99,11 @@ section{padding:96px 0}
 .menu a:hover{background:var(--manteiga-suave)}
 .status{display:flex;align-items:center;gap:6px;font-weight:700;font-size:.88rem;padding-right:12px;color:var(--texto)}
 .status svg{height:12px;width:auto}
+.idioma{display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(107,69,55,.08);flex:none}
+.idioma button{display:flex;align-items:center;gap:6px;border:0;background:transparent;border-radius:999px;padding:6px 11px;min-height:36px;font-weight:700;font-size:.8rem;color:var(--texto-2);cursor:pointer;transition:background .2s,color .2s}
+.idioma button svg{width:18px;height:13px;border-radius:2px;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.idioma button[aria-pressed="true"]{background:var(--marrom);color:#fff}
+.direita{display:flex;align-items:center;gap:8px}
 .menu-botao{display:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--manteiga);cursor:pointer;align-items:center;justify-content:center}
 .menu-botao span,.menu-botao span::before,.menu-botao span::after{display:block;width:18px;height:2px;background:var(--marrom);border-radius:2px;position:relative;transition:transform .3s var(--mola),background .2s}
 .menu-botao span::before,.menu-botao span::after{content:"";position:absolute;left:0}
@@ -424,6 +429,9 @@ section{padding:96px 0}
   .seg{padding:8px 12px;font-size:.88rem}
   .post-it{width:120px;font-size:.78rem;padding:12px}
   .selo{width:66px;height:66px;font-size:.64rem}
+  .idioma button{padding:6px 9px}
+  .idioma button svg{display:none}
+  .logo{font-size:.95rem}
   .dock{gap:6px;padding:7px;border-radius:22px}
   .dock .app{width:44px;height:44px;border-radius:12px}
   .rodape .container{flex-direction:column;text-align:center}
@@ -446,32 +454,38 @@ section{padding:96px 0}
 </style>
 </head>
 <body>
-<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<a class="pular" href="#conteudo" data-i18n="pular">Pular para o conteúdo</a>
 
 <!-- ===================== MENU FIXO ===================== -->
 <header class="topo">
   <div class="barra vidro">
-    <a class="logo" href="#inicio" aria-label="Duane Cardoso, voltar ao início">
+    <a class="logo" href="#inicio" aria-label="Duane Cardoso, voltar ao início" data-i18n-attr="aria-label:a-logo">
       <span class="app c-rosa" aria-hidden="true"><img src="fotos/avatar.webp" alt="" width="36" height="36"></span>
       Duane Cardoso
     </a>
-    <nav class="menu" id="menu" aria-label="Menu principal">
+    <nav class="menu" id="menu" aria-label="Menu principal" data-i18n-attr="aria-label:a-menu">
       <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#destaques">Destaques</a></li>
-        <li><a href="#trabalhos">Trabalhos</a></li>
-        <li><a href="#fotos">Fotos</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#numeros">Números</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#sobre" data-i18n="menu-sobre">Sobre</a></li>
+        <li><a href="#destaques" data-i18n="menu-destaques">Destaques</a></li>
+        <li><a href="#trabalhos" data-i18n="menu-trabalhos">Trabalhos</a></li>
+        <li><a href="#fotos" data-i18n="menu-fotos">Fotos</a></li>
+        <li><a href="#servicos" data-i18n="menu-servicos">Serviços</a></li>
+        <li><a href="#numeros" data-i18n="menu-numeros">Números</a></li>
+        <li><a href="#contato" data-i18n="menu-contato">Contato</a></li>
       </ul>
     </nav>
+    <div class="direita">
+    <div class="idioma" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true" lang="pt-BR" title="Português"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#229e45"/><path d="M10 2 18 7 10 12 2 7z" fill="#f8e509"/><circle cx="10" cy="7" r="2.8" fill="#2b49a3"/></svg>PT</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><path d="M0 .6h20M0 2.8h20M0 5h20M0 7.2h20M0 9.4h20M0 11.6h20M0 13.6h20" stroke="#d22f27" stroke-width="1.1"/><rect width="9" height="7.6" fill="#1e3a8a"/></svg>EN</button>
+    </div>
     <div class="status" aria-hidden="true">
       <span class="relogio">9:41</span>
       <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
       <svg viewBox="0 0 27 12" fill="none"><rect x=".5" y=".5" width="22" height="11" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><path d="M24.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" fill="currentColor" opacity=".4"/></svg>
     </div>
     <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -481,14 +495,14 @@ section{padding:96px 0}
 <section class="capa" id="inicio" aria-labelledby="nome-principal">
   <div class="container capa-grade">
     <div class="capa-texto">
-      <span class="ilha"><i aria-hidden="true"></i>disponível para novas marcas</span>
+      <span class="ilha"><i aria-hidden="true"></i><span data-i18n="ilha">disponível para novas marcas</span></span>
       <p class="data-hoje"><span id="data-hoje">Hoje</span> <em>· @byduanecardoso</em></p>
       <h1 id="nome-principal"><span>Duane</span><span>Cardoso<span class="ponto">.</span></span></h1>
       <!-- APRESENTAÇÃO (até 3 linhas) -->
-      <p class="bio">Sou a <strong>Duane Cardoso</strong>, UGC creator em Valparaíso de Goiás. Gravo vídeos de <strong>review e demonstração</strong> para marcas de beleza, moda, fitness e tech, mostrando o produto em uso e o que o consumidor precisa saber antes de comprar. Já entreguei mais de 100 vídeos para mais de 50 marcas.</p>
+      <p class="bio" data-i18n="bio">Sou a <strong>Duane Cardoso</strong>, UGC creator em Valparaíso de Goiás. Gravo vídeos de <strong>review e demonstração</strong> para marcas de beleza, moda, fitness e tech, mostrando o produto em uso e o que o consumidor precisa saber antes de comprar. Já entreguei mais de 100 vídeos para mais de 50 marcas.</p>
       <div class="acoes">
-        <a class="botao botao-principal" href="#contato">Falar comigo</a>
-        <a class="botao botao-claro" href="#trabalhos">Ver os trabalhos</a>
+        <a class="botao botao-principal" href="#contato" data-i18n="bt-falar">Falar comigo</a>
+        <a class="botao botao-claro" href="#trabalhos" data-i18n="bt-trabalhos">Ver os trabalhos</a>
       </div>
     </div>
 
@@ -501,17 +515,17 @@ section{padding:96px 0}
         <div class="janela-barra" aria-hidden="true"><i style="background:#d74f73"></i><i style="background:#f8e7a2"></i><i style="background:#ce96a5"></i><b>duane.jpg</b></div>
         <div class="janela-foto">
           <!-- FOTO DA CAPA: arquivo fotos/capa.webp (vertical 4:5). Para trocar, substitua o arquivo mantendo o nome. -->
-          <img src="fotos/capa.webp" alt="Duane Cardoso segurando um celular, em estúdio de fundo claro" width="800" height="1000" fetchpriority="high">
+          <img src="fotos/capa.webp" alt="Duane Cardoso segurando um celular, em estúdio de fundo claro" data-i18n-attr="alt:a-capa" width="800" height="1000" fetchpriority="high">
         </div>
       </figure>
-      <div class="post-it" aria-hidden="true"><small>lembrete</small>roteiro aprovado antes de gravar ✓</div>
+      <div class="post-it" aria-hidden="true" data-i18n="postit"><small>lembrete</small>roteiro aprovado antes de gravar ✓</div>
       <!-- Os três números da capa vêm do array "metricas" no script -->
-      <ul class="notifs" id="numeros-capa" aria-label="Meus números"></ul>
+      <ul class="notifs" id="numeros-capa" aria-label="Meus números" data-i18n-attr="aria-label:a-numeros"></ul>
     </div>
   </div>
 
   <!-- Faixa fina com as marcas (gerada a partir do array "marcas") -->
-  <h2 class="sr-only">Marcas com quem já trabalhei</h2>
+  <h2 class="sr-only" data-i18n="sr-marcas">Marcas com quem já trabalhei</h2>
   <p class="sr-only" id="marcas-lista"></p>
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
 </section>
@@ -520,34 +534,34 @@ section{padding:96px 0}
 <section id="sobre" aria-labelledby="titulo-sobre">
   <div class="container sobre-grade">
     <div class="foto-sobre-area revelar">
-    <ul class="etiquetas" aria-label="Nichos que eu atendo">
-      <li class="etiqueta">Beleza e cuidados</li>
-      <li class="etiqueta">Moda e acessórios</li>
-      <li class="etiqueta">Fitness e saúde</li>
-      <li class="etiqueta">Tech e educação</li>
+    <ul class="etiquetas" aria-label="Nichos que eu atendo" data-i18n-attr="aria-label:a-nichos">
+      <li class="etiqueta" data-i18n="etiqueta1">Beleza e cuidados</li>
+      <li class="etiqueta" data-i18n="etiqueta2">Moda e acessórios</li>
+      <li class="etiqueta" data-i18n="etiqueta3">Fitness e saúde</li>
+      <li class="etiqueta" data-i18n="etiqueta4">Tech e educação</li>
     </ul>
     <figure class="foto-sobre">
       <!-- FOTO DO SOBRE: arquivo fotos/sobre.webp (vertical 4:5). Para trocar, substitua o arquivo mantendo o nome. -->
-      <img src="fotos/sobre.webp" alt="Duane Cardoso sorrindo, de cardigan lilás e calça jeans" width="800" height="1000" loading="lazy" decoding="async">
-      <figcaption>Duane Cardoso<small>Entre Goiás e Brasília</small></figcaption>
+      <img src="fotos/sobre.webp" alt="Duane Cardoso sorrindo, de cardigan lilás e calça jeans" data-i18n-attr="alt:a-sobre" width="800" height="1000" loading="lazy" decoding="async">
+      <figcaption>Duane Cardoso<small data-i18n="sobre-local">Entre Goiás e Brasília</small></figcaption>
     </figure>
     </div>
 
     <article class="notas cartao revelar">
       <div class="notas-topo" aria-hidden="true">
-        <span>‹ Notas</span>
+        <span data-i18n="notas">‹ Notas</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
       </div>
       <div class="notas-corpo">
-        <h2 id="titulo-sobre">Sobre mim<span style="color:var(--rosa)">.</span></h2>
-        <p class="meta">UGC Creator · 26 anos</p>
-        <p class="saudacao">Oee, eu sou a Duane!</p>
-        <p>Tenho <strong>26 anos</strong> e vivo entre <strong>Goiás e Brasília</strong>. Meu dia a dia tem <strong>treino, autocuidado, beleza e rotina real</strong>, sem produção exagerada. É nesse cenário que os produtos entram nos meus vídeos: de um jeito natural, que faz sentido para quem assiste e para quem consome.</p>
-        <p>Gosto de conteúdo que parece <strong>real</strong>, gera <strong>identificação</strong> e cria <strong>conexão</strong> com quem está do outro lado. É isso que levo para cada marca: vídeos de review e demonstração que mostram o produto em uso e o que a pessoa precisa saber antes de comprar.</p>
-        <ul class="lembretes" aria-label="Minhas promessas">
-          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Roteiro aprovado por você antes de eu gravar</li>
-          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Uma rodada de ajuste inclusa em todo vídeo</li>
-          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Entrega em até 72 horas úteis</li>
+        <h2 id="titulo-sobre" data-i18n="sobre-titulo">Sobre mim<span style="color:var(--rosa)">.</span></h2>
+        <p class="meta" data-i18n="sobre-meta">UGC Creator · 26 anos</p>
+        <p class="saudacao" data-i18n="sobre-oi">Oee, eu sou a Duane!</p>
+        <p data-i18n="sobre-p1">Tenho <strong>26 anos</strong> e vivo entre <strong>Goiás e Brasília</strong>. Meu dia a dia tem <strong>treino, autocuidado, beleza e rotina real</strong>, sem produção exagerada. É nesse cenário que os produtos entram nos meus vídeos: de um jeito natural, que faz sentido para quem assiste e para quem consome.</p>
+        <p data-i18n="sobre-p2">Gosto de conteúdo que parece <strong>real</strong>, gera <strong>identificação</strong> e cria <strong>conexão</strong> com quem está do outro lado. É isso que levo para cada marca: vídeos de review e demonstração que mostram o produto em uso e o que a pessoa precisa saber antes de comprar.</p>
+        <ul class="lembretes" aria-label="Minhas promessas" data-i18n-attr="aria-label:a-promessas">
+          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span data-i18n="promessa1">Roteiro aprovado por você antes de eu gravar</span></li>
+          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span data-i18n="promessa2">Uma rodada de ajuste inclusa em todo vídeo</span></li>
+          <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span data-i18n="promessa3">Entrega em até 72 horas úteis</span></li>
         </ul>
         <p class="assinatura">Duane Cardoso</p>
         <p class="assinatura-sub">UGC Creator</p>
@@ -560,9 +574,9 @@ section{padding:96px 0}
 <section id="destaques" aria-labelledby="titulo-destaques">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="rotulo-sec">Destaques</span>
-      <h2 id="titulo-destaques">Conteúdos de <em>destaque</em></h2>
-      <p>Três vídeos que mostram como eu apresento um produto. Toque para assistir.</p>
+      <span class="rotulo-sec" data-i18n="dest-rot">Destaques</span>
+      <h2 id="titulo-destaques" data-i18n="dest-h2">Conteúdos de <em>destaque</em></h2>
+      <p data-i18n="dest-p">Três vídeos que mostram como eu apresento um produto. Toque para assistir.</p>
     </div>
     <!-- Os cards são gerados a partir do array "destaques" no script.
          Lá você troca o LINK DO VÍDEO (campo link) e a CAPA (campo capa). -->
@@ -574,11 +588,11 @@ section{padding:96px 0}
 <section id="trabalhos" aria-labelledby="titulo-trabalhos">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="rotulo-sec">Trabalhos</span>
-      <h2 id="titulo-trabalhos">Trabalhos por <em>nicho</em></h2>
-      <p>Escolha um nicho para ver só os vídeos daquela categoria.</p>
+      <span class="rotulo-sec" data-i18n="trab-rot">Trabalhos</span>
+      <h2 id="titulo-trabalhos" data-i18n="trab-h2">Trabalhos por <em>nicho</em></h2>
+      <p data-i18n="trab-p">Escolha um nicho para ver só os vídeos daquela categoria.</p>
     </div>
-    <div class="segmentado" id="abas" role="group" aria-label="Filtrar trabalhos por nicho"></div>
+    <div class="segmentado" id="abas" role="group" aria-label="Filtrar trabalhos por nicho" data-i18n-attr="aria-label:a-abas"></div>
     <p class="sr-only" id="feed-aviso" aria-live="polite"></p>
     <!-- As seções são geradas a partir dos arrays "nichos" e "videos" no script -->
     <div id="nichos"></div>
@@ -589,9 +603,9 @@ section{padding:96px 0}
 <section id="fotos" aria-labelledby="titulo-fotos">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="rotulo-sec">Fotos</span>
-      <h2 id="titulo-fotos">Fotos <em>UGC</em></h2>
-      <p>Produto na mão, em uso e no corpo, pronto para feed, site, marketplace e anúncio. Toque para ampliar.</p>
+      <span class="rotulo-sec" data-i18n="fotos-rot">Fotos</span>
+      <h2 id="titulo-fotos" data-i18n="fotos-h2">Fotos <em>UGC</em></h2>
+      <p data-i18n="fotos-p">Produto na mão, em uso e no corpo, pronto para feed, site, marketplace e anúncio. Toque para ampliar.</p>
     </div>
     <!-- A galeria é gerada a partir do array "fotosUgc" no script -->
     <div class="galeria" id="galeria"></div>
@@ -603,12 +617,12 @@ section{padding:96px 0}
   <div class="container">
     <div class="servicos-topo">
       <div class="titulo-secao revelar">
-        <span class="rotulo-sec">Serviços</span>
-        <h2 id="titulo-servicos">Como eu te <em>ajudo</em></h2>
-        <p>Do vídeo único ao pacote do mês, você escolhe o formato que cabe na sua campanha.</p>
+        <span class="rotulo-sec" data-i18n="serv-rot">Serviços</span>
+        <h2 id="titulo-servicos" data-i18n="serv-h2">Como eu te <em>ajudo</em></h2>
+        <p data-i18n="serv-p">Do vídeo único ao pacote do mês, você escolhe o formato que cabe na sua campanha.</p>
       </div>
       <!-- FOTO POLAROID: arquivo fotos/extra.webp -->
-      <figure class="polaroid revelar"><img src="fotos/extra.webp" alt="Duane Cardoso olhando para o lado, de blusa prateada" width="640" height="800" loading="lazy" decoding="async"><figcaption>bastidores ✨</figcaption></figure>
+      <figure class="polaroid revelar"><img src="fotos/extra.webp" alt="Duane Cardoso olhando para o lado, de blusa prateada" data-i18n-attr="alt:a-polaroid" width="640" height="800" loading="lazy" decoding="async"><figcaption data-i18n="polaroid">bastidores ✨</figcaption></figure>
     </div>
     <div class="servicos-grade" id="servicos-grade"></div>
   </div>
@@ -618,23 +632,23 @@ section{padding:96px 0}
 <section id="numeros" aria-labelledby="titulo-numeros">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="rotulo-sec">Resultados</span>
-      <h2 id="titulo-numeros">Números e <em>depoimentos</em></h2>
+      <span class="rotulo-sec" data-i18n="num-rot">Resultados</span>
+      <h2 id="titulo-numeros" data-i18n="num-h2">Números e <em>depoimentos</em></h2>
     </div>
     <div class="metricas" id="metricas"></div>
 
-    <h3 class="subtitulo revelar">Resultados de campanha</h3>
+    <h3 class="subtitulo revelar" data-i18n="sub-resultados">Resultados de campanha</h3>
     <!-- ESTUDO DE CASO: Phero (é o primeiro dos três resultados; os outros dois vêm do array "resultados") -->
     <article class="caso revelar" aria-labelledby="caso-titulo">
       <div>
-        <span class="caso-rotulo">Estudo de caso · Phero</span>
-        <h4 id="caso-titulo">Como um vídeo UGC passou de 700 mil visualizações no perfil da Phero, marca de perfumes com feromônios</h4>
-        <p>Criei o conteúdo para apresentar o perfume de um jeito natural e despertar a curiosidade do público, ligando o produto a uma experiência de uso e ao interesse por fragrâncias com feromônios.</p>
-        <p>O vídeo alcançou mais de 700 mil visualizações no perfil da marca, aumentou a visibilidade do produto e mostrou o potencial do UGC para gerar interesse de forma orgânica.</p>
+        <span class="caso-rotulo" data-i18n="caso-rot">Estudo de caso · Phero</span>
+        <h4 id="caso-titulo" data-i18n="caso-h4">Como um vídeo UGC passou de 700 mil visualizações no perfil da Phero, marca de perfumes com feromônios</h4>
+        <p data-i18n="caso-p1">Criei o conteúdo para apresentar o perfume de um jeito natural e despertar a curiosidade do público, ligando o produto a uma experiência de uso e ao interesse por fragrâncias com feromônios.</p>
+        <p data-i18n="caso-p2">O vídeo alcançou mais de 700 mil visualizações no perfil da marca, aumentou a visibilidade do produto e mostrou o potencial do UGC para gerar interesse de forma orgânica.</p>
         <ul class="caso-numeros">
-          <li><b>700 mil+</b><span>views</span></li>
-          <li><b>↑</b><span>vendas</span></li>
-          <li><b>Phero</b><span>marca do projeto</span></li>
+          <li><b data-i18n="caso-n1">700 mil+</b><span>views</span></li>
+          <li><b>↑</b><span data-i18n="caso-n2">vendas</span></li>
+          <li><b>Phero</b><span data-i18n="caso-n3">marca do projeto</span></li>
         </ul>
       </div>
       <!-- CELULAR DO CASO: para mostrar a capa real, troque o bloco "placeholder" por
@@ -642,16 +656,16 @@ section{padding:96px 0}
            Para abrir o vídeo, troque <div class="caso-celular"> por <a class="caso-celular" href="LINK DO VÍDEO" target="_blank" rel="noopener"> e feche com </a>. -->
       <div class="caso-celular">
         <div class="moldura"><div class="capa-video">
-          <div class="placeholder" role="img" aria-label="Espaço para a capa do vídeo da Phero"><span class="legenda">capa do vídeo 9:16</span></div>
+          <div class="placeholder" role="img" aria-label="Espaço para a capa do vídeo da Phero" data-i18n-attr="aria-label:a-caso-capa"><span class="legenda" data-i18n="legenda-capa">capa do vídeo 9:16</span></div>
           <span class="mini-ilha" aria-hidden="true"></span>
-          <span class="perfil" aria-hidden="true"><i></i><span>phero.com.br<small>perfil da marca</small></span></span>
-          <span class="views" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>700 mil+</span>
+          <span class="perfil" aria-hidden="true"><i></i><span>phero.com.br<small data-i18n="caso-perfil">perfil da marca</small></span></span>
+          <span class="views" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span data-i18n="caso-n1b">700 mil+</span></span>
         </div></div>
       </div>
     </article>
     <div class="resultados" id="resultados"></div>
 
-    <h3 class="subtitulo revelar">O que dizem as marcas</h3>
+    <h3 class="subtitulo revelar" data-i18n="sub-marcas">O que dizem as marcas</h3>
     <div class="notificacoes" id="depoimentos"></div>
   </div>
 </section>
@@ -660,9 +674,9 @@ section{padding:96px 0}
 <section id="contato" aria-labelledby="titulo-contato">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="rotulo-sec">Contato</span>
-      <h2 id="titulo-contato">Bora criar <em>juntos?</em></h2>
-      <p>Me conta sobre o seu produto e a sua campanha. Eu respondo com uma ideia de roteiro.</p>
+      <span class="rotulo-sec" data-i18n="cont-rot">Contato</span>
+      <h2 id="titulo-contato" data-i18n="cont-h2">Bora criar <em>juntos?</em></h2>
+      <p data-i18n="cont-p">Me conta sobre o seu produto e a sua campanha. Eu respondo com uma ideia de roteiro.</p>
     </div>
     <div class="contato-grade">
       <div class="alerta revelar">
@@ -674,35 +688,35 @@ section{padding:96px 0}
              Para receber as mensagens no seu e-mail, crie um formulário grátis no Formspree
              e coloque o endereço dele no atributo action abaixo (o script já cuida do resto). -->
         <form id="form-contato" action="" novalidate>
-          <h3>Vamos criar o vídeo da sua marca?</h3>
-          <p class="sub">Conta rapidinho o que você precisa.</p>
+          <h3 data-i18n="form-h3">Vamos criar o vídeo da sua marca?</h3>
+          <p class="sub" data-i18n="form-sub">Conta rapidinho o que você precisa.</p>
           <div class="campos">
             <div class="campo">
-              <label for="c-nome">Seu nome</label>
+              <label for="c-nome" data-i18n="lb-nome">Seu nome</label>
               <input id="c-nome" name="nome" type="text" autocomplete="name" required>
             </div>
             <div class="campo">
-              <label for="c-email">Seu e-mail</label>
+              <label for="c-email" data-i18n="lb-email">Seu e-mail</label>
               <input id="c-email" name="email" type="email" autocomplete="email" required>
             </div>
             <div class="campo">
-              <label for="c-msg">Mensagem</label>
-              <textarea id="c-msg" name="mensagem" required placeholder="Produto, nicho e prazo da campanha"></textarea>
+              <label for="c-msg" data-i18n="lb-msg">Mensagem</label>
+              <textarea id="c-msg" name="mensagem" required placeholder="Produto, nicho e prazo da campanha" data-i18n-attr="placeholder:ph-msg"></textarea>
             </div>
           </div>
-          <button class="alerta-botao" type="submit">Enviar mensagem</button>
+          <button class="alerta-botao" type="submit" data-i18n="bt-enviar">Enviar mensagem</button>
         </form>
         <div class="confirmacao" id="confirmacao" role="status" aria-live="polite" tabindex="-1">
           <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
-          <h3 id="confirmacao-titulo">Mensagem enviada!</h3>
-          <p class="sub">Obrigada pelo contato. Vou te responder o quanto antes no e-mail que você deixou.</p>
-          <button class="alerta-botao leve" type="button" id="nova-mensagem">Enviar outra mensagem</button>
+          <h3 id="confirmacao-titulo" data-i18n="conf-h3">Mensagem enviada!</h3>
+          <p class="sub" data-i18n="conf-p">Obrigada pelo contato. Vou te responder o quanto antes no e-mail que você deixou.</p>
+          <button class="alerta-botao leve" type="button" id="nova-mensagem" data-i18n="bt-outra">Enviar outra mensagem</button>
         </div>
       </div>
 
       <div class="canais revelar">
         <!-- FOTO DO CONTATO: arquivo fotos/contato.webp -->
-        <figure class="foto-contato"><img src="fotos/contato.webp" alt="Duane Cardoso falando em um microfone e sorrindo" width="640" height="800" loading="lazy" decoding="async"><figcaption>Bora gravar?</figcaption></figure>
+        <figure class="foto-contato"><img src="fotos/contato.webp" alt="Duane Cardoso falando em um microfone e sorrindo" data-i18n-attr="alt:a-contato" width="640" height="800" loading="lazy" decoding="async"><figcaption data-i18n="contato-foto">Bora gravar?</figcaption></figure>
         <a class="canal" href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener">
           <span class="app c-rosa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5zm5 13.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.2.5.1.6-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span>
           <span><b>WhatsApp</b><small>(61) 99382-3059</small></span><span class="seta" aria-hidden="true">›</span>
@@ -719,7 +733,7 @@ section{padding:96px 0}
           <span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span>
           <span><b>E-mail</b><small>ugcduanecardoso@gmail.com</small></span><span class="seta" aria-hidden="true">›</span>
         </a>
-        <p style="color:var(--texto-2);font-size:.92rem;margin:6px 4px 0">Atendo marcas de todo o Brasil, direto de Valparaíso de Goiás.</p>
+        <p style="color:var(--texto-2);font-size:.92rem;margin:6px 4px 0" data-i18n="contato-atendo">Atendo marcas de todo o Brasil, direto de Valparaíso de Goiás.</p>
       </div>
     </div>
   </div>
@@ -730,23 +744,23 @@ section{padding:96px 0}
 <footer class="rodape">
   <div class="container">
     <p class="rodape-nome">Duane Cardoso<small>UGC Creator · Valparaíso de Goiás</small></p>
-    <nav class="redes" aria-label="Minhas redes">
+    <nav class="redes" aria-label="Minhas redes" data-i18n-attr="aria-label:a-redes">
       <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram @byduanecardoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
       <a href="https://www.tiktok.com/@aanecardoso/" target="_blank" rel="noopener" aria-label="TikTok @aanecardoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></a>
       <a href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></a>
       <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail ugcduanecardoso@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></a>
     </nav>
-    <p class="copy">© <span id="ano">2026</span> Duane Cardoso. Todos os direitos reservados.</p>
+    <p class="copy">© <span id="ano">2026</span> Duane Cardoso. <span data-i18n="direitos">Todos os direitos reservados.</span></p>
   </div>
 </footer>
 
 <!-- ===================== DOCK: atalhos de contato sempre à mão ===================== -->
-<nav class="dock vidro" aria-label="Atalhos de contato">
+<nav class="dock vidro" aria-label="Atalhos de contato" data-i18n-attr="aria-label:a-dock">
   <a href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="app c-rosa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span><span class="dica" aria-hidden="true">WhatsApp</span></a>
   <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram"><span class="app c-rosa-claro" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff"/></svg></span><span class="dica" aria-hidden="true">Instagram</span></a>
   <a href="https://www.tiktok.com/@aanecardoso/" target="_blank" rel="noopener" aria-label="TikTok"><span class="app c-marrom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></span><span class="dica" aria-hidden="true">TikTok</span></a>
   <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail"><span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span><span class="dica" aria-hidden="true">E-mail</span></a>
-  <button type="button" id="abrir-kit" aria-label="Pedir mídia kit"><span class="app c-branco" aria-hidden="true" style="font-size:1.4rem">📁</span><span class="dica" aria-hidden="true">Mídia kit</span></button>
+  <button type="button" id="abrir-kit" aria-label="Pedir mídia kit" data-i18n-attr="aria-label:a-kit"><span class="app c-branco" aria-hidden="true" style="font-size:1.4rem">📁</span><span class="dica" aria-hidden="true" data-i18n="dica-kit">Mídia kit</span></button>
 </nav>
 
 <!-- ===================== PLAYER DE VÍDEO ===================== -->
@@ -755,10 +769,10 @@ section{padding:96px 0}
     <p class="player-titulo" id="player-titulo">Vídeo</p>
     <div class="player-tela" id="player-tela"></div>
     <div class="player-barra">
-      <button type="button" id="player-anterior" aria-label="Vídeo anterior">‹</button>
-      <a id="player-youtube" href="#" target="_blank" rel="noopener">Abrir no YouTube</a>
-      <button type="button" class="player-fechar" id="player-fechar">Fechar</button>
-      <button type="button" id="player-proximo" aria-label="Próximo vídeo">›</button>
+      <button type="button" id="player-anterior" aria-label="Vídeo anterior" data-i18n-attr="aria-label:a-vid-ant">‹</button>
+      <a id="player-youtube" href="#" target="_blank" rel="noopener" data-i18n="bt-youtube">Abrir no YouTube</a>
+      <button type="button" class="player-fechar" id="player-fechar" data-i18n="bt-fechar1">Fechar</button>
+      <button type="button" id="player-proximo" aria-label="Próximo vídeo" data-i18n-attr="aria-label:a-vid-prox">›</button>
     </div>
   </div>
 </div>
@@ -769,9 +783,9 @@ section{padding:96px 0}
     <p class="player-titulo" id="foto-titulo">Foto</p>
     <div class="foto-grande"><img id="foto-img" src="" alt=""></div>
     <div class="player-barra">
-      <button type="button" id="foto-anterior" aria-label="Foto anterior">‹</button>
-      <button type="button" class="player-fechar" id="foto-fechar">Fechar</button>
-      <button type="button" id="foto-proxima" aria-label="Próxima foto">›</button>
+      <button type="button" id="foto-anterior" aria-label="Foto anterior" data-i18n-attr="aria-label:a-foto-ant">‹</button>
+      <button type="button" class="player-fechar" id="foto-fechar" data-i18n="bt-fechar2">Fechar</button>
+      <button type="button" id="foto-proxima" aria-label="Próxima foto" data-i18n-attr="aria-label:a-foto-prox">›</button>
     </div>
   </div>
 </div>
@@ -780,25 +794,25 @@ section{padding:96px 0}
 <div class="modal-fundo" id="modal-fundo" aria-hidden="true">
   <div class="alerta" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-desc">
     <div class="avatar" aria-hidden="true"><img src="fotos/avatar.webp" alt="" width="88" height="88" loading="lazy"></div>
-    <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+    <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar" data-i18n-attr="aria-label:a-fechar"><span aria-hidden="true">×</span></button>
     <div class="modal-rolagem" id="modal-conteudo">
       <!-- Assim como o formulário de contato, este card ainda não envia para nenhum lugar.
            Coloque o endereço do seu Formspree (ou similar) no atributo action para receber os pedidos. -->
       <form id="form-kit" action="" novalidate>
-        <h3 id="modal-titulo">Quer meu mídia kit completo?</h3>
-        <p class="sub" id="modal-desc">Deixe seu nome e e-mail e eu te envio valores, formatos e mais trabalhos.</p>
+        <h3 id="modal-titulo" data-i18n="kit-h3">Quer meu mídia kit completo?</h3>
+        <p class="sub" id="modal-desc" data-i18n="kit-p">Deixe seu nome e e-mail e eu te envio valores, formatos e mais trabalhos.</p>
         <div class="campos">
           <div class="campo">
-            <label for="k-nome">Nome</label>
+            <label for="k-nome" data-i18n="lb-knome">Nome</label>
             <input id="k-nome" name="nome" type="text" autocomplete="name" required>
           </div>
           <div class="campo">
-            <label for="k-email">E-mail</label>
+            <label for="k-email" data-i18n="lb-kemail">E-mail</label>
             <input id="k-email" name="email" type="email" autocomplete="email" required>
           </div>
         </div>
-        <button class="alerta-botao" type="submit">Quero receber</button>
-        <button class="alerta-botao leve" type="button" id="kit-agora-nao">Agora não</button>
+        <button class="alerta-botao" type="submit" data-i18n="bt-quero">Quero receber</button>
+        <button class="alerta-botao leve" type="button" id="kit-agora-nao" data-i18n="bt-agora-nao">Agora não</button>
       </form>
     </div>
   </div>
@@ -807,8 +821,9 @@ section{padding:96px 0}
 <script>
 /* =====================================================================
    DADOS DO PORTFÓLIO
-   Edite só esta parte para mudar textos, números e vídeos.
+   Edite só esta parte para mudar textos, números, vídeos e fotos.
    Não precisa mexer no HTML.
+   Campos terminados em _en são a versão em inglês (botão PT | EN do topo).
    ===================================================================== */
 
 /* MARCAS: viram os ícones da faixa da capa */
@@ -823,10 +838,10 @@ const marcas = [
    valor = número que o contador anima | prefixo e sufixo = o que vem antes e depois
    titulo = nome curto | emoji = ícone | quando = horário da notificação | cor = cor do ícone */
 const metricas = [
-  { valor: 100, prefixo: "+", sufixo: "",  rotulo: "vídeos entregues", titulo: "Vídeos", emoji: "🎬", quando: "agora", cor: "c-manteiga",   capa: true },
-  { valor: 50,  prefixo: "+", sufixo: "",  rotulo: "marcas atendidas", titulo: "Marcas", emoji: "🤝", quando: "2 min", cor: "c-rosa-claro", capa: true },
-  { valor: 1,   prefixo: "",  sufixo: "M", rotulo: "de views somadas", titulo: "Views",  emoji: "👀", quando: "ontem", cor: "c-branco",     capa: true },
-  { valor: 5,   prefixo: "",  sufixo: "",  rotulo: "nichos atendidos", titulo: "Nichos", emoji: "🗂️", quando: "",      cor: "c-rosa",       capa: false }
+  { valor: 100, prefixo: "+", sufixo: "",  rotulo: "vídeos entregues", rotulo_en: "videos delivered", titulo: "Vídeos", titulo_en: "Videos", emoji: "🎬", quando: "agora", quando_en: "now",       cor: "c-manteiga",   capa: true },
+  { valor: 50,  prefixo: "+", sufixo: "",  rotulo: "marcas atendidas", rotulo_en: "brands served",    titulo: "Marcas", titulo_en: "Brands", emoji: "🤝", quando: "2 min", quando_en: "2 min",     cor: "c-rosa-claro", capa: true },
+  { valor: 1,   prefixo: "",  sufixo: "M", rotulo: "de views somadas", rotulo_en: "total views",      titulo: "Views",  titulo_en: "Views",  emoji: "👀", quando: "ontem", quando_en: "yesterday", cor: "c-branco",     capa: true },
+  { valor: 5,   prefixo: "",  sufixo: "",  rotulo: "nichos atendidos", rotulo_en: "niches covered",   titulo: "Nichos", titulo_en: "Niches", emoji: "🗂️", quando: "",      quando_en: "",          cor: "c-rosa",       capa: false }
 ];
 
 /* CONTEÚDOS DE DESTAQUE (3 vídeos)
@@ -835,28 +850,38 @@ const metricas = [
           Deixe "" para usar a capa do próprio YouTube automaticamente.
    numero = troque "+00K" pelo número real de views ou resultado do vídeo */
 const destaques = [
-  { numero: "+00K", rotulo: "views", titulo: "L’Oréal · protetor solar com cor", contexto: "Aplicação na pele, com textura e acabamento na hora.", link: "https://youtube.com/shorts/_D2ZceAxQHg", capa: "" },
-  { numero: "+00K", rotulo: "views", titulo: "Moda · vestido",          contexto: "Vestido no corpo real, com caimento e movimento.",   link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
-  { numero: "+00K", rotulo: "views", titulo: "Reclame Aqui · anúncio", contexto: "Vídeo no formato de anúncio para tráfego pago.",       link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
+  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "L’Oréal · protetor solar com cor", titulo_en: "L’Oréal · tinted sunscreen",
+    contexto: "Aplicação na pele, com textura e acabamento na hora.", contexto_en: "Applied on the skin, showing texture and finish in real time.", link: "https://youtube.com/shorts/_D2ZceAxQHg", capa: "" },
+  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Moda · vestido", titulo_en: "Fashion · dress",
+    contexto: "Vestido no corpo real, com caimento e movimento.", contexto_en: "A dress on a real body, with fit and movement.", link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
+  { numero: "+00K", rotulo: "views", rotulo_en: "views", titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
+    contexto: "Vídeo no formato de anúncio para tráfego pago.", contexto_en: "Video in ad format for paid traffic.", link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
 ];
 
 /* NICHOS: viram as seções e os botões de filtro dos trabalhos.
-   frase = uma linha dizendo o que a marca encontra ali.
-   Quando tiver vídeos de skincare, é só adicionar o nicho aqui e os vídeos abaixo. */
+   frase = uma linha dizendo o que a marca encontra ali. */
 const nichos = [
-  { id: "beleza",  nome: "Beleza",  emoji: "💄", cor: "c-rosa-claro", frase: "Textura, aplicação e resultado na pele e no cabelo, do jeito que a cliente quer ver antes de comprar." },
-  { id: "moda",    nome: "Moda",    emoji: "👗", cor: "c-manteiga",   frase: "Caimento, tecido e combinações no corpo real, com a peça em movimento." },
-  { id: "fitness", nome: "Fitness", emoji: "💪", cor: "c-rosa",       frase: "Sabor, preparo e roupa em uso, encaixados na rotina de treino." },
-  { id: "tech",    nome: "Tech",    emoji: "📱", cor: "c-marrom",     frase: "Produto ligado e funcionando, com o passo a passo de uso e vídeo pronto para anúncio." }
+  { id: "beleza",  nome: "Beleza",  nome_en: "Beauty",  emoji: "💄", cor: "c-rosa-claro",
+    frase: "Textura, aplicação e resultado na pele e no cabelo, do jeito que a cliente quer ver antes de comprar.",
+    frase_en: "Texture, application and results on skin and hair, just the way shoppers want to see before buying." },
+  { id: "moda",    nome: "Moda",    nome_en: "Fashion", emoji: "👗", cor: "c-manteiga",
+    frase: "Caimento, tecido e combinações no corpo real, com a peça em movimento.",
+    frase_en: "Fit, fabric and combinations on a real body, with the piece in motion." },
+  { id: "fitness", nome: "Fitness", nome_en: "Fitness", emoji: "💪", cor: "c-rosa",
+    frase: "Sabor, preparo e roupa em uso, encaixados na rotina de treino.",
+    frase_en: "Taste, preparation and activewear in use, fitted into a workout routine." },
+  { id: "tech",    nome: "Tech",    nome_en: "Tech",    emoji: "📱", cor: "c-marrom",
+    frase: "Produto ligado e funcionando, com o passo a passo de uso e vídeo pronto para anúncio.",
+    frase_en: "Product switched on and working, with a step-by-step of use and ad-ready video." }
 ];
 
 /* VÍDEOS (lista completa)
    A ordem aqui é a ordem no site. Dentro de cada nicho, os vídeos são agrupados por
    categoria (ex.: Haircare, Skincare, Bodycare), na ordem em que a categoria aparece na lista.
-   Os melhores vídeos de cada categoria vêm primeiro.
    categoria = deixe "" para o nicho aparecer sem subdivisão (como em Tech)
    marca = deixe "" se não quiser mostrar | produto = o que aparece no vídeo
-   link = endereço do Shorts (a capa é puxada sozinha do YouTube) */
+   link = endereço do Shorts (a capa é puxada sozinha do YouTube)
+   A tradução de categoria e produto fica na lista "termosEmIngles", mais abaixo. */
 const videos = [
   /* BELEZA */
   { nicho: "beleza", categoria: "Haircare", marca: "L’Oréal",  produto: "Finalização",            link: "https://youtube.com/shorts/uFUFWKUoUfc" },
@@ -877,8 +902,8 @@ const videos = [
   { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/u2gbF8c-wZI" },
   { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/hbch7H4Li60" },
   /* FITNESS */
-  { nicho: "fitness", categoria: "Suplementos",   marca: "", produto: "Creatina",   link: "https://youtube.com/shorts/J0F4rpBC8is" },
-  { nicho: "fitness", categoria: "Suplementos",   marca: "", produto: "Cappuccino", link: "https://youtube.com/shorts/-_G1ITunHDg" },
+  { nicho: "fitness", categoria: "Suplementos",    marca: "", produto: "Creatina",   link: "https://youtube.com/shorts/J0F4rpBC8is" },
+  { nicho: "fitness", categoria: "Suplementos",    marca: "", produto: "Cappuccino", link: "https://youtube.com/shorts/-_G1ITunHDg" },
   { nicho: "fitness", categoria: "Roupas fitness", marca: "", produto: "Macaquinho", link: "https://youtube.com/shorts/3oBvDX_Co94" },
   /* TECH */
   { nicho: "tech", categoria: "", marca: "Reclame Aqui", produto: "Aplicativo e serviço", link: "https://youtube.com/shorts/c1vmPbmJ7r8" },
@@ -889,57 +914,194 @@ const videos = [
 /* FOTOS UGC (na ordem em que aparecem; poses parecidas ficam separadas)
    arquivo = foto vertical 4:5 dentro da pasta fotos | marca e tipo = o que aparece na etiqueta */
 const fotosUgc = [
-  { arquivo: "ugc-vestido.webp",           marca: "Moda",        tipo: "Vestido floral",             alt: "Duane de vestido longo floral lilás, ao ar livre" },
-  { arquivo: "ugc-dermachem-seruns.webp",  marca: "Dermachem",   tipo: "Séruns de skincare",         alt: "Duane segurando os séruns Peptídeos e Rosa Mosqueta da Dermachem" },
-  { arquivo: "ugc-academia.webp",          marca: "Fitness",     tipo: "Roupa de treino",            alt: "Duane sorrindo na academia, com conjunto preto de treino" },
-  { arquivo: "ugc-muriel.webp",            marca: "Muriel",      tipo: "Linha Lisos & Soltos",       alt: "Duane com a linha Lisos e Soltos da Muriel, com mãos segurando os produtos em volta" },
-  { arquivo: "ugc-teeva.webp",             marca: "Teeva",       tipo: "Capinha personalizada",      alt: "Capinha de celular Teeva com as iniciais DC sobre as caixas da marca" },
-  { arquivo: "ugc-prohall.webp",           marca: "Prohall",     tipo: "Miracle Therapy",            alt: "Duane segurando o spray Miracle Therapy da Prohall perto do rosto" },
-  { arquivo: "ugc-creatina.webp",          marca: "Thermolife",  tipo: "Creatina",                   alt: "Duane de macacão preto segurando o pote de creatina Thermolife" },
-  { arquivo: "ugc-camiseta.webp",          marca: "Moda",        tipo: "Camiseta estampada",         alt: "Duane de camiseta branca estampada, com a mão no cabelo" },
-  { arquivo: "ugc-dermachem-micelar.webp", marca: "Dermachem",   tipo: "Micelar e esfoliante",       alt: "Duane segurando a água micelar e o esfoliante com ácido salicílico da Dermachem" },
-  { arquivo: "ugc-cappuccino.webp",        marca: "Thermolife",  tipo: "Super Cappuccino",           alt: "Duane de top vermelho segurando o Super Cappuccino da Thermolife" }
+  { arquivo: "ugc-vestido.webp",           marca: "Moda",       tipo: "Vestido floral",        alt: "Duane de vestido longo floral lilás, ao ar livre", alt_en: "Duane in a long lilac floral dress, outdoors" },
+  { arquivo: "ugc-dermachem-seruns.webp",  marca: "Dermachem",  tipo: "Séruns de skincare",    alt: "Duane segurando os séruns Peptídeos e Rosa Mosqueta da Dermachem", alt_en: "Duane holding the Dermachem Peptides and Rosehip serums" },
+  { arquivo: "ugc-academia.webp",          marca: "Fitness",    tipo: "Roupa de treino",       alt: "Duane sorrindo na academia, com conjunto preto de treino", alt_en: "Duane smiling at the gym in a black workout set" },
+  { arquivo: "ugc-muriel.webp",            marca: "Muriel",     tipo: "Linha Lisos & Soltos",  alt: "Duane com a linha Lisos e Soltos da Muriel, com mãos segurando os produtos em volta", alt_en: "Duane with the Muriel Lisos & Soltos line, with hands holding the products around her" },
+  { arquivo: "ugc-teeva.webp",             marca: "Teeva",      tipo: "Capinha personalizada", alt: "Capinha de celular Teeva com as iniciais DC sobre as caixas da marca", alt_en: "Teeva phone case with the initials DC on top of the brand's boxes" },
+  { arquivo: "ugc-prohall.webp",           marca: "Prohall",    tipo: "Miracle Therapy",       alt: "Duane segurando o spray Miracle Therapy da Prohall perto do rosto", alt_en: "Duane holding the Prohall Miracle Therapy spray near her face" },
+  { arquivo: "ugc-creatina.webp",          marca: "Thermolife", tipo: "Creatina",              alt: "Duane de macacão preto segurando o pote de creatina Thermolife", alt_en: "Duane in a black jumpsuit holding a Thermolife creatine tub" },
+  { arquivo: "ugc-camiseta.webp",          marca: "Moda",       tipo: "Camiseta estampada",    alt: "Duane de camiseta branca estampada, com a mão no cabelo", alt_en: "Duane in a white printed t-shirt, with a hand in her hair" },
+  { arquivo: "ugc-dermachem-micelar.webp", marca: "Dermachem",  tipo: "Micelar e esfoliante",  alt: "Duane segurando a água micelar e o esfoliante com ácido salicílico da Dermachem", alt_en: "Duane holding the Dermachem salicylic acid micellar water and exfoliator" },
+  { arquivo: "ugc-cappuccino.webp",        marca: "Thermolife", tipo: "Super Cappuccino",      alt: "Duane de top vermelho segurando o Super Cappuccino da Thermolife", alt_en: "Duane in a red top holding the Thermolife Super Cappuccino" }
 ];
 
 /* SERVIÇOS (seis). cor = c-rosa, c-manteiga, c-rosa-claro, c-marrom ou c-branco */
 const servicos = [
-  { titulo: "Vídeo UGC",                cor: "c-rosa",       descricao: "Vídeo vertical de review ou demonstração, gravado com roteiro aprovado e linguagem de quem usa de verdade." },
-  { titulo: "Corte para anúncio",       cor: "c-marrom",     descricao: "Versões curtas com ganchos diferentes nos primeiros segundos, prontas para testar no tráfego pago." },
-  { titulo: "Fotos do produto",         cor: "c-rosa-claro", descricao: "Fotos em uso e com textura, com luz natural, para feed, site e marketplace." },
-  { titulo: "Unboxing",                 cor: "c-manteiga",   descricao: "A primeira impressão ao abrir a caixa, mostrando embalagem, detalhes e o que vem dentro." },
-  { titulo: "Publicação no meu perfil", cor: "c-rosa",       descricao: "O vídeo publicado no @byduanecardoso, em collab com a sua marca, para alcançar o meu público." },
-  { titulo: "Pacote mensal",            cor: "c-marrom",     descricao: "Uma quantidade fixa de vídeos por mês, com calendário combinado e prioridade na entrega." }
+  { titulo: "Vídeo UGC", titulo_en: "UGC video", cor: "c-rosa",
+    descricao: "Vídeo vertical de review ou demonstração, gravado com roteiro aprovado e linguagem de quem usa de verdade.",
+    descricao_en: "Vertical review or demo video, filmed with an approved script and the voice of someone who actually uses the product." },
+  { titulo: "Corte para anúncio", titulo_en: "Ad cuts", cor: "c-marrom",
+    descricao: "Versões curtas com ganchos diferentes nos primeiros segundos, prontas para testar no tráfego pago.",
+    descricao_en: "Short versions with different hooks in the first seconds, ready to test in paid traffic." },
+  { titulo: "Fotos do produto", titulo_en: "Product photos", cor: "c-rosa-claro",
+    descricao: "Fotos em uso e com textura, com luz natural, para feed, site e marketplace.",
+    descricao_en: "In-use and texture photos in natural light, for feed, website and marketplace." },
+  { titulo: "Unboxing", titulo_en: "Unboxing", cor: "c-manteiga",
+    descricao: "A primeira impressão ao abrir a caixa, mostrando embalagem, detalhes e o que vem dentro.",
+    descricao_en: "The first impression of opening the box, showing packaging, details and what comes inside." },
+  { titulo: "Publicação no meu perfil", titulo_en: "Post on my profile", cor: "c-rosa",
+    descricao: "O vídeo publicado no @byduanecardoso, em collab com a sua marca, para alcançar o meu público.",
+    descricao_en: "The video published on @byduanecardoso as a collab with your brand, to reach my audience." },
+  { titulo: "Pacote mensal", titulo_en: "Monthly package", cor: "c-marrom",
+    descricao: "Uma quantidade fixa de vídeos por mês, com calendário combinado e prioridade na entrega.",
+    descricao_en: "A fixed number of videos per month, with an agreed calendar and priority delivery." }
 ];
 
 /* RESULTADOS DE CAMPANHA (troque pelos seus dados reais)
    O primeiro resultado é o estudo de caso da Phero, que fica direto no HTML da seção de números. */
 const resultados = [
-  { numero: "+00K", rotulo: "de alcance orgânico",        cliente: "Cliente 02", descricao: "Conte em uma linha o que foi feito e qual foi o resultado." },
-  { numero: "0,0x", rotulo: "de retorno sobre o anúncio", cliente: "Cliente 03", descricao: "Conte em uma linha o que foi feito e qual foi o resultado." }
+  { numero: "+00K", rotulo: "de alcance orgânico", rotulo_en: "organic reach", cliente: "Cliente 02", cliente_en: "Client 02",
+    descricao: "Conte em uma linha o que foi feito e qual foi o resultado.", descricao_en: "Describe in one line what was done and what the result was." },
+  { numero: "0,0x", rotulo: "de retorno sobre o anúncio", rotulo_en: "return on ad spend", cliente: "Cliente 03", cliente_en: "Client 03",
+    descricao: "Conte em uma linha o que foi feito e qual foi o resultado.", descricao_en: "Describe in one line what was done and what the result was." }
 ];
 
 /* DEPOIMENTOS (mensagens reais que as marcas mandaram no WhatsApp)
-   marca = nome que aparece no topo ("Marca parceira" quando não quiser mostrar o nome)
-   selo = etiqueta curta | mensagens = cada balão, com o horário | reacao = emoji opcional */
+   marca = nome que aparece no topo | selo = etiqueta curta | reacao = emoji opcional
+   mensagens = cada balão, com o horário (texto_en = tradução para o inglês) */
 const depoimentos = [
   { marca: "Marca parceira", selo: "vídeo aprovado", reacao: "❤️", mensagens: [
-    { texto: "Oiee boa tarde", hora: "14:00" },
-    { texto: "Amiga que lindo ver esse vídeo, sério tá magnífico dms, amo a maneira como você fala do produto indicando sem aquela pressão sabe? Aquece meu coraçãozinho 🥹🥹", hora: "14:01" } ] },
+    { texto: "Oiee boa tarde", texto_en: "Hiii good afternoon", hora: "14:00" },
+    { texto: "Amiga que lindo ver esse vídeo, sério tá magnífico dms, amo a maneira como você fala do produto indicando sem aquela pressão sabe? Aquece meu coraçãozinho 🥹🥹",
+      texto_en: "Girl, how lovely to see this video, seriously it's so magnificent, I love the way you talk about the product and recommend it without that pressure, you know? It warms my little heart 🥹🥹", hora: "14:01" } ] },
   { marca: "Marca parceira", selo: "vídeos e fotos", reacao: "", mensagens: [
-    { texto: "bomm dia ✨💜", hora: "08:20" },
-    { texto: "Mulher do céu, super aprovado os vídeos e fotos!!! Era bem nesse estilo que eu queria mesmo, arrasou", hora: "08:21" },
-    { texto: "Pode colocar lá no drive??", hora: "08:22" } ] },
+    { texto: "bomm dia ✨💜", texto_en: "good morninggg ✨💜", hora: "08:20" },
+    { texto: "Mulher do céu, super aprovado os vídeos e fotos!!! Era bem nesse estilo que eu queria mesmo, arrasou",
+      texto_en: "Oh my goodness, the videos and photos are super approved!!! This was exactly the style I wanted, you nailed it", hora: "08:21" },
+    { texto: "Pode colocar lá no drive??", texto_en: "Can you upload them to the drive??", hora: "08:22" } ] },
   { marca: "Marca parceira", selo: "contrato fechado", reacao: "", mensagens: [
-    { texto: "Uauuu", hora: "10:07" },
-    { texto: "Contrato fechado kkkk", hora: "10:07" },
-    { texto: "Top demais", hora: "10:07" },
-    { texto: "Gostei demais viu", hora: "10:08" } ] },
+    { texto: "Uauuu", texto_en: "Wowww", hora: "10:07" },
+    { texto: "Contrato fechado kkkk", texto_en: "Deal closed haha", hora: "10:07" },
+    { texto: "Top demais", texto_en: "So good", hora: "10:07" },
+    { texto: "Gostei demais viu", texto_en: "Loved it so much", hora: "10:08" } ] },
   { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "", mensagens: [
-    { texto: "Aprovadoo! Nós amamos a narrativa, ficou ótima 😍", hora: "13:48" } ] },
+    { texto: "Aprovadoo! Nós amamos a narrativa, ficou ótima 😍", texto_en: "Approveddd! We loved the storytelling, it turned out great 😍", hora: "13:48" } ] },
   { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "❤️", mensagens: [
-    { texto: "Bom diaaa, tudo bem?", hora: "10:33" },
-    { texto: "Super aprovado 💖 Amamos!", hora: "10:33" } ] }
+    { texto: "Bom diaaa, tudo bem?", texto_en: "Good morninggg, how are you?", hora: "10:33" },
+    { texto: "Super aprovado 💖 Amamos!", texto_en: "Super approved 💖 We loved it!", hora: "10:33" } ] }
 ];
+
+/* TERMOS EM INGLÊS: tradução de palavras curtas usadas nas listas acima
+   (categorias, produtos, etiquetas das fotos e selos dos depoimentos).
+   Se adicionar uma palavra nova em português, coloque a tradução aqui. */
+const termosEmIngles = {
+  "Roupas": "Clothing", "Bolsas e acessórios": "Bags & accessories", "Suplementos": "Supplements", "Roupas fitness": "Activewear",
+  "Finalização": "Hair styling", "Cabelos": "Hair", "Óleo sérum corporal": "Body oil serum", "Desodorante": "Deodorant",
+  "Protetor solar com cor": "Tinted sunscreen", "Hidratante": "Moisturizer", "Esfoliante": "Exfoliator",
+  "Vestido": "Dress", "Casacos": "Coats", "Bolsas": "Bags", "Acessórios": "Accessories",
+  "Creatina": "Creatine", "Macaquinho": "Romper", "Aplicativo e serviço": "App and service",
+  "Bastão de LED": "LED stick light", "Pistola de massagem": "Massage gun",
+  "Moda": "Fashion", "Vestido floral": "Floral dress", "Séruns de skincare": "Skincare serums", "Roupa de treino": "Workout outfit",
+  "Linha Lisos & Soltos": "Lisos & Soltos line", "Capinha personalizada": "Custom phone case", "Camiseta estampada": "Printed t-shirt",
+  "Micelar e esfoliante": "Micellar water & exfoliator",
+  "Marca parceira": "Partner brand", "vídeo aprovado": "video approved", "vídeos e fotos": "videos & photos",
+  "contrato fechado": "deal closed", "roteiro aprovado": "script approved"
+};
+
+/* TEXTOS FIXOS DA PÁGINA EM INGLÊS (o português fica no próprio HTML) */
+const traducoes = {
+  "pular": "Skip to content",
+  "a-logo": "Duane Cardoso, back to top",
+  "a-menu": "Main menu",
+  "menu-sobre": "About",
+  "menu-destaques": "Highlights",
+  "menu-trabalhos": "Work",
+  "menu-fotos": "Photos",
+  "menu-servicos": "Services",
+  "menu-numeros": "Results",
+  "menu-contato": "Contact",
+  "ilha": "available for new brands",
+  "bio": "I'm <strong>Duane Cardoso</strong>, a UGC creator from Valparaíso de Goiás, Brazil. I make <strong>review and demo</strong> videos for beauty, fashion, fitness and tech brands, showing the product in use and what shoppers need to know before they buy. I've delivered 100+ videos for 50+ brands.",
+  "bt-falar": "Let's talk",
+  "bt-trabalhos": "See my work",
+  "a-capa": "Duane Cardoso holding a phone in a bright studio",
+  "postit": "<small>reminder</small>script approved before filming ✓",
+  "a-numeros": "My numbers",
+  "sr-marcas": "Brands I've worked with",
+  "a-nichos": "Niches I work with",
+  "etiqueta1": "Beauty & self-care",
+  "etiqueta2": "Fashion & accessories",
+  "etiqueta3": "Fitness & health",
+  "etiqueta4": "Tech & education",
+  "a-sobre": "Duane Cardoso smiling in a lilac cardigan and jeans",
+  "sobre-local": "Between Goiás and Brasília, Brazil",
+  "notas": "‹ Notes",
+  "sobre-titulo": "About me<span style=\"color:var(--rosa)\">.</span>",
+  "sobre-meta": "UGC Creator · 26 years old",
+  "sobre-oi": "Hey, I'm Duane!",
+  "sobre-p1": "I'm <strong>26</strong> and live between <strong>Goiás and Brasília</strong>, Brazil. My days are made of <strong>workouts, self-care, beauty and real routine</strong>, with no over-the-top production. That's where products show up in my videos: naturally, in a way that makes sense to whoever watches and whoever buys.",
+  "sobre-p2": "I love content that feels <strong>real</strong>, sparks <strong>recognition</strong> and builds <strong>connection</strong> with the person on the other side. That's what I bring to every brand: review and demo videos that show the product in use and what people need to know before buying.",
+  "a-promessas": "My promises",
+  "promessa1": "Script approved by you before I film",
+  "promessa2": "One round of revisions included in every video",
+  "promessa3": "Delivery within 72 business hours",
+  "dest-rot": "Highlights",
+  "dest-h2": "Featured <em>content</em>",
+  "dest-p": "Three videos that show how I present a product. Tap to watch.",
+  "trab-rot": "Work",
+  "trab-h2": "Work by <em>niche</em>",
+  "trab-p": "Pick a niche to see only the videos in that category.",
+  "a-abas": "Filter work by niche",
+  "fotos-rot": "Photos",
+  "fotos-h2": "UGC <em>photos</em>",
+  "fotos-p": "Product in hand, in use and on the body, ready for feed, website, marketplace and ads. Tap to enlarge.",
+  "serv-rot": "Services",
+  "serv-h2": "How I can <em>help</em>",
+  "serv-p": "From a single video to a monthly package, you choose the format that fits your campaign.",
+  "a-polaroid": "Duane Cardoso looking to the side in a silver top",
+  "polaroid": "behind the scenes ✨",
+  "num-rot": "Results",
+  "num-h2": "Numbers & <em>testimonials</em>",
+  "sub-resultados": "Campaign results",
+  "sub-marcas": "What brands say",
+  "caso-rot": "Case study · Phero",
+  "caso-h4": "How a UGC video passed 700K views on the profile of Phero, a pheromone perfume brand",
+  "caso-p1": "I created the content to present the perfume naturally and spark the audience's curiosity, linking the product to a real-use experience and to the interest in pheromone fragrances.",
+  "caso-p2": "The video reached over 700K views on the brand's profile, boosted the product's visibility and showed how UGC can drive interest organically.",
+  "caso-n1": "700K+",
+  "caso-n2": "sales",
+  "caso-n3": "project brand",
+  "a-caso-capa": "Space for the Phero video cover",
+  "legenda-capa": "video cover 9:16",
+  "caso-perfil": "brand profile",
+  "caso-n1b": "700K+",
+  "cont-rot": "Contact",
+  "cont-h2": "Let's create <em>together</em>",
+  "cont-p": "Tell me about your product and campaign. I'll reply with a script idea.",
+  "form-h3": "Shall we create your brand's video?",
+  "form-sub": "Tell me quickly what you need.",
+  "lb-nome": "Your name",
+  "lb-email": "Your email",
+  "lb-msg": "Message",
+  "ph-msg": "Product, niche and campaign deadline",
+  "bt-enviar": "Send message",
+  "conf-h3": "Message sent!",
+  "conf-p": "Thanks for reaching out. I'll reply as soon as possible at the email you left.",
+  "bt-outra": "Send another message",
+  "a-contato": "Duane Cardoso smiling and speaking into a microphone",
+  "contato-foto": "Ready to film?",
+  "contato-atendo": "I work with brands all over Brazil, straight from Valparaíso de Goiás.",
+  "a-redes": "My social media",
+  "direitos": "All rights reserved.",
+  "a-dock": "Contact shortcuts",
+  "a-kit": "Request media kit",
+  "dica-kit": "Media kit",
+  "a-vid-ant": "Previous video",
+  "a-vid-prox": "Next video",
+  "bt-youtube": "Open on YouTube",
+  "bt-fechar1": "Close",
+  "bt-fechar2": "Close",
+  "a-foto-ant": "Previous photo",
+  "a-foto-prox": "Next photo",
+  "a-fechar": "Close",
+  "kit-h3": "Want my full media kit?",
+  "kit-p": "Leave your name and email and I'll send you rates, formats and more work.",
+  "lb-knome": "Name",
+  "lb-kemail": "Email",
+  "bt-quero": "Send it to me",
+  "bt-agora-nao": "Not now"
+};
 
 /* =====================================================================
    DAQUI PARA BAIXO É O FUNCIONAMENTO DA PÁGINA
@@ -947,6 +1109,19 @@ const depoimentos = [
 document.documentElement.classList.add("js");
 const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const coresApp = ["c-rosa", "c-manteiga", "c-rosa-claro", "c-marrom"];
+
+/* ---------- Idioma ---------- */
+let idioma = "pt";
+try {
+  const salvo = localStorage.getItem("idioma");
+  if (salvo === "pt" || salvo === "en") idioma = salvo;
+  else if (navigator.language && !/^pt/i.test(navigator.language)) idioma = "en"; // visitante de fora vê em inglês
+} catch (e) {}
+const ehEn = () => idioma === "en";
+const tr = (pt, en) => (ehEn() ? en : pt);
+const campo = (obj, nome) => (ehEn() && obj[nome + "_en"] ? obj[nome + "_en"] : obj[nome]);
+const termo = pt => (ehEn() && termosEmIngles[pt] ? termosEmIngles[pt] : pt);
+const localeAtual = () => (ehEn() ? "en-US" : "pt-BR");
 
 function esc(t) {
   return String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -956,7 +1131,7 @@ function iniciais(nome) {
 }
 function formatarNumero(m, atual) {
   const casas = m.valor < 10 && atual !== m.valor ? 1 : 0;
-  return m.prefixo + atual.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas }) + m.sufixo;
+  return m.prefixo + atual.toLocaleString(localeAtual(), { minimumFractionDigits: casas, maximumFractionDigits: casas }) + m.sufixo;
 }
 /* Capa automática do YouTube: tenta a versão vertical e, se não existir, usa a padrão */
 function idYoutube(link) {
@@ -966,7 +1141,7 @@ function idYoutube(link) {
 function capaVideo(capa, link, alt) {
   if (capa) return `<img src="${esc(capa)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   const id = idYoutube(link);
-  if (!id) return `<div class="placeholder" role="img" aria-label="${esc(alt)}"><span class="legenda">capa do vídeo 9:16</span></div>`;
+  if (!id) return `<div class="placeholder" role="img" aria-label="${esc(alt)}"><span class="legenda">${tr("capa do vídeo 9:16", "video cover 9:16")}</span></div>`;
   return `<img src="https://i.ytimg.com/vi/${id}/oardefault.jpg" data-reserva="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 }
 function ativarReservas(raiz) {
@@ -984,143 +1159,236 @@ function ativarReservas(raiz) {
 /* ---------- Relógio e data ao vivo ---------- */
 function atualizarRelogio() {
   const agora = new Date();
-  document.querySelectorAll(".relogio").forEach(el => el.textContent = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }));
-  const data = agora.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
+  document.querySelectorAll(".relogio").forEach(el => el.textContent = agora.toLocaleTimeString(localeAtual(), { hour: "2-digit", minute: "2-digit" }));
+  const data = agora.toLocaleDateString(localeAtual(), { weekday: "long", day: "numeric", month: "long" });
   document.getElementById("data-hoje").textContent = data.charAt(0).toUpperCase() + data.slice(1);
 }
-atualizarRelogio();
 setInterval(atualizarRelogio, 15000);
 
-/* ---------- Capa: notificações com os números e faixa de marcas ---------- */
-document.getElementById("numeros-capa").innerHTML = metricas.filter(m => m.capa).map(m => `
-  <li class="notif vidro">
-    <span class="app ${m.cor}" aria-hidden="true">${m.emoji}</span>
-    <div style="flex:1">
-      <span class="n-topo" aria-hidden="true">${esc(m.titulo)}<span>${esc(m.quando)}</span></span>
-      <strong>${formatarNumero(m, m.valor)}</strong><span class="n-rot">${esc(m.rotulo)}</span>
-    </div>
-  </li>`).join("");
-
+/* ---------- Faixa de marcas (não muda com o idioma) ---------- */
 const listaFaixa = `<ul>${marcas.map((m, i) => `<li><span class="app ${coresApp[i % coresApp.length]}">${esc(iniciais(m))}</span>${esc(m)}</li>`).join("")}</ul>`;
 document.getElementById("faixa").innerHTML = listaFaixa + listaFaixa;
 document.getElementById("marcas-lista").textContent = marcas.join(", ") + ".";
 
-/* ---------- Destaques ---------- */
+/* ---------- Partes geradas a partir dos dados (redesenhadas ao trocar o idioma) ---------- */
 const gradeDestaques = document.getElementById("destaques-grade");
-gradeDestaques.innerHTML = destaques.map(d => `
-  <a class="card-video revelar" href="${esc(d.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(d.titulo)}">
-    <div class="moldura"><div class="capa-video">
-      ${capaVideo(d.capa, d.link, "Capa do vídeo " + d.titulo)}
-      <span class="mini-ilha" aria-hidden="true"></span>
-      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-    </div></div>
-    <div class="info">
-      <p class="numero">${esc(d.numero)}</p>
-      <p class="rotulo">${esc(d.rotulo)}</p>
-      <h3>${esc(d.titulo)}</h3>
-      <p class="contexto">${esc(d.contexto)}</p>
-    </div>
-  </a>`).join("");
-ativarReservas(gradeDestaques);
-
-/* ---------- Trabalhos: seções por nicho, separadas por categoria ---------- */
 const abas = document.getElementById("abas");
-const nichosComVideo = nichos.filter(n => videos.some(v => v.nicho === n.id));
-abas.innerHTML = [{ id: "todos", nome: "Todos" }, ...nichosComVideo].map((n, i) => {
-  const total = n.id === "todos" ? videos.length : videos.filter(v => v.nicho === n.id).length;
-  return `<button class="seg" type="button" data-filtro="${n.id}" data-nome="${esc(n.nome)}" aria-pressed="${i === 0}">${esc(n.nome)}<small>${total}</small></button>`;
-}).join("");
-
-const iconePlay = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>';
 const caixaNichos = document.getElementById("nichos");
-caixaNichos.innerHTML = nichosComVideo.map(n => {
-  const lista = videos.filter(v => v.nicho === n.id);
-  const categorias = [...new Set(lista.map(v => v.categoria || ""))];
-  const cartao = v => {
-    const titulo = v.marca || v.produto;
-    const sub = v.marca ? v.produto : (v.categoria || n.nome);
-    return `<li><a class="thumb" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(titulo)}, ${esc(sub)}">
-      ${capaVideo("", v.link, "")}
-      <span class="mini-play" aria-hidden="true">${iconePlay}</span>
-      <span class="t-info" aria-hidden="true"><b>${esc(titulo)}</b><span>${esc(sub)}</span></span>
-    </a></li>`;
-  };
-  return `
-  <article class="nicho" data-nicho="${n.id}" aria-labelledby="nicho-${n.id}">
-    <div class="nicho-topo">
-      <span class="app ${n.cor}" aria-hidden="true">${n.emoji}</span>
-      <h3 id="nicho-${n.id}">${esc(n.nome)}<small>${lista.length} ${lista.length === 1 ? "vídeo" : "vídeos"}</small></h3>
-    </div>
-    <p class="nicho-frase">${esc(n.frase)}</p>
-    ${categorias.map(c => {
-      const daCategoria = lista.filter(v => (v.categoria || "") === c);
-      const titulo = c ? `<h4 class="formato-titulo">${esc(c)} <span>${daCategoria.length}</span></h4>` : "";
-      return `${titulo}<ul class="videos"${c ? "" : ' style="margin-top:18px"'}>${daCategoria.map(cartao).join("")}</ul>`;
-    }).join("")}
-  </article>`;
-}).join("");
-ativarReservas(caixaNichos);
-
 const aviso = document.getElementById("feed-aviso");
+const galeria = document.getElementById("galeria");
+const nichosComVideo = nichos.filter(n => videos.some(v => v.nicho === n.id));
+const iconePlay = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>';
+const seta = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l8 10h-5v6H9v-6H4z"/></svg>';
+const grafico = '<svg class="grafico" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d74f73" stop-opacity=".25"/><stop offset="1" stop-color="#d74f73" stop-opacity="0"/></linearGradient></defs><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4 L200 44 L0 44Z" fill="url(#gv)"/><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4" fill="none" stroke="#d74f73" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
+const emojisConversa = ["💬", "✨", "💖", "🎬", "📩"];
+let filtroAtual = "todos";
+let jaDesenhou = false;
+const contadoresAnimados = new Set();
+
+function desenharTudo() {
+  /* Capa: notificações com os números */
+  document.getElementById("numeros-capa").innerHTML = metricas.filter(m => m.capa).map(m => `
+    <li class="notif vidro">
+      <span class="app ${m.cor}" aria-hidden="true">${m.emoji}</span>
+      <div style="flex:1">
+        <span class="n-topo" aria-hidden="true">${esc(campo(m, "titulo"))}<span>${esc(campo(m, "quando"))}</span></span>
+        <strong>${formatarNumero(m, m.valor)}</strong><span class="n-rot">${esc(campo(m, "rotulo"))}</span>
+      </div>
+    </li>`).join("");
+
+  /* Destaques */
+  gradeDestaques.innerHTML = destaques.map(d => `
+    <a class="card-video revelar" href="${esc(d.link)}" target="_blank" rel="noopener" aria-label="${tr("Assistir", "Watch")}: ${esc(campo(d, "titulo"))}">
+      <div class="moldura"><div class="capa-video">
+        ${capaVideo(d.capa, d.link, tr("Capa do vídeo ", "Video cover ") + campo(d, "titulo"))}
+        <span class="mini-ilha" aria-hidden="true"></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </div></div>
+      <div class="info">
+        <p class="numero">${esc(d.numero)}</p>
+        <p class="rotulo">${esc(campo(d, "rotulo"))}</p>
+        <h3>${esc(campo(d, "titulo"))}</h3>
+        <p class="contexto">${esc(campo(d, "contexto"))}</p>
+      </div>
+    </a>`).join("");
+  ativarReservas(gradeDestaques);
+
+  /* Trabalhos: abas e seções por nicho, separadas por categoria */
+  abas.innerHTML = [{ id: "todos", nome: "Todos", nome_en: "All" }, ...nichosComVideo].map(n => {
+    const total = n.id === "todos" ? videos.length : videos.filter(v => v.nicho === n.id).length;
+    return `<button class="seg" type="button" data-filtro="${n.id}" data-nome="${esc(campo(n, "nome"))}" aria-pressed="${n.id === filtroAtual}">${esc(campo(n, "nome"))}<small>${total}</small></button>`;
+  }).join("");
+  caixaNichos.innerHTML = nichosComVideo.map(n => {
+    const lista = videos.filter(v => v.nicho === n.id);
+    const categorias = [...new Set(lista.map(v => v.categoria || ""))];
+    const cartao = v => {
+      const titulo = v.marca || termo(v.produto);
+      const sub = v.marca ? termo(v.produto) : (termo(v.categoria) || campo(n, "nome"));
+      return `<li><a class="thumb" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="${tr("Assistir", "Watch")}: ${esc(titulo)}, ${esc(sub)}">
+        ${capaVideo("", v.link, "")}
+        <span class="mini-play" aria-hidden="true">${iconePlay}</span>
+        <span class="t-info" aria-hidden="true"><b>${esc(titulo)}</b><span>${esc(sub)}</span></span>
+      </a></li>`;
+    };
+    const plural = lista.length === 1 ? tr("vídeo", "video") : tr("vídeos", "videos");
+    return `
+    <article class="nicho" data-nicho="${n.id}" aria-labelledby="nicho-${n.id}"${filtroAtual === "todos" || filtroAtual === n.id ? "" : " hidden"}>
+      <div class="nicho-topo">
+        <span class="app ${n.cor}" aria-hidden="true">${n.emoji}</span>
+        <h3 id="nicho-${n.id}">${esc(campo(n, "nome"))}<small>${lista.length} ${plural}</small></h3>
+      </div>
+      <p class="nicho-frase">${esc(campo(n, "frase"))}</p>
+      ${categorias.map(c => {
+        const daCategoria = lista.filter(v => (v.categoria || "") === c);
+        const titulo = c ? `<h4 class="formato-titulo">${esc(termo(c))} <span>${daCategoria.length}</span></h4>` : "";
+        return `${titulo}<ul class="videos"${c ? "" : ' style="margin-top:18px"'}>${daCategoria.map(cartao).join("")}</ul>`;
+      }).join("")}
+    </article>`;
+  }).join("");
+  ativarReservas(caixaNichos);
+
+  /* Fotos UGC */
+  galeria.innerHTML = fotosUgc.map((f, i) => `
+    <button class="foto-ugc" type="button" data-i="${i}" aria-label="${tr("Ampliar foto", "Enlarge photo")}: ${esc(termo(f.marca))}, ${esc(termo(f.tipo))}">
+      <img src="fotos/${esc(f.arquivo)}" alt="${esc(campo(f, "alt"))}" width="800" height="1000" loading="lazy" decoding="async">
+      <span class="rotulo-foto" aria-hidden="true"><b>${esc(termo(f.marca))}</b><span>${esc(termo(f.tipo))}</span></span>
+    </button>`).join("");
+
+  /* Serviços (duas listas de três) */
+  const linhaServico = (s, i) => `
+    <li class="ajuste">
+      <span class="app ${s.cor}" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+      <div><h3><span class="sr-only">${i + 1}. </span>${esc(campo(s, "titulo"))}</h3><p>${esc(campo(s, "descricao"))}</p></div>
+    </li>`;
+  const metade = Math.ceil(servicos.length / 2);
+  document.getElementById("servicos-grade").innerHTML = [servicos.slice(0, metade), servicos.slice(metade)]
+    .map((grupo, g) => `<ul class="grupo cartao revelar">${grupo.map((s, i) => linhaServico(s, i + g * metade)).join("")}</ul>`).join("");
+
+  /* Métricas */
+  document.getElementById("metricas").innerHTML = metricas.map((m, i) => `
+    <div class="metrica cartao revelar">
+      <span class="topo-w" aria-hidden="true"><span class="app ${m.cor}">${m.emoji}</span>${esc(campo(m, "titulo"))}</span>
+      <strong class="contador" data-i="${i}" aria-label="${esc(formatarNumero(m, m.valor))}">${formatarNumero(m, m.valor)}</strong>
+      <span>${esc(campo(m, "rotulo"))}</span>
+    </div>`).join("");
+
+  /* Resultados */
+  document.getElementById("resultados").innerHTML = resultados.map(r => `
+    <article class="resultado cartao revelar">
+      <p class="cli">${esc(campo(r, "cliente"))}</p>
+      <strong>${seta}${esc(r.numero)}</strong>
+      <p class="rot">${esc(campo(r, "rotulo"))}</p>
+      <p>${esc(campo(r, "descricao"))}</p>
+      ${grafico}
+    </article>`).join("");
+
+  /* Depoimentos */
+  document.getElementById("depoimentos").innerHTML = depoimentos.map((d, i) => `
+    <figure class="conversa revelar">
+      <figcaption class="conversa-topo">
+        <span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${emojisConversa[i % emojisConversa.length]}</span>
+        <span><b>${esc(termo(d.marca))}</b><small>WhatsApp</small></span>
+        <span class="selo-ok">${esc(termo(d.selo))}</span>
+      </figcaption>
+      <blockquote class="conversa-corpo">
+        ${d.mensagens.map(m => `<p class="balao">${esc(campo(m, "texto"))}<time>${esc(m.hora)}</time></p>`).join("")}
+        ${d.reacao ? `<span class="reacao" role="img" aria-label="${tr("reação", "reaction")} ${esc(d.reacao)}">${d.reacao}</span>` : ""}
+      </blockquote>
+    </figure>`).join("");
+
+  /* Na troca de idioma, o que já foi gerado aparece direto, sem animar de novo */
+  if (jaDesenhou) document.querySelectorAll(".revelar").forEach(el => el.classList.add("visivel"));
+  jaDesenhou = true;
+}
+
+/* ---------- Textos fixos: troca entre português (HTML) e inglês (traducoes) ---------- */
+const textoOriginal = new Map();
+const atributoOriginal = new Map();
+function aplicarTextosFixos() {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    if (!textoOriginal.has(el)) textoOriginal.set(el, el.innerHTML);
+    const en = traducoes[el.dataset.i18n];
+    el.innerHTML = ehEn() && en != null ? en : textoOriginal.get(el);
+  });
+  document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    el.dataset.i18nAttr.split("|").forEach(par => {
+      const [nome, chave] = par.split(":");
+      const id = nome + "|" + chave;
+      if (!atributoOriginal.has(el)) atributoOriginal.set(el, {});
+      const guardados = atributoOriginal.get(el);
+      if (!(id in guardados)) guardados[id] = el.getAttribute(nome);
+      const en = traducoes[chave];
+      el.setAttribute(nome, ehEn() && en != null ? en : guardados[id]);
+    });
+  });
+}
+
+function aplicarIdioma(novo, salvar) {
+  idioma = novo;
+  document.documentElement.lang = ehEn() ? "en" : "pt-BR";
+  document.title = tr("Duane Cardoso | Portfólio UGC Creator", "Duane Cardoso | UGC Creator Portfolio");
+  document.querySelectorAll(".idioma button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === idioma)));
+  aplicarTextosFixos();
+  desenharTudo();
+  atualizarRelogio();
+  atualizarAriaMenu();
+  /* contadores: os que já animaram mostram o valor final no novo idioma */
+  document.querySelectorAll(".contador").forEach(c => {
+    if (contadoresAnimados.has(c.dataset.i) || reduzirMovimento) c.textContent = formatarNumero(metricas[c.dataset.i], metricas[c.dataset.i].valor);
+    else c.textContent = formatarNumero(metricas[c.dataset.i], 0);
+  });
+  if (salvar) { try { localStorage.setItem("idioma", idioma); } catch (e) {} }
+}
+
+document.querySelector(".idioma").addEventListener("click", e => {
+  const b = e.target.closest("button[data-lang]");
+  if (b && b.dataset.lang !== idioma) aplicarIdioma(b.dataset.lang, true);
+});
+
+/* ---------- Filtro dos trabalhos ---------- */
 abas.addEventListener("click", e => {
   const botao = e.target.closest(".seg");
   if (!botao) return;
-  const filtro = botao.dataset.filtro;
+  filtroAtual = botao.dataset.filtro;
   abas.querySelectorAll(".seg").forEach(b => b.setAttribute("aria-pressed", String(b === botao)));
-  caixaNichos.querySelectorAll(".nicho").forEach(s => { s.hidden = !(filtro === "todos" || s.dataset.nicho === filtro); });
-  const total = filtro === "todos" ? videos.length : videos.filter(v => v.nicho === filtro).length;
-  aviso.textContent = `Mostrando ${total} vídeos${filtro === "todos" ? "" : " de " + botao.dataset.nome}.`;
+  caixaNichos.querySelectorAll(".nicho").forEach(s => { s.hidden = !(filtroAtual === "todos" || s.dataset.nicho === filtroAtual); });
+  const total = filtroAtual === "todos" ? videos.length : videos.filter(v => v.nicho === filtroAtual).length;
+  aviso.textContent = filtroAtual === "todos"
+    ? tr(`Mostrando ${total} vídeos.`, `Showing ${total} videos.`)
+    : tr(`Mostrando ${total} vídeos de ${botao.dataset.nome}.`, `Showing ${total} ${botao.dataset.nome} videos.`);
 });
 
-/* ---------- Serviços (duas listas de três) ---------- */
-const linhaServico = (s, i) => `
-  <li class="ajuste">
-    <span class="app ${s.cor}" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
-    <div><h3><span class="sr-only">${i + 1}. </span>${esc(s.titulo)}</h3><p>${esc(s.descricao)}</p></div>
-  </li>`;
-const metade = Math.ceil(servicos.length / 2);
-document.getElementById("servicos-grade").innerHTML = [servicos.slice(0, metade), servicos.slice(metade)]
-  .map((grupo, g) => `<ul class="grupo cartao revelar">${grupo.map((s, i) => linhaServico(s, i + g * metade)).join("")}</ul>`).join("");
+/* ---------- Menu sanduíche ---------- */
+const menuBotao = document.querySelector(".menu-botao");
+const menu = document.getElementById("menu");
+function atualizarAriaMenu() {
+  const aberto = menu.classList.contains("aberto");
+  menuBotao.setAttribute("aria-label", aberto ? tr("Fechar menu", "Close menu") : tr("Abrir menu", "Open menu"));
+}
+function fecharMenu() {
+  menu.classList.remove("aberto");
+  menuBotao.setAttribute("aria-expanded", "false");
+  atualizarAriaMenu();
+}
+menuBotao.addEventListener("click", () => {
+  const abrir = !menu.classList.contains("aberto");
+  menu.classList.toggle("aberto", abrir);
+  menuBotao.setAttribute("aria-expanded", String(abrir));
+  atualizarAriaMenu();
+});
+menu.addEventListener("click", e => { if (e.target.closest("a")) fecharMenu(); });
 
-/* ---------- Métricas, resultados e depoimentos ---------- */
-document.getElementById("metricas").innerHTML = metricas.map((m, i) => `
-  <div class="metrica cartao revelar">
-    <span class="topo-w" aria-hidden="true"><span class="app ${m.cor}">${m.emoji}</span>${esc(m.titulo)}</span>
-    <strong class="contador" data-i="${i}" aria-label="${esc(formatarNumero(m, m.valor))}">${formatarNumero(m, m.valor)}</strong>
-    <span>${esc(m.rotulo)}</span>
-  </div>`).join("");
-
-const seta = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l8 10h-5v6H9v-6H4z"/></svg>';
-const grafico = '<svg class="grafico" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d74f73" stop-opacity=".25"/><stop offset="1" stop-color="#d74f73" stop-opacity="0"/></linearGradient></defs><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4 L200 44 L0 44Z" fill="url(#gv)"/><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4" fill="none" stroke="#d74f73" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
-document.getElementById("resultados").innerHTML = resultados.map(r => `
-  <article class="resultado cartao revelar">
-    <p class="cli">${esc(r.cliente)}</p>
-    <strong>${seta}${esc(r.numero)}</strong>
-    <p class="rot">${esc(r.rotulo)}</p>
-    <p>${esc(r.descricao)}</p>
-    ${grafico}
-  </article>`).join("");
-
-const emojisConversa = ["💬", "✨", "💖", "🎬", "📩"];
-document.getElementById("depoimentos").innerHTML = depoimentos.map((d, i) => `
-  <figure class="conversa revelar">
-    <figcaption class="conversa-topo">
-      <span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${emojisConversa[i % emojisConversa.length]}</span>
-      <span><b>${esc(d.marca)}</b><small>WhatsApp</small></span>
-      <span class="selo-ok">${esc(d.selo)}</span>
-    </figcaption>
-    <blockquote class="conversa-corpo">
-      ${d.mensagens.map(m => `<p class="balao">${esc(m.texto)}<time>${esc(m.hora)}</time></p>`).join("")}
-      ${d.reacao ? `<span class="reacao" role="img" aria-label="reação ${esc(d.reacao)}">${d.reacao}</span>` : ""}
-    </blockquote>
-  </figure>`).join("");
+/* ---------- Primeira montagem da página ---------- */
+aplicarIdioma(idioma, false);
 
 /* ---------- Contador animado ---------- */
 function animarContador(el) {
   const m = metricas[el.dataset.i];
+  contadoresAnimados.add(el.dataset.i);
   if (reduzirMovimento) { el.textContent = formatarNumero(m, m.valor); return; }
   const duracao = 1600, inicio = performance.now();
   function passo(agora) {
+    if (!el.isConnected) return;
     const p = Math.min((agora - inicio) / duracao, 1);
     const suave = 1 - Math.pow(1 - p, 3);
     let atual = m.valor * suave;
@@ -1132,8 +1400,6 @@ function animarContador(el) {
 }
 
 /* ---------- Entrada suave ao rolar ---------- */
-const elementosRevelar = document.querySelectorAll(".revelar");
-const contadores = document.querySelectorAll(".contador");
 if ("IntersectionObserver" in window && !reduzirMovimento) {
   const obs = new IntersectionObserver((entradas) => {
     entradas.forEach(en => {
@@ -1142,36 +1408,21 @@ if ("IntersectionObserver" in window && !reduzirMovimento) {
       obs.unobserve(en.target);
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-  elementosRevelar.forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + "ms"; obs.observe(el); });
+  document.querySelectorAll(".revelar").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + "ms"; obs.observe(el); });
 
-  contadores.forEach(c => c.textContent = formatarNumero(metricas[c.dataset.i], 0));
+  /* o contador anima quando a seção de números aparece */
   const obsNum = new IntersectionObserver((entradas) => {
     entradas.forEach(en => {
       if (!en.isIntersecting) return;
-      animarContador(en.target);
-      obsNum.unobserve(en.target);
+      document.querySelectorAll(".contador").forEach(c => { if (!contadoresAnimados.has(c.dataset.i)) animarContador(c); });
+      obsNum.disconnect();
     });
-  }, { threshold: 0.5 });
-  contadores.forEach(c => obsNum.observe(c));
+  }, { threshold: 0.3 });
+  obsNum.observe(document.getElementById("metricas"));
 } else {
-  elementosRevelar.forEach(el => el.classList.add("visivel"));
+  document.querySelectorAll(".revelar").forEach(el => el.classList.add("visivel"));
+  document.querySelectorAll(".contador").forEach(c => { contadoresAnimados.add(c.dataset.i); c.textContent = formatarNumero(metricas[c.dataset.i], metricas[c.dataset.i].valor); });
 }
-
-/* ---------- Menu sanduíche ---------- */
-const menuBotao = document.querySelector(".menu-botao");
-const menu = document.getElementById("menu");
-function fecharMenu() {
-  menu.classList.remove("aberto");
-  menuBotao.setAttribute("aria-expanded", "false");
-  menuBotao.setAttribute("aria-label", "Abrir menu");
-}
-menuBotao.addEventListener("click", () => {
-  const abrir = !menu.classList.contains("aberto");
-  menu.classList.toggle("aberto", abrir);
-  menuBotao.setAttribute("aria-expanded", String(abrir));
-  menuBotao.setAttribute("aria-label", abrir ? "Fechar menu" : "Abrir menu");
-});
-menu.addEventListener("click", e => { if (e.target.closest("a")) fecharMenu(); });
 
 /* ---------- Envio dos formulários (sem recarregar) ---------- */
 function enviar(form) {
@@ -1188,7 +1439,7 @@ formContato.addEventListener("submit", e => {
   if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
   const nome = formContato.nome.value.trim().split(" ")[0];
   enviar(formContato).then(() => {
-    document.getElementById("confirmacao-titulo").textContent = `Mensagem enviada, ${nome}!`;
+    document.getElementById("confirmacao-titulo").textContent = tr(`Mensagem enviada, ${nome}!`, `Message sent, ${nome}!`);
     formContato.reset();
     formContato.hidden = true;
     confirmacao.classList.add("ativa");
@@ -1214,8 +1465,8 @@ function abrirModal(forcar) {
   focoAnterior = document.activeElement;
   fundo.classList.add("aberto");
   fundo.setAttribute("aria-hidden", "false");
-  const campo = document.getElementById("k-nome");
-  (campo || modal.querySelector("button")).focus();
+  const campoNome = document.getElementById("k-nome");
+  (campoNome || modal.querySelector("button")).focus();
 }
 function fecharModal() {
   if (!fundo.classList.contains("aberto")) return;
@@ -1224,7 +1475,7 @@ function fecharModal() {
   if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
 }
 if (!jaViu()) setTimeout(function tentar() {
-  if (playerFundo.classList.contains("aberto") || document.getElementById("foto-fundo").classList.contains("aberto")) return setTimeout(tentar, 4000);
+  if (playerFundo.classList.contains("aberto") || fotoFundo.classList.contains("aberto")) return setTimeout(tentar, 4000);
   abrirModal(false);
 }, 7000);
 
@@ -1250,9 +1501,9 @@ formKit.addEventListener("submit", e => {
   const nome = formKit.nome.value.trim().split(" ")[0];
   enviar(formKit).then(() => {
     document.getElementById("modal-conteudo").innerHTML = `
-      <h3 id="modal-titulo" tabindex="-1">Pedido feito, ${esc(nome)}!</h3>
-      <p class="sub">Meu mídia kit completo vai chegar no seu e-mail em breve.</p>
-      <button class="alerta-botao" type="button" id="kit-ok" style="border-radius:0 0 32px 32px">Voltar ao portfólio</button>`;
+      <h3 id="modal-titulo" tabindex="-1">${tr("Pedido feito", "Request sent")}, ${esc(nome)}!</h3>
+      <p class="sub">${tr("Meu mídia kit completo vai chegar no seu e-mail em breve.", "My full media kit will reach your inbox soon.")}</p>
+      <button class="alerta-botao" type="button" id="kit-ok" style="border-radius:0 0 32px 32px">${tr("Voltar ao portfólio", "Back to the portfolio")}</button>`;
     document.getElementById("kit-ok").addEventListener("click", fecharModal);
     document.getElementById("modal-titulo").focus();
   });
@@ -1270,8 +1521,9 @@ function tocar(i) {
   posPlayer = (i + listaPlayer.length) % listaPlayer.length;
   const card = listaPlayer[posPlayer];
   const id = idYoutube(card.href);
-  playerTela.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="${esc(card.getAttribute("aria-label") || "Vídeo")}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-  document.getElementById("player-titulo").textContent = (card.getAttribute("aria-label") || "Vídeo").replace(/^Assistir: /, "");
+  const nome = (card.getAttribute("aria-label") || "").replace(/^(Assistir|Watch): /, "") || tr("Vídeo", "Video");
+  playerTela.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=${ehEn() ? "en" : "pt-BR"}" title="${esc(nome)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  document.getElementById("player-titulo").textContent = nome;
   document.getElementById("player-youtube").href = "https://youtube.com/shorts/" + id;
 }
 function abrirPlayer(card) {
@@ -1287,7 +1539,7 @@ function fecharPlayer() {
   playerFundo.classList.remove("aberto");
   playerFundo.setAttribute("aria-hidden", "true");
   playerTela.innerHTML = ""; // para o vídeo
-  if (focoAntesPlayer) focoAntesPlayer.focus();
+  if (focoAntesPlayer && focoAntesPlayer.isConnected) focoAntesPlayer.focus();
 }
 document.addEventListener("click", e => {
   const card = e.target.closest("a.thumb, a.card-video");
@@ -1313,14 +1565,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-/* ---------- Galeria de fotos UGC + visualizador ---------- */
-const galeria = document.getElementById("galeria");
-galeria.innerHTML = fotosUgc.map((f, i) => `
-  <button class="foto-ugc" type="button" data-i="${i}" aria-label="Ampliar foto: ${esc(f.marca)}, ${esc(f.tipo)}">
-    <img src="fotos/${esc(f.arquivo)}" alt="${esc(f.alt)}" width="800" height="1000" loading="lazy" decoding="async">
-    <span class="rotulo-foto" aria-hidden="true"><b>${esc(f.marca)}</b><span>${esc(f.tipo)}</span></span>
-  </button>`).join("");
-
+/* ---------- Visualizador das fotos UGC ---------- */
 const fotoFundo = document.getElementById("foto-fundo");
 let posFoto = 0, focoAntesFoto = null;
 function mostrarFoto(i) {
@@ -1328,14 +1573,14 @@ function mostrarFoto(i) {
   const f = fotosUgc[posFoto];
   const img = document.getElementById("foto-img");
   img.src = "fotos/" + f.arquivo;
-  img.alt = f.alt;
-  document.getElementById("foto-titulo").textContent = `${f.marca} · ${f.tipo}`;
+  img.alt = campo(f, "alt");
+  document.getElementById("foto-titulo").textContent = `${termo(f.marca)} · ${termo(f.tipo)}`;
 }
 function fecharFoto() {
   if (!fotoFundo.classList.contains("aberto")) return;
   fotoFundo.classList.remove("aberto");
   fotoFundo.setAttribute("aria-hidden", "true");
-  if (focoAntesFoto) focoAntesFoto.focus();
+  if (focoAntesFoto && focoAntesFoto.isConnected) focoAntesFoto.focus();
 }
 galeria.addEventListener("click", e => {
   const b = e.target.closest(".foto-ugc");
@@ -1365,6 +1610,7 @@ document.addEventListener("keydown", e => {
 
 /* ---------- Ano automático no rodapé ---------- */
 document.getElementById("ano").textContent = new Date().getFullYear();
+
 </script>
 </body>
 </html>
