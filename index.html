@@ -171,15 +171,14 @@ section{padding:96px 0}
 .notif .n-rot{display:block;font-size:.8rem;color:var(--texto-2);line-height:1.25}
 
 /* Faixa fina com as marcas */
-.faixa{margin-top:72px;overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--branco);padding:12px 0}
-.faixa-trilho{display:flex;width:max-content;animation:rolar 70s linear infinite}
+.faixa{margin-top:72px;overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.faixa-trilho{display:flex;width:max-content;animation:rolar 45s linear infinite}
 .faixa:hover .faixa-trilho{animation-play-state:paused}
 .faixa-trilho ul{display:flex;align-items:center}
-.faixa-trilho li{display:flex;align-items:center;gap:10px;padding:0 20px;font-weight:700;font-size:.92rem;white-space:nowrap;color:var(--marrom)}
-.faixa-trilho .app{width:30px;height:30px;border-radius:9px;font-size:.64rem;box-shadow:none}
-.faixa-trilho .logo-marca{background:#fff;border:1px solid var(--linha);overflow:hidden;padding:3px}
-.faixa-trilho .logo-marca img{width:100%;height:100%;object-fit:contain}
-.faixa-trilho .app.reserva{display:none}
+.faixa-trilho li{padding:0 14px;flex:none}
+.faixa-trilho img{width:76px;height:76px;border-radius:50%;box-shadow:0 6px 16px -6px rgba(107,69,55,.35);transition:transform .3s var(--mola)}
+.faixa-trilho img:hover{transform:scale(1.08)}
+@media (max-width:560px){.faixa-trilho li{padding:0 9px}.faixa-trilho img{width:60px;height:60px}}
 @keyframes rolar{to{transform:translateX(-50%)}}
 
 /* ===================== 2. SOBRE MIM ===================== */
@@ -861,7 +860,28 @@ section{padding:96px 0}
 /* WHATSAPP: número que recebe os pedidos do card de captura (com 55 + DDD, só números) */
 const whatsappNumero = "5561993823059";
 
-/* MARCAS: viram os ícones da faixa da capa.
+/* LOGOS DA ESTEIRA (faixa que passa em loop logo abaixo da capa)
+   arquivo = imagem redonda dentro de fotos/logos | nome = marca (lido por leitores de tela)
+   A ordem aqui é a ordem em que elas passam. Para adicionar, coloque o arquivo na pasta e uma linha nova. */
+const logosEsteira = [
+  { arquivo: "logo-heyvera.webp",      nome: "Hey Vera" },
+  { arquivo: "logo-niely.webp",        nome: "Niely" },
+  { arquivo: "logo-nomma.webp",        nome: "Nomma" },
+  { arquivo: "logo-teeva.webp",        nome: "Teeva" },
+  { arquivo: "logo-arvensis.webp",     nome: "Arvensis" },
+  { arquivo: "logo-aura-beauty.webp",  nome: "Aura Beauty" },
+  { arquivo: "logo-bravus.webp",       nome: "Academia Bravus" },
+  { arquivo: "logo-bauny.webp",        nome: "Bauny" },
+  { arquivo: "logo-orion.webp",        nome: "Orion Acessórios" },
+  { arquivo: "logo-lues.webp",         nome: "Lues" },
+  { arquivo: "logo-gota-h.webp",       nome: "Marca parceira" },
+  { arquivo: "logo-lady-beauty.webp",  nome: "Lady Beauty" },
+  { arquivo: "logo-folha.webp",        nome: "Marca parceira" },
+  { arquivo: "logo-m.webp",            nome: "Marca parceira" },
+  { arquivo: "logo-coracao.webp",      nome: "Marca parceira" }
+];
+
+/* MARCAS: lista completa de marcas atendidas (lida por leitores de tela).
    site = endereço do site da marca, sem "https://" (ex.: "dove.com"). O site busca a logo
    sozinho a partir dele. Deixe "" para mostrar só as iniciais.
    Para usar uma logo sua, coloque o arquivo na pasta fotos e escreva em logo, ex.: logo: "fotos/logo-teeva.png". */
@@ -1250,21 +1270,11 @@ function atualizarBlackFriday() {
 }
 
 /* ---------- Faixa de marcas (não muda com o idioma) ---------- */
-function iconeMarca(m, i) {
-  const fonte = m.logo || (m.site ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(m.site)}&sz=128` : "");
-  const letras = `<span class="app ${coresApp[i % coresApp.length]}">${esc(iniciais(m.nome))}</span>`;
-  if (!fonte) return letras;
-  return `<span class="app logo-marca"><img src="${esc(fonte)}" alt="" width="30" height="30" loading="lazy" decoding="async"></span>${letras.replace('class="app ', 'class="app reserva ')}`;
-}
-const listaFaixa = `<ul>${marcas.map((m, i) => `<li>${iconeMarca(m, i)}${esc(m.nome)}</li>`).join("")}</ul>`;
-const faixa = document.getElementById("faixa");
-faixa.innerHTML = listaFaixa + listaFaixa;
-/* Se a logo não carregar (ou vier só o ícone genérico), mostra as iniciais */
-faixa.querySelectorAll(".logo-marca img").forEach(img => {
-  const usarIniciais = () => { const caixa = img.parentElement; caixa.style.display = "none"; caixa.nextElementSibling.classList.remove("reserva"); };
-  img.addEventListener("error", usarIniciais);
-  img.addEventListener("load", () => { if (img.naturalWidth < 32 && !img.src.includes("fotos/")) usarIniciais(); });
-});
+/* Esteira de logos: repete a lista até encher a tela e duplica para o loop não ter emenda */
+let blocoLogos = logosEsteira;
+while (blocoLogos.length < 14) blocoLogos = blocoLogos.concat(logosEsteira);
+const listaFaixa = `<ul>${blocoLogos.map(l => `<li><img src="fotos/logos/${esc(l.arquivo)}" alt="" width="76" height="76" decoding="async"></li>`).join("")}</ul>`;
+document.getElementById("faixa").innerHTML = listaFaixa + listaFaixa;
 document.getElementById("marcas-lista").textContent = marcas.map(m => m.nome).join(", ") + ".";
 
 /* ---------- Partes geradas a partir dos dados (redesenhadas ao trocar o idioma) ---------- */
