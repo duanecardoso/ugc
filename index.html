@@ -710,9 +710,9 @@ section{padding:96px 0}
     </div>
     <div class="contato-grade">
       <div class="alerta revelar">
-        <!-- Este formulário mostra a confirmação na tela, mas ainda não envia para nenhum lugar.
-             Para receber as mensagens no seu e-mail, crie um formulário grátis no Formspree
-             e coloque o endereço dele no atributo action abaixo (o script já cuida do resto). -->
+        <!-- Ao enviar, este formulário abre o WhatsApp da Duane com nome, e-mail e mensagem já escritos
+             (número em "whatsappNumero" no script). Se quiser receber também por e-mail,
+             coloque o endereço do seu Formspree (ou similar) no atributo action abaixo. -->
         <form id="form-contato" action="" novalidate>
           <h3 data-i18n="form-h3">Vamos criar o vídeo da sua marca?</h3>
           <p class="sub" data-i18n="form-sub">Conta rapidinho o que você precisa.</p>
@@ -730,12 +730,13 @@ section{padding:96px 0}
               <textarea id="c-msg" name="mensagem" required placeholder="Produto, nicho e prazo da campanha" data-i18n-attr="placeholder:ph-msg"></textarea>
             </div>
           </div>
-          <button class="alerta-botao" type="submit" data-i18n="bt-enviar">Enviar mensagem</button>
+          <button class="alerta-botao" type="submit" data-i18n="bt-enviar">Enviar pelo WhatsApp</button>
         </form>
         <div class="confirmacao" id="confirmacao" role="status" aria-live="polite" tabindex="-1">
           <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
           <h3 id="confirmacao-titulo" data-i18n="conf-h3">Mensagem enviada!</h3>
-          <p class="sub" data-i18n="conf-p">Obrigada pelo contato. Vou te responder o quanto antes no e-mail que você deixou.</p>
+          <p class="sub" data-i18n="conf-p">Abri o WhatsApp com a sua mensagem pronta. É só tocar em enviar que ela chega direto para mim.</p>
+          <a class="botao-cheio" id="conf-whats" href="#" target="_blank" rel="noopener" data-i18n="bt-conf-whats">Abrir o WhatsApp</a>
           <button class="alerta-botao leve" type="button" id="nova-mensagem" data-i18n="bt-outra">Enviar outra mensagem</button>
         </div>
       </div>
@@ -1175,9 +1176,10 @@ const traducoes = {
   "lb-email": "Your email",
   "lb-msg": "Message",
   "ph-msg": "Product, niche and campaign deadline",
-  "bt-enviar": "Send message",
+  "bt-enviar": "Send via WhatsApp",
   "conf-h3": "Message sent!",
-  "conf-p": "Thanks for reaching out. I'll reply as soon as possible at the email you left.",
+  "conf-p": "I opened WhatsApp with your message ready. Just tap send and it comes straight to me.",
+  "bt-conf-whats": "Open WhatsApp",
   "bt-outra": "Send another message",
   "a-contato": "Duane Cardoso smiling and speaking into a microphone",
   "contato-foto": "Ready to film?",
@@ -1559,9 +1561,16 @@ const confirmacao = document.getElementById("confirmacao");
 formContato.addEventListener("submit", e => {
   e.preventDefault();
   if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
-  const nome = formContato.nome.value.trim().split(" ")[0];
+  const nomeCompleto = formContato.nome.value.trim();
+  const nome = nomeCompleto.split(" ")[0];
+  const texto = tr(
+    `Oi, Duane! Aqui é ${nomeCompleto} (${formContato.email.value.trim()}).\n\n${formContato.mensagem.value.trim()}`,
+    `Hi Duane! This is ${nomeCompleto} (${formContato.email.value.trim()}).\n\n${formContato.mensagem.value.trim()}`);
+  const link = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(texto)}`;
+  window.open(link, "_blank", "noopener"); // abre o WhatsApp com a mensagem pronta
+  document.getElementById("conf-whats").href = link;
   enviar(formContato).then(() => {
-    document.getElementById("confirmacao-titulo").textContent = tr(`Mensagem enviada, ${nome}!`, `Message sent, ${nome}!`);
+    document.getElementById("confirmacao-titulo").textContent = tr(`Quase lá, ${nome}!`, `Almost there, ${nome}!`);
     formContato.reset();
     formContato.hidden = true;
     confirmacao.classList.add("ativa");
