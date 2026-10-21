@@ -20,7 +20,7 @@
    branco #fffcf7 | manteiga #f8e7a2 | rosa claro #ce96a5 | rosa #d74f73 | marrom #6b4537
    ===================================================================== */
 :root{
-  --fundo:#fffcf7;
+  --fundo:#fafaf9;
   --branco:#ffffff;
   --manteiga:#f8e7a2;
   --manteiga-suave:#fdf5d6;
@@ -30,12 +30,15 @@
   --rosa-texto:#b23a5c;   /* rosa um pouco mais escuro, para texto pequeno ficar legível */
   --marrom:#6b4537;
   --marrom-escuro:#4e3127;
-  --texto:#2e1f1a;
-  --texto-2:#6f5a52;
-  --linha:rgba(107,69,55,.14);
-  --vidro:rgba(255,252,247,.72);
-  --sombra:0 1px 2px rgba(107,69,55,.05),0 10px 30px rgba(107,69,55,.09);
-  --sombra-forte:0 30px 60px -22px rgba(107,69,55,.35);
+  --escuro:#161616;
+  --cinza:#f3f3f2;
+  --cinza-2:#e9e9e7;
+  --texto:#161616;
+  --texto-2:#6b6b6b;
+  --linha:rgba(0,0,0,.08);
+  --vidro:rgba(255,255,255,.72);
+  --sombra:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.06);
+  --sombra-forte:0 30px 60px -22px rgba(0,0,0,.28);
   --r-grande:32px;
   --r:22px;
   --faixa-bf:40px;
@@ -467,6 +470,135 @@ section{padding:96px 0}
 .alerta .botao-cheio:hover{background:var(--marrom-escuro)}
 .alerta .botao-cheio:active{transform:scale(.97)}
 .alerta .botao-cheio + .alerta-botao{border-top:0;margin-top:4px}
+
+
+/* =====================================================================
+   TOM NEUTRO: fundo claro, textos em preto e cinza.
+   As cores da paleta ficam só nos ícones e nos detalhes.
+   ===================================================================== */
+.pular{background:var(--escuro)}
+.titulo-secao .rotulo-sec{color:var(--texto-2)}
+.titulo-secao h2 em{color:var(--texto);background:linear-gradient(transparent 64%,rgba(248,231,162,.95) 64%,rgba(248,231,162,.95) 92%,transparent 92%);padding:0 .06em}
+.botao-principal{background:var(--escuro);box-shadow:0 10px 24px -12px rgba(0,0,0,.55)}
+.botao-principal:hover{background:#000}
+.botao-claro:hover{background:#fff;border-color:rgba(0,0,0,.18)}
+.placeholder{background:linear-gradient(165deg,var(--cinza),var(--cinza-2))}
+.faixa-bf{background:var(--escuro)}
+.menu a:hover{background:var(--cinza)}
+.idioma{background:var(--cinza)}
+.idioma button[aria-pressed="true"]{background:var(--escuro)}
+.menu-botao{background:var(--cinza)}
+.menu-botao span,.menu-botao span::before,.menu-botao span::after{background:var(--texto)}
+.capa::before{background:radial-gradient(circle,rgba(0,0,0,.13) 1.1px,transparent 1.3px) 0 0/24px 24px}
+.data-hoje,.data-hoje span{color:var(--texto)}
+.etiqueta{background:#fff;color:var(--texto);border:1px solid var(--linha);display:inline-flex;align-items:center;gap:7px}
+.etiqueta::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rosa)}
+.etiqueta:nth-child(2),.etiqueta:nth-child(3),.etiqueta:nth-child(4){background:#fff;color:var(--texto)}
+.etiqueta:nth-child(2)::before{background:var(--manteiga);box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.etiqueta:nth-child(3)::before{background:var(--rosa-claro)}
+.etiqueta:nth-child(4)::before{background:var(--marrom)}
+.notas .saudacao,.notas p strong{color:var(--texto)}
+.notas-topo{background:#fff;color:var(--texto-2);border-bottom:1px solid var(--linha)}
+.notas-topo svg{color:var(--rosa)}
+.assinatura{color:var(--texto)}
+.moldura{background:linear-gradient(145deg,#2b2b2b,#141414);box-shadow:inset 0 0 0 2px #3a3a3a}
+.capa-video,.thumb,.foto-ugc{background:var(--cinza-2)}
+.thumb::after{background:linear-gradient(transparent 50%,rgba(0,0,0,.72))}
+.seg small{color:var(--texto-2)}
+.formato-titulo{color:var(--texto)}
+.formato-titulo span{background:var(--cinza)}
+.foto-ugc .rotulo-foto span{background:var(--escuro)}
+.polaroid figcaption{color:var(--texto)}
+.metrica:nth-child(odd){background:#fff}
+.metrica .topo-w{color:var(--texto-2)}
+.caso{background:#fff}
+.caso-rotulo{background:var(--escuro)}
+.caso-rotulo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--rosa)}
+.caso h4{color:var(--texto)}
+.caso-numeros li,.caso-numeros li:nth-child(2),.caso-numeros li:nth-child(3){background:var(--cinza);color:var(--texto)}
+.caso-numeros li span{color:var(--texto-2)}
+.resultado strong{color:var(--texto)}
+.conversa-corpo{background:var(--cinza)}
+.conversa-topo .selo-ok{background:var(--cinza);color:var(--texto-2)}
+.alerta{background:#fff}
+.alerta-botao{color:var(--texto)}
+.alerta-botao:hover{background:var(--cinza)}
+.alerta .botao-cheio{background:var(--escuro);box-shadow:0 10px 22px -10px rgba(0,0,0,.55)}
+.alerta .botao-cheio:hover{background:#000}
+.campo input:focus,.campo textarea:focus{border-color:var(--texto);box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+.canal .seta{color:#b5b5b5}
+.redes a:hover{background:var(--cinza)}
+.redes svg{color:var(--texto)}
+.fechar span{background:var(--cinza);color:var(--texto)}
+.player-barra button,.player-barra a{background:#fff;color:var(--texto)}
+.player-barra button:hover,.player-barra a:hover{background:var(--cinza)}
+.player-barra .player-fechar{background:var(--escuro);color:#fff}
+
+/* =====================================================================
+   INTERAÇÕES AO PASSAR O MOUSE
+   ===================================================================== */
+@media (hover:hover) and (pointer:fine){
+  /* links do menu com sublinhado que cresce */
+  .menu a{position:relative}
+  .menu a::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;border-radius:2px;background:var(--rosa);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--mola)}
+  .menu a:hover{background:transparent}
+  .menu a:hover::after{transform:scaleX(1)}
+
+  /* botões sobem um pouco */
+  .botao{transition:transform .35s var(--mola),background .2s,box-shadow .3s,border-color .2s}
+  .botao:hover{transform:translateY(-3px)}
+  .botao-principal:hover{box-shadow:0 16px 30px -12px rgba(0,0,0,.55)}
+
+  /* cartões sobem, ganham sombra e um brilho que segue o mouse */
+  .cartao,.metrica,.resultado,.conversa,.caso,.nicho,.canal,.notif,.alerta,.notas{transition:transform .45s var(--mola),box-shadow .35s,border-color .3s}
+  html.js .metrica:hover,html.js .resultado:hover,html.js .conversa:hover,html.js .grupo:hover,html.js .notif:hover{transform:translateY(-6px);box-shadow:var(--sombra-forte);border-color:rgba(0,0,0,.12)}
+  .caso:hover,.nicho:hover,.notas:hover,.alerta:hover{box-shadow:var(--sombra-forte);border-color:rgba(0,0,0,.12)}
+  html.js .canal:hover{transform:translateX(6px);box-shadow:var(--sombra-forte)}
+  .luz{background-image:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(248,231,162,.38),transparent 60%)}
+
+  /* ícones reagem dentro do cartão */
+  .app{transition:transform .45s var(--mola)}
+  .metrica:hover .app,.ajuste:hover .app,.canal:hover .app,.notif:hover .app,.conversa:hover .conversa-topo .app,.nicho-topo:hover .app{transform:scale(1.12) rotate(-6deg)}
+  .ajuste{transition:background .25s}
+  .ajuste:hover{background:var(--cinza)}
+  .canal:hover .seta{color:var(--rosa);transform:translateX(3px)}
+  .canal .seta{transition:transform .3s var(--mola),color .2s}
+  .lembretes li{transition:background .25s,padding-left .3s var(--mola)}
+  .lembretes li:hover{background:#fff;padding-left:22px}
+  .balao{transition:transform .3s var(--mola)}
+  .balao:hover{transform:translateX(4px)}
+  .metrica strong,.caso-numeros b{transition:letter-spacing .4s var(--mola)}
+  .metrica:hover strong{letter-spacing:-.03em}
+  .caso-numeros li{transition:transform .35s var(--mola),background .25s}
+  .caso-numeros li:hover{transform:translateY(-4px);background:#fff;box-shadow:var(--sombra)}
+
+  /* abas do filtro */
+  .seg{transition:background .25s,box-shadow .25s,color .25s,transform .3s var(--mola)}
+  .seg:hover{transform:translateY(-1px)}
+
+  /* vídeos e fotos com zoom suave na imagem */
+  .capa-video img,.thumb img,.foto-ugc img{transition:transform .7s var(--mola)}
+  .card-video:hover .capa-video img,.thumb:hover img,.foto-ugc:hover img{transform:scale(1.06)}
+  html.js .card-video:hover{transform:translateY(-8px)}
+
+  /* capa: os elementos acompanham o mouse */
+  .palco > *{transition:translate .5s cubic-bezier(.2,.8,.2,1)}
+  .janela{transition:translate .5s cubic-bezier(.2,.8,.2,1),transform .5s var(--mola)}
+  .palco:hover .janela{transform:rotate(-1.5deg)}
+  .post-it{transition:translate .5s cubic-bezier(.2,.8,.2,1),transform .45s var(--mola)}
+  .post-it:hover{transform:rotate(-2deg) scale(1.05)}
+  .selo{transition:translate .5s cubic-bezier(.2,.8,.2,1),transform .6s var(--mola)}
+  .selo:hover{transform:rotate(372deg) scale(1.08)}
+
+  /* logos da esteira */
+  .faixa-trilho img{transition:transform .4s var(--mola),filter .3s}
+  .faixa:hover .faixa-trilho img{filter:saturate(.6) opacity(.75)}
+  .faixa:hover .faixa-trilho img:hover{filter:none;transform:scale(1.15)}
+
+  /* rodapé e barra de atalhos */
+  .redes a{transition:background .2s,transform .35s var(--mola)}
+  .redes a:hover{transform:translateY(-3px)}
+}
 
 /* Quem prefere menos movimento: sem animações */
 @media (prefers-reduced-motion:reduce){
@@ -1747,6 +1879,39 @@ document.addEventListener("keydown", e => {
     else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
   }
 });
+
+/* ---------- Interações com o mouse (só em computador, e só se a pessoa não pediu menos movimento) ---------- */
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reduzirMovimento) {
+  /* brilho que acompanha o mouse dentro dos cartões */
+  const seletorLuz = ".cartao, .metrica, .resultado, .conversa, .caso, .nicho, .canal, .alerta";
+  let cartaoAtual = null;
+  document.addEventListener("pointermove", e => {
+    const alvo = e.target.closest(seletorLuz);
+    if (cartaoAtual && cartaoAtual !== alvo) cartaoAtual.classList.remove("luz");
+    cartaoAtual = alvo;
+    if (!alvo) return;
+    const caixa = alvo.getBoundingClientRect();
+    alvo.style.setProperty("--mx", (e.clientX - caixa.left) + "px");
+    alvo.style.setProperty("--my", (e.clientY - caixa.top) + "px");
+    alvo.classList.add("luz");
+  }, { passive: true });
+  document.addEventListener("pointerleave", () => { if (cartaoAtual) cartaoAtual.classList.remove("luz"); });
+
+  /* capa: foto, notificações e adesivos se movem em camadas conforme o mouse */
+  const capa = document.querySelector(".capa");
+  const camadas = [
+    [".janela", 10], [".notifs", 22], [".post-it", 30], [".selo", 26], [".flutua.f1", 36], [".flutua.f2", 18], [".flutua.f3", 40]
+  ].map(([sel, forca]) => [document.querySelector(sel), forca]).filter(([el]) => el);
+  let pedido = null;
+  capa.addEventListener("pointermove", e => {
+    const caixa = capa.getBoundingClientRect();
+    const x = (e.clientX - caixa.left) / caixa.width - .5;
+    const y = (e.clientY - caixa.top) / caixa.height - .5;
+    cancelAnimationFrame(pedido);
+    pedido = requestAnimationFrame(() => camadas.forEach(([el, forca]) => { el.style.translate = `${(x * forca).toFixed(1)}px ${(y * forca).toFixed(1)}px`; }));
+  });
+  capa.addEventListener("pointerleave", () => camadas.forEach(([el]) => { el.style.translate = "0 0"; }));
+}
 
 /* ---------- Ano automático no rodapé ---------- */
 document.getElementById("ano").textContent = new Date().getFullYear();
