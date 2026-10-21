@@ -2,303 +2,353 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Duane Cardoso | Portfólio UGC Creator</title>
 <meta name="description" content="Duane Cardoso, UGC Creator em Valparaíso de Goiás. Vídeos de review e demonstração para marcas de beleza, skincare, moda, fitness e tech.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f2f2f7">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
 <style>
-/* ===================== CORES E BASE ===================== */
+/* =====================================================================
+   ESTÉTICA iOS: fundo em degradê suave (papel de parede), vidro fosco,
+   cantos bem arredondados, widgets, listas de Ajustes e notificações.
+   ===================================================================== */
 :root{
-  --branco:#ffffff;
-  --cinza:#fafafa;
-  --cinza-2:#efefef;
-  --borda:#dbdbdb;
-  --texto:#000000;
-  --texto-2:#5f5f5f;
-  --azul:#0095f6;
-  --azul-escuro:#1877f2;
-  --link:#00376b;
-  --rosa:#ff3f6c;
-  --rosa-texto:#d6194b;
-  --stories:linear-gradient(45deg,#feda75 0%,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5 100%);
-  --raio:14px;
-  --sombra:0 10px 30px rgba(0,0,0,.08);
-  --topo:64px;
+  --fundo:#f2f2f7;
+  --cartao:rgba(255,255,255,.78);
+  --vidro:rgba(255,255,255,.55);
+  --vidro-borda:rgba(255,255,255,.75);
+  --linha:rgba(60,60,67,.14);
+  --texto:#1d1d1f;
+  --texto-2:#5d5d63;
+  --azul:#0071e3;
+  --azul-hover:#0062c4;
+  --rosa:#ff2d55;
+  --roxo:#af52de;
+  --laranja:#ff9500;
+  --verde:#34c759;
+  --verde-texto:#1f8a3a;
+  --amarelo:#ffcc00;
+  --anil:#5856d6;
+  --cinza-ctrl:rgba(118,118,128,.12);
+  --sombra:0 1px 1px rgba(0,0,0,.03),0 8px 30px rgba(0,0,0,.07);
+  --sombra-forte:0 30px 60px -20px rgba(0,0,0,.25);
+  --r-grande:32px;
+  --r:22px;
+  --topo:68px;
+  --mola:cubic-bezier(.2,.9,.25,1.15);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topo) + 12px);-webkit-text-size-adjust:100%}
-body{margin:0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--texto);background:var(--branco);line-height:1.55;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topo) + 16px);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,"Segoe UI",Roboto,sans-serif;color:var(--texto);background:var(--fundo);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+/* Papel de parede fixo (fica atrás de tudo) */
+body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(40% 35% at 12% 8%,rgba(255,45,85,.28),transparent 70%),
+    radial-gradient(45% 40% at 92% 12%,rgba(0,122,255,.26),transparent 70%),
+    radial-gradient(40% 40% at 70% 60%,rgba(175,82,222,.22),transparent 70%),
+    radial-gradient(45% 40% at 8% 85%,rgba(255,149,0,.22),transparent 70%),
+    var(--fundo)}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3,p{margin:0}
+h1,h2,h3,p,figure,blockquote{margin:0}
 ul{margin:0;padding:0;list-style:none}
-button,input,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:6px}
+button,input,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:10px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.pular{position:absolute;left:12px;top:-60px;z-index:200;background:var(--texto);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.pular{position:absolute;left:12px;top:-60px;z-index:400;background:var(--texto);color:#fff;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600}
 .pular:focus{top:12px}
-.container{width:100%;max-width:1080px;margin:0 auto;padding:0 16px}
-section{padding:88px 0}
-.fundo-cinza{background:var(--cinza);border-top:1px solid var(--cinza-2);border-bottom:1px solid var(--cinza-2)}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+section{padding:96px 0}
 
-/* Títulos de seção */
-.titulo-secao{margin-bottom:40px;max-width:640px}
-.titulo-secao .chapeu{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rosa-texto);margin-bottom:10px}
-.titulo-secao .chapeu::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--stories);box-shadow:inset 0 0 0 3px #fff, 0 0 0 1px var(--borda)}
-.titulo-secao h2{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.titulo-secao p{margin-top:12px;color:var(--texto-2);font-size:1.05rem}
+/* Vidro fosco e cartões */
+.vidro{background:var(--vidro);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--vidro-borda);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),var(--sombra)}
+.cartao{background:var(--cartao);border:1px solid rgba(255,255,255,.8);border-radius:var(--r);box-shadow:var(--sombra)}
+
+/* Título grande no estilo dos apps do iOS */
+.titulo-secao{margin-bottom:36px;max-width:680px}
+.titulo-secao .rotulo-sec{display:block;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--texto-2);margin-bottom:6px}
+.titulo-secao h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.035em;line-height:1.05}
+.titulo-secao p{margin-top:12px;color:var(--texto-2);font-size:1.1rem}
 
 /* Botões */
-.botao{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 22px;border-radius:10px;border:0;font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
-.botao:active{transform:scale(.97)}
+.botao{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 24px;border-radius:999px;border:0;font-weight:600;font-size:1.02rem;text-decoration:none;cursor:pointer;transition:transform .3s var(--mola),background .2s}
+.botao:active{transform:scale(.95)}
 .botao-azul{background:var(--azul);color:#fff}
-.botao-azul:hover{background:var(--azul-escuro)}
-.botao-cinza{background:var(--cinza-2);color:var(--texto)}
-.botao-cinza:hover{background:var(--borda)}
-.botao-degrade{background:var(--stories);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-.botao-preto{background:var(--texto);color:#fff}
-.botao-preto:hover{background:#262626}
+.botao-azul:hover{background:var(--azul-hover)}
+.botao-vidro{background:rgba(255,255,255,.65);color:var(--texto);border:1px solid rgba(255,255,255,.9);box-shadow:var(--sombra);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.botao-vidro:hover{background:#fff}
 .botao svg{width:20px;height:20px;flex:none}
 
-/* Blocos de foto e vídeo provisórios (degradê + legenda com o formato) */
-.placeholder{position:relative;width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;padding:14px;overflow:hidden}
-.placeholder .legenda{background:rgba(255,255,255,.92);color:#000;font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;text-align:center;line-height:1.3}
-.g-beleza{background:linear-gradient(160deg,#ffd1dc,#ff3f6c 60%,#962fbf)}
-.g-skincare{background:linear-gradient(160deg,#fff1e0,#ffb38a 55%,#fa7e1e)}
-.g-moda{background:linear-gradient(160deg,#e9dcff,#962fbf 60%,#4f5bd5)}
-.g-fitness{background:linear-gradient(160deg,#fff4c2,#feda75 40%,#fa7e1e)}
-.g-tech{background:linear-gradient(160deg,#d6ecff,#0095f6 60%,#4f5bd5)}
-.g-stories{background:var(--stories)}
+/* Ícone no formato de app (quadrado arredondado) */
+.app{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:12px;color:#fff;font-weight:700;font-size:.9rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 6px rgba(0,0,0,.12)}
+.app svg{width:58%;height:58%}
 
-/* ===================== MENU FIXO ===================== */
-.topo{position:fixed;inset:0 0 auto 0;height:var(--topo);background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--borda);z-index:100}
-.topo .container{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.logo .bolinha{width:30px;height:30px;border-radius:50%;background:var(--stories);padding:2px;display:grid;place-items:center}
-.logo .bolinha span{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:.7rem;font-weight:800}
-.menu ul{display:flex;gap:4px}
-.menu a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;color:var(--texto)}
-.menu a:hover{background:var(--cinza-2)}
-.menu-botao{display:none;width:44px;height:44px;border:0;background:transparent;border-radius:10px;cursor:pointer;align-items:center;justify-content:center}
-.menu-botao span,.menu-botao span::before,.menu-botao span::after{display:block;width:22px;height:2px;background:var(--texto);border-radius:2px;position:relative;transition:transform .25s,background .25s}
+/* Blocos provisórios de foto e vídeo (degradê + legenda com o formato) */
+.placeholder{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden}
+.placeholder .legenda{background:rgba(255,255,255,.9);color:#000;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:999px;text-align:center;line-height:1.3}
+.g-beleza{background:linear-gradient(160deg,#ffd6e0,#ff6b8b 55%,#af52de)}
+.g-skincare{background:linear-gradient(160deg,#fff3e3,#ffb27a 55%,#ff9500)}
+.g-moda{background:linear-gradient(160deg,#ece3ff,#af52de 55%,#5856d6)}
+.g-fitness{background:linear-gradient(160deg,#e9ffe9,#7ee08f 50%,#34c759)}
+.g-tech{background:linear-gradient(160deg,#dcecff,#5aa7ff 50%,#0071e3)}
+.g-tela{background:linear-gradient(170deg,#ff9ab0 0%,#c77dff 45%,#5b8cff 100%)}
+
+/* ===================== MENU FIXO (barra de status) ===================== */
+.topo{position:fixed;top:10px;left:0;right:0;z-index:100;padding:0 12px}
+.barra{max-width:1120px;margin:0 auto;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;text-decoration:none;white-space:nowrap;letter-spacing:-.02em}
+.logo .app{width:32px;height:32px;border-radius:9px;font-size:.72rem;background:linear-gradient(135deg,var(--rosa),var(--roxo))}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.93rem}
+.menu a:hover{background:rgba(255,255,255,.75)}
+.status{display:flex;align-items:center;gap:6px;font-weight:600;font-size:.88rem;padding-right:10px}
+.status svg{height:12px;width:auto}
+.menu-botao{display:none;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.6);cursor:pointer;align-items:center;justify-content:center}
+.menu-botao span,.menu-botao span::before,.menu-botao span::after{display:block;width:18px;height:2px;background:var(--texto);border-radius:2px;position:relative;transition:transform .3s var(--mola),background .2s}
 .menu-botao span::before,.menu-botao span::after{content:"";position:absolute;left:0}
-.menu-botao span::before{top:-7px}
-.menu-botao span::after{top:7px}
+.menu-botao span::before{top:-6px}
+.menu-botao span::after{top:6px}
 .menu-botao[aria-expanded="true"] span{background:transparent}
-.menu-botao[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
-.menu-botao[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
+.menu-botao[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-botao[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
 
-/* ===================== 1. CAPA (cabeçalho do perfil) ===================== */
-.capa{padding:calc(var(--topo) + 48px) 0 0}
-.perfil{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
-.avatar-area{position:relative;justify-self:center}
-.anel{width:clamp(150px,22vw,220px);aspect-ratio:1;border-radius:50%;padding:5px;background:var(--stories);animation:girar 8s linear infinite}
-.anel-dentro{width:100%;height:100%;border-radius:50%;padding:5px;background:#fff;animation:girar 8s linear infinite reverse}
-.avatar{width:100%;height:100%;border-radius:50%;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.avatar .placeholder{align-items:center}
-.ao-vivo{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);background:linear-gradient(90deg,#d6194b,#962fbf);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;padding:4px 10px;border-radius:6px;border:3px solid #fff;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.ao-vivo::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;animation:piscar 1.4s ease-in-out infinite}
-@keyframes girar{to{transform:rotate(360deg)}}
-@keyframes piscar{50%{opacity:.25}}
-.usuario{display:flex;align-items:center;gap:8px;font-size:1.05rem;font-weight:600;color:var(--texto-2)}
-.perfil h1{font-size:clamp(2.6rem,8vw,5.4rem);font-weight:800;letter-spacing:-.045em;line-height:.98;margin:6px 0 14px}
-.categoria{font-size:.9rem;color:var(--texto-2);font-weight:600}
-.bio{font-size:clamp(1.05rem,2vw,1.2rem);max-width:540px;margin-top:6px}
-.bio strong{font-weight:700}
-.acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.numeros-capa{display:flex;gap:clamp(20px,5vw,44px);margin-top:26px;padding-top:20px;border-top:1px solid var(--cinza-2)}
-.numeros-capa li{font-size:.92rem;color:var(--texto-2);line-height:1.25}
-.numeros-capa strong{display:block;font-size:clamp(1.3rem,3vw,1.7rem);color:var(--texto);font-weight:800;letter-spacing:-.02em}
+/* ===================== 1. CAPA (tela de bloqueio) ===================== */
+.capa{padding:calc(var(--topo) + 56px) 0 0}
+.capa-grade{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:center}
+.ilha{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;border-radius:999px;padding:8px 16px 8px 10px;font-size:.85rem;font-weight:600}
+.ilha i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8ef0a2,var(--verde));box-shadow:0 0 0 4px rgba(52,199,89,.25);animation:pulsar 2s ease-in-out infinite}
+@keyframes pulsar{50%{box-shadow:0 0 0 7px rgba(52,199,89,.08)}}
+.data-hoje{margin-top:22px;font-size:1.05rem;font-weight:600;color:var(--texto-2)}
+.capa h1{font-size:clamp(3rem,10vw,6.8rem);font-weight:700;letter-spacing:-.055em;line-height:.92;margin:6px 0 18px;background:linear-gradient(180deg,#1d1d1f 30%,#4a4a52);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bio{font-size:clamp(1.1rem,2.2vw,1.3rem);color:var(--texto-2);max-width:560px}
+.bio strong{color:var(--texto);font-weight:600}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 
-/* Bolinhas de stories em destaque (marcas) */
-.stories{margin-top:56px;display:flex;gap:18px;overflow-x:auto;padding:6px 4px 16px;scroll-snap-type:x proximity;scrollbar-width:thin}
-.story{flex:none;width:84px;text-align:center;scroll-snap-align:start}
-.story .bola{width:76px;height:76px;margin:0 auto;border-radius:50%;padding:3px;background:var(--stories)}
-.story .bola span{width:100%;height:100%;border-radius:50%;background:#fff;border:3px solid #fff;display:grid;place-items:center;font-weight:800;font-size:1.05rem;box-shadow:inset 0 0 0 1px var(--cinza-2);background-clip:padding-box;background-color:var(--cinza)}
-.story p{font-size:.75rem;font-weight:600;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Widgets com os números da capa */
+.widgets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:32px;max-width:560px}
+.widget{border-radius:var(--r);padding:16px}
+.widget .topo-w{display:flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.widget .topo-w svg{width:14px;height:14px}
+.widget strong{display:block;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-top:10px}
+.widget > span{display:block;font-size:.82rem;color:var(--texto-2);line-height:1.3}
 
-/* Faixa fina com os nomes das marcas */
-.faixa{margin-top:28px;border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);overflow:hidden;background:#fff;padding:12px 0}
-.faixa-trilho{display:flex;width:max-content;animation:rolar 60s linear infinite}
+/* iPhone com a foto */
+.iphone{width:min(320px,80vw);margin:0 auto;aspect-ratio:9/19.5;border-radius:54px;padding:11px;background:linear-gradient(145deg,#3a3a3c,#1c1c1e);box-shadow:inset 0 0 0 2px #48484a,var(--sombra-forte);position:relative}
+.tela{position:relative;width:100%;height:100%;border-radius:44px;overflow:hidden;background:#000}
+.tela > img,.tela > .placeholder{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tela .placeholder{align-items:flex-end;padding-bottom:42%}
+.tela-ilha{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:30px;background:#000;border-radius:999px;z-index:2}
+.tela-hora{position:absolute;top:58px;left:0;right:0;text-align:center;color:#fff;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.tela-hora small{display:block;font-size:.85rem;font-weight:600}
+.tela-hora b{display:block;font-size:4.2rem;font-weight:600;letter-spacing:-.04em;line-height:1}
+.tela-notif{position:absolute;left:10px;right:10px;bottom:30px;z-index:2;border-radius:20px;padding:11px 12px;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
+.tela-notif .app{width:34px;height:34px;border-radius:9px;background:var(--verde)}
+.tela-notif p{font-size:.72rem;line-height:1.3;color:#000}
+.tela-notif p b{display:flex;justify-content:space-between;font-size:.76rem}
+.tela-notif p b em{font-style:normal;font-weight:500;color:#3c3c43}
+.tela-barra{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:36%;height:5px;border-radius:9px;background:rgba(255,255,255,.85);z-index:2}
+
+/* Faixa fina com as marcas (ícones de app) */
+.faixa{margin-top:64px;overflow:hidden;border-top:1px solid rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.45);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:12px 0}
+.faixa-trilho{display:flex;width:max-content;animation:rolar 70s linear infinite}
 .faixa:hover .faixa-trilho{animation-play-state:paused}
 .faixa-trilho ul{display:flex;align-items:center}
-.faixa-trilho li{font-weight:700;font-size:.9rem;padding:0 18px;white-space:nowrap;display:flex;align-items:center;gap:18px}
-.faixa-trilho li::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--rosa)}
+.faixa-trilho li{display:flex;align-items:center;gap:10px;padding:0 20px;font-weight:600;font-size:.92rem;white-space:nowrap}
+.faixa-trilho .app{width:30px;height:30px;border-radius:8px;font-size:.66rem}
 @keyframes rolar{to{transform:translateX(-50%)}}
 
 /* ===================== 2. SOBRE MIM ===================== */
-.sobre-grade{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:center}
-.foto-sobre{aspect-ratio:4/5;border-radius:var(--raio);overflow:hidden;box-shadow:var(--sombra);position:relative}
+.sobre-grade{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;align-items:center}
+.foto-sobre{position:relative;aspect-ratio:4/5;border-radius:var(--r-grande);overflow:hidden;box-shadow:var(--sombra-forte)}
 .foto-sobre img{width:100%;height:100%;object-fit:cover}
-.foto-sobre .post-topo{position:absolute;inset:0 0 auto 0;display:flex;align-items:center;gap:10px;padding:12px;background:linear-gradient(rgba(0,0,0,.35),transparent);color:#fff;font-weight:700;font-size:.85rem;z-index:1}
-.foto-sobre .post-topo i{width:28px;height:28px;border-radius:50%;background:var(--stories);border:2px solid #fff}
-.sobre-texto p{font-size:1.08rem;margin-bottom:14px}
-.promessas{margin:22px 0 26px;display:grid;gap:12px}
-.promessas li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--borda);border-radius:12px;padding:14px 16px;font-weight:600}
-.promessas svg{flex:none;width:24px;height:24px;color:var(--azul)}
-.assinatura{font-size:1.8rem;font-weight:800;font-style:italic;letter-spacing:-.03em;background:var(--stories);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
-.assinatura-sub{font-size:.85rem;color:var(--texto-2);font-weight:600}
+.foto-sobre figcaption{position:absolute;left:14px;right:14px;bottom:14px;border-radius:18px;padding:12px 14px;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
+.foto-sobre figcaption small{display:block;font-weight:500;color:var(--texto-2)}
+.notas{padding:28px}
+.notas-topo{display:flex;justify-content:space-between;align-items:center;color:#a87400;font-weight:600;font-size:.95rem;margin-bottom:18px}
+.notas-topo svg{width:22px;height:22px}
+.notas h2{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:6px}
+.notas .meta{font-size:.82rem;color:var(--texto-2);margin-bottom:18px}
+.notas p{font-size:1.06rem;margin-bottom:14px}
+.lembretes{margin:22px 0;border-radius:18px;background:rgba(255,255,255,.85);overflow:hidden}
+.lembretes li{display:flex;gap:14px;align-items:center;padding:14px 16px;font-weight:500;position:relative}
+.lembretes li + li::before{content:"";position:absolute;top:0;left:54px;right:0;height:1px;background:var(--linha)}
+.lembretes .marca-ok{flex:none;width:24px;height:24px;border-radius:50%;background:var(--laranja);display:grid;place-items:center}
+.lembretes .marca-ok svg{width:14px;height:14px;color:#fff}
+.assinatura{font-size:2rem;font-weight:700;font-style:italic;letter-spacing:-.04em;background:linear-gradient(90deg,var(--rosa),var(--roxo),var(--azul));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.assinatura-sub{font-size:.85rem;color:var(--texto-2);font-weight:500}
 
 /* ===================== 3. CONTEÚDOS DE DESTAQUE ===================== */
-.destaques-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.card-video{display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid var(--borda);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
-.card-video:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
-.card-video .capa-video{position:relative;aspect-ratio:9/16;overflow:hidden}
+.destaques-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card-video{display:flex;flex-direction:column;text-decoration:none;border-radius:var(--r-grande);padding:16px 16px 22px;transition:transform .45s var(--mola),box-shadow .3s}
+.card-video:hover{transform:translateY(-6px) scale(1.01);box-shadow:var(--sombra-forte)}
+.card-video .moldura{border-radius:34px;padding:8px;background:linear-gradient(145deg,#3a3a3c,#1c1c1e);box-shadow:inset 0 0 0 2px #48484a}
+.card-video .capa-video{position:relative;aspect-ratio:9/16;border-radius:27px;overflow:hidden}
 .card-video .capa-video img{width:100%;height:100%;object-fit:cover}
-.play{position:absolute;top:50%;left:50%;width:68px;height:68px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(0,0,0,.45);border:2px solid #fff;display:grid;place-items:center;transition:transform .25s,background .25s;z-index:1}
+.card-video .capa-video .placeholder{align-items:flex-end;padding-bottom:22px}
+.card-video .mini-ilha{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:30%;height:20px;background:#000;border-radius:999px;z-index:1}
+.play{position:absolute;top:50%;left:50%;width:70px;height:70px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;z-index:1;background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);border:1px solid rgba(255,255,255,.6);transition:transform .4s var(--mola)}
 .play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
-.card-video:hover .play{transform:translate(-50%,-50%) scale(1.1);background:var(--rosa)}
-.icone-reels{position:absolute;top:12px;right:12px;width:26px;height:26px;color:#fff;z-index:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
-.card-video .info{padding:18px 18px 20px}
-.card-video .numero{font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--rosa-texto)}
-.card-video .rotulo{font-size:.82rem;font-weight:700;color:var(--texto-2);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
-.card-video h3{font-size:1.1rem;font-weight:700;margin-top:14px}
+.card-video:hover .play{transform:translate(-50%,-50%) scale(1.12)}
+.card-video .info{padding:18px 6px 0}
+.card-video .numero{font-size:2.3rem;font-weight:700;letter-spacing:-.045em;line-height:1}
+.card-video .rotulo{display:inline-block;margin-top:8px;font-size:.78rem;font-weight:600;color:#fff;background:var(--rosa);padding:3px 10px;border-radius:999px}
+.card-video h3{font-size:1.12rem;font-weight:600;margin-top:14px;letter-spacing:-.02em}
 .card-video .contexto{font-size:.92rem;color:var(--texto-2);margin-top:4px}
 
-/* ===================== 4. TRABALHOS (feed) ===================== */
-.abas{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 26px;border-top:1px solid var(--borda);margin-bottom:4px}
-.aba{background:none;border:0;border-top:2px solid transparent;margin-top:-1px;padding:16px 4px 14px;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--texto-2);cursor:pointer;display:flex;align-items:center;gap:6px;min-height:44px}
-.aba svg{width:14px;height:14px}
-.aba:hover{color:var(--texto)}
-.aba[aria-pressed="true"]{color:var(--texto);border-top-color:var(--texto)}
-.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
-.post{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cinza-2);animation:surgir .35s ease}
+/* ===================== 4. TRABALHOS (app Fotos) ===================== */
+.segmentado{display:flex;gap:2px;padding:3px;border-radius:12px;background:var(--cinza-ctrl);width:max-content;max-width:100%;overflow-x:auto;margin:0 auto 20px;scrollbar-width:none}
+.segmentado::-webkit-scrollbar{display:none}
+.seg{flex:none;border:0;background:transparent;border-radius:9px;padding:8px 18px;min-height:40px;font-weight:500;font-size:.92rem;cursor:pointer;transition:background .25s,box-shadow .25s}
+.seg[aria-pressed="true"]{background:#fff;font-weight:600;box-shadow:0 3px 8px rgba(0,0,0,.12),0 3px 1px rgba(0,0,0,.04)}
+.fotos{border-radius:var(--r);overflow:hidden;box-shadow:var(--sombra)}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:#fff}
+.post{position:relative;aspect-ratio:1;overflow:hidden;background:#e5e5ea;display:block;animation:surgir .4s var(--mola)}
 .post[hidden]{display:none}
 .post img{width:100%;height:100%;object-fit:cover}
-.post .placeholder{align-items:center}
 .post .placeholder .legenda{font-size:.68rem}
-.post .icone-reels{width:22px;height:22px;top:10px;right:10px}
-.post-sobreposto{position:absolute;inset:0;background:rgba(0,0,0,.6);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;opacity:0;transition:opacity .25s;z-index:2}
-.post:hover .post-sobreposto,.post:focus-within .post-sobreposto,.post:focus .post-sobreposto{opacity:1}
+.post .selo-video{position:absolute;right:10px;bottom:8px;z-index:1;display:flex;align-items:center;gap:4px;color:#fff;font-size:.75rem;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.post .selo-video svg{width:16px;height:16px}
+.post-sobreposto{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:#fff;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity .25s}
+.post:hover .post-sobreposto,.post:focus .post-sobreposto,.post:focus-within .post-sobreposto{opacity:1}
 .post-sobreposto strong{font-size:1.05rem}
-.post-sobreposto span{font-size:.82rem;margin-top:4px}
-.post-sobreposto em{font-style:normal;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-top:8px;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:999px}
-.feed-aviso{text-align:center;font-size:.9rem;color:var(--texto-2);margin-top:16px}
-@keyframes surgir{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.post-sobreposto span{font-size:.82rem;margin-top:2px}
+.post-sobreposto em{font-style:normal;font-size:.72rem;font-weight:600;margin-top:8px;background:rgba(255,255,255,.25);padding:3px 10px;border-radius:999px}
+.fotos-rodape{background:rgba(255,255,255,.85);text-align:center;padding:14px;font-size:.88rem;font-weight:500;color:var(--texto-2)}
+@keyframes surgir{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 
-/* ===================== 5. SERVIÇOS ===================== */
-.servicos-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.servico{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:26px;transition:border-color .25s,transform .25s}
-.servico:hover{border-color:var(--texto);transform:translateY(-3px)}
-.servico .num{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--stories);color:#fff;font-weight:800;font-size:.9rem;text-shadow:0 1px 2px rgba(0,0,0,.3)}
-.servico h3{font-size:1.15rem;font-weight:800;margin:16px 0 6px}
-.servico p{color:var(--texto-2);font-size:.95rem}
+/* ===================== 5. SERVIÇOS (lista de Ajustes) ===================== */
+.servicos-grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.grupo{border-radius:var(--r);overflow:hidden}
+.ajuste{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;position:relative}
+.ajuste + .ajuste::before{content:"";position:absolute;top:0;left:76px;right:0;height:1px;background:var(--linha)}
+.ajuste .app{width:42px;height:42px;font-size:.85rem}
+.ajuste h3{font-size:1.05rem;font-weight:600;letter-spacing:-.015em}
+.ajuste p{font-size:.92rem;color:var(--texto-2);margin-top:2px}
 
 /* ===================== 6. NÚMEROS E DEPOIMENTOS ===================== */
-.metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.metrica{text-align:center;padding:28px 12px;border-radius:var(--raio);background:var(--cinza);border:1px solid var(--cinza-2)}
-.metrica strong{display:block;font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1}
-.metrica span{display:block;margin-top:8px;font-weight:600;color:var(--texto-2);font-size:.92rem}
-.subtitulo{font-size:1.25rem;font-weight:800;margin:56px 0 18px;letter-spacing:-.02em}
-.resultados{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.resultado{border-radius:var(--raio);padding:2px;background:var(--stories)}
-.resultado div{background:#fff;border-radius:calc(var(--raio) - 2px);padding:24px;height:100%}
-.resultado strong{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1;display:block}
-.resultado .rot{font-weight:700;margin-top:6px}
-.resultado .cli{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--rosa-texto);margin-top:14px}
-.resultado p{color:var(--texto-2);font-size:.92rem;margin-top:4px}
-.conversa{border:1px solid var(--borda);border-radius:18px;background:#fff;overflow:hidden}
-.conversa-topo{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--borda);font-weight:700}
-.conversa-topo i{width:34px;height:34px;border-radius:50%;background:var(--stories)}
-.conversa-topo small{display:block;font-weight:500;color:var(--texto-2);font-size:.78rem}
-.mensagens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 30px;padding:26px 18px}
-.depoimento{display:flex;gap:10px;align-items:flex-end}
-.depoimento .foto-cli{flex:none;width:34px;height:34px;border-radius:50%;overflow:hidden}
-.depoimento .foto-cli .placeholder{padding:0;align-items:center;font-size:.7rem;font-weight:800;color:#fff}
-.balao{background:var(--cinza-2);border-radius:22px 22px 22px 6px;padding:14px 18px}
-.balao p{font-size:.96rem}
-.balao footer{margin-top:10px;font-size:.82rem;color:var(--texto-2)}
-.balao footer strong{color:var(--texto)}
-.coracao{display:inline-block;margin-left:6px;color:var(--rosa)}
+.metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.metrica{border-radius:var(--r);padding:20px}
+.metrica .topo-w{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600}
+.metrica .topo-w .app{width:26px;height:26px;border-radius:7px}
+.metrica strong{display:block;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:18px}
+.metrica > span{display:block;margin-top:6px;font-weight:500;color:var(--texto-2);font-size:.92rem}
+.subtitulo{font-size:1.4rem;font-weight:700;margin:56px 0 16px;letter-spacing:-.025em}
+.resultados{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.resultado{border-radius:var(--r);padding:20px}
+.resultado .cli{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:600;color:var(--texto-2)}
+.resultado strong{display:flex;align-items:center;gap:6px;font-size:2.3rem;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:14px;color:var(--verde-texto)}
+.resultado strong svg{width:20px;height:20px}
+.resultado .rot{font-weight:600;margin-top:6px}
+.resultado p{color:var(--texto-2);font-size:.9rem;margin-top:4px}
+.resultado .grafico{height:44px;margin-top:14px;width:100%}
+.notificacoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.notificacao{display:flex;gap:12px;align-items:flex-start;border-radius:24px;padding:14px 16px}
+.notificacao .app{width:40px;height:40px;border-radius:11px;font-size:.78rem}
+.notificacao .cab{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.notificacao .cab time{font-size:.8rem;color:var(--texto-2);white-space:nowrap}
+.notificacao .empresa{font-size:.82rem;color:var(--texto-2);font-weight:500}
+.notificacao blockquote p{font-size:.95rem;margin-top:4px}
 
 /* ===================== 7. CONTATO ===================== */
-.contato-grade{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:start}
-.formulario{background:#fff;border:1px solid var(--borda);border-radius:18px;padding:28px}
-.campo{margin-bottom:16px}
-.campo label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}
-.campo input,.campo textarea{width:100%;border:1px solid var(--borda);background:var(--cinza);border-radius:10px;padding:12px 14px;font-size:1rem;min-height:46px}
-.campo textarea{min-height:130px;resize:vertical}
-.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(0,149,246,.25);background:#fff}
+.contato-grade{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:start}
+.formulario{border-radius:var(--r-grande);padding:22px}
+.campos{border-radius:18px;background:rgba(255,255,255,.9);overflow:hidden;margin-bottom:16px}
+.campo{padding:12px 16px 10px;position:relative}
+.campo + .campo::before{content:"";position:absolute;top:0;left:16px;right:0;height:1px;background:var(--linha)}
+.campo label{display:block;font-size:.78rem;font-weight:600;color:var(--texto-2)}
+.campo input,.campo textarea{width:100%;border:0;background:transparent;padding:4px 0;font-size:1.05rem;outline:none;min-height:32px}
+.campo textarea{min-height:110px;resize:vertical}
+.campo:focus-within{background:rgba(0,113,227,.05)}
+.campo:focus-within label{color:var(--azul)}
 .formulario .botao{width:100%}
-.confirmacao{display:none;text-align:center;padding:24px 8px}
-.confirmacao.ativa{display:block}
-.confirmacao .ok{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:var(--stories);display:grid;place-items:center}
-.confirmacao .ok svg{width:30px;height:30px;color:#fff}
-.confirmacao h3{font-size:1.3rem;font-weight:800}
+.confirmacao{display:none;text-align:center;padding:26px 8px}
+.confirmacao.ativa{display:block;animation:surgir .45s var(--mola)}
+.confirmacao .ok{width:72px;height:72px;margin:0 auto 14px;border-radius:50%;background:var(--verde);display:grid;place-items:center;box-shadow:0 10px 30px rgba(52,199,89,.35)}
+.confirmacao .ok svg{width:34px;height:34px;color:#fff}
+.confirmacao h3{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
 .confirmacao p{color:var(--texto-2);margin-top:6px}
-.canais{display:grid;gap:12px}
-.canais .botao{justify-content:flex-start;min-height:58px;padding:12px 18px;font-size:1rem}
-.canais small{display:block;font-weight:500;font-size:.82rem;opacity:.9}
-.contato-info{margin-top:20px;color:var(--texto-2);font-size:.92rem}
+.dock{border-radius:var(--r-grande);padding:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;font-size:.85rem;font-weight:600;text-align:center;padding:8px 4px;border-radius:18px;transition:transform .35s var(--mola)}
+.dock a:hover{transform:translateY(-6px) scale(1.05)}
+.dock .app{width:64px;height:64px;border-radius:16px}
+.dock small{display:block;font-weight:500;color:var(--texto-2);font-size:.74rem;word-break:break-all}
+.contato-lista{margin-top:16px;border-radius:var(--r);overflow:hidden}
+.contato-lista li{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;font-size:.95rem;position:relative}
+.contato-lista li + li::before{content:"";position:absolute;top:0;left:18px;right:0;height:1px;background:var(--linha)}
+.contato-lista span{color:var(--texto-2)}
+.contato-lista b{font-weight:500;text-align:right;word-break:break-word}
 
 /* ===================== 8. RODAPÉ ===================== */
-.rodape{border-top:1px solid var(--borda);padding:40px 0;background:#fff}
-.rodape .container{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-.rodape-nome{font-weight:800;font-size:1.1rem}
+.rodape{padding:24px 0 40px}
+.rodape .container{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.rodape-nome{font-weight:700;font-size:1.1rem;letter-spacing:-.02em}
 .rodape-nome small{display:block;font-weight:500;font-size:.85rem;color:var(--texto-2)}
-.redes{display:flex;gap:10px}
-.redes a{width:44px;height:44px;border-radius:50%;border:1px solid var(--borda);display:grid;place-items:center;transition:background .2s}
-.redes a:hover{background:var(--cinza-2)}
-.redes svg{width:20px;height:20px}
-.copy{font-size:.85rem;color:var(--texto-2);width:100%;text-align:center;padding-top:18px;border-top:1px solid var(--cinza-2)}
+.redes{display:flex;gap:10px;padding:10px;border-radius:24px}
+.redes a{display:block;border-radius:12px;transition:transform .35s var(--mola)}
+.redes a:hover{transform:translateY(-4px)}
+.redes .app{width:44px;height:44px}
+.copy{font-size:.85rem;color:var(--texto-2)}
 
-/* ===================== CARD DE CAPTURA ===================== */
-.modal-fundo{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;display:none;align-items:center;justify-content:center;padding:16px}
-.modal-fundo.aberto{display:flex;animation:fade .25s ease}
-.modal{position:relative;width:100%;max-width:400px;background:#fff;border-radius:18px;padding:32px 24px 24px;text-align:center;animation:subir .3s ease;max-height:calc(100vh - 32px);overflow:auto}
-.modal .anel-mini{width:72px;height:72px;margin:0 auto 14px;border-radius:50%;padding:3px;background:var(--stories)}
-.modal .anel-mini span{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;border:3px solid #fff;font-weight:800}
-.modal h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
-.modal > p{color:var(--texto-2);margin:6px 0 18px;font-size:.95rem}
-.modal .campo{text-align:left}
+/* ===================== CARD DE CAPTURA (folha do iOS) ===================== */
+.modal-fundo{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
+.modal-fundo.aberto{display:flex;animation:fade .3s ease}
+.modal{position:relative;width:100%;max-width:400px;border-radius:var(--r-grande);padding:30px 22px 22px;text-align:center;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);box-shadow:var(--sombra-forte);animation:subir .5s var(--mola);max-height:calc(100vh - 32px);overflow:auto}
+.modal .puxador{display:none;width:38px;height:5px;border-radius:9px;background:rgba(60,60,67,.3);margin:-16px auto 16px}
+.modal .icone-kit{width:64px;height:64px;margin:0 auto 14px;border-radius:16px;background:linear-gradient(135deg,var(--rosa),var(--roxo),var(--azul))}
+.modal .icone-kit svg{width:32px;height:32px}
+.modal h2{font-size:1.4rem;font-weight:700;letter-spacing:-.025em}
+.modal > div > p{color:var(--texto-2);margin:6px 0 18px;font-size:.95rem}
+.modal .campos{text-align:left}
 .modal .botao{width:100%}
-.fechar{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;border-radius:50%;cursor:pointer;font-size:1.6rem;line-height:1}
-.fechar:hover{background:var(--cinza-2)}
+.fechar{position:absolute;top:12px;right:12px;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;border-radius:50%}
+.fechar span{width:30px;height:30px;border-radius:50%;background:var(--cinza-ctrl);display:grid;place-items:center;font-size:1.1rem;line-height:1;color:var(--texto-2);font-weight:600}
 @keyframes fade{from{opacity:0}}
-@keyframes subir{from{opacity:0;transform:translateY(20px)}}
+@keyframes subir{from{opacity:0;transform:translateY(40px) scale(.96)}}
 
 /* ===================== ANIMAÇÃO AO ROLAR ===================== */
-.js .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .revelar{opacity:0;transform:translateY(28px) scale(.97);transition:opacity .7s ease,transform .8s var(--mola)}
 .js .revelar.visivel{opacity:1;transform:none}
 
 /* ===================== RESPONSIVO ===================== */
-@media (max-width:960px){
-  .servicos-grade,.resultados{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:1000px){
+  .status{display:none}
   .metricas{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .destaques-grade{gap:16px}
+  .resultados{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 }
 @media (max-width:860px){
   .menu-botao{display:inline-flex}
-  .menu{position:fixed;top:var(--topo);left:0;right:0;background:#fff;border-bottom:1px solid var(--borda);box-shadow:var(--sombra);display:none}
-  .menu.aberto{display:block}
-  .menu ul{flex-direction:column;padding:8px 16px 16px}
-  .menu a{padding:14px 12px;font-size:1rem;border-bottom:1px solid var(--cinza-2)}
-  .perfil{grid-template-columns:1fr;gap:28px;text-align:center}
-  .usuario,.acoes,.numeros-capa{justify-content:center}
-  .bio{margin-left:auto;margin-right:auto}
-  .sobre-grade,.contato-grade{grid-template-columns:1fr;gap:32px}
+  .menu{position:fixed;top:74px;left:12px;right:12px;border-radius:24px;display:none;padding:8px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);box-shadow:var(--sombra-forte);border:1px solid rgba(255,255,255,.9)}
+  .menu.aberto{display:block;animation:subir .4s var(--mola)}
+  .menu ul{flex-direction:column}
+  .menu a{padding:14px 16px;font-size:1.05rem;border-radius:14px}
+  .capa-grade,.sobre-grade,.contato-grade{grid-template-columns:1fr}
+  .capa-texto{text-align:center}
+  .acoes,.widgets{justify-content:center;margin-left:auto;margin-right:auto}
+  .bio{margin:0 auto}
+  .iphone{width:min(280px,72vw)}
   .foto-sobre{max-width:420px;width:100%;margin:0 auto}
-  .destaques-grade{grid-template-columns:1fr;max-width:420px;margin:0 auto}
-  .mensagens{grid-template-columns:1fr}
+  .destaques-grade{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .servicos-grade,.notificacoes,.resultados{grid-template-columns:1fr}
 }
 @media (max-width:560px){
-  section{padding:64px 0}
-  .capa{padding-top:calc(var(--topo) + 32px)}
-  .acoes .botao{flex:1 1 140px}
-  .numeros-capa{gap:12px;justify-content:space-between}
-  .numeros-capa li{flex:1;font-size:.8rem}
-  .servicos-grade,.resultados{grid-template-columns:1fr}
-  .metrica{padding:22px 8px}
-  .abas{gap:0 14px}
-  .aba{letter-spacing:.06em;font-size:.74rem}
+  section{padding:68px 0}
+  .capa{padding-top:calc(var(--topo) + 36px)}
+  .acoes .botao{flex:1 1 140px;padding:12px 16px}
+  .seg{padding:8px 11px;font-size:.86rem}
+  .widgets{gap:8px}
+  .widget{padding:12px 10px}
+  .widget .topo-w{font-size:.62rem}
+  .widget span{font-size:.72rem}
+  .notas,.formulario{padding:18px}
   .post-sobreposto strong{font-size:.85rem}
   .post-sobreposto span{display:none}
-  .formulario{padding:20px}
-  .rodape .container{flex-direction:column;text-align:center}
+  .dock{padding:16px 10px}
+  .dock .app{width:56px;height:56px}
+  .modal-fundo{align-items:flex-end;padding:0}
+  .modal{max-width:none;border-radius:28px 28px 0 0;padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+  .modal .puxador{display:block}
 }
 
 /* Quem prefere menos movimento: sem animações */
@@ -315,12 +365,11 @@ section{padding:88px 0}
 
 <!-- ===================== MENU FIXO ===================== -->
 <header class="topo">
-  <div class="container">
+  <div class="barra vidro">
     <a class="logo" href="#inicio" aria-label="Duane Cardoso, voltar ao início">
-      <span class="bolinha" aria-hidden="true"><span>DC</span></span>
+      <span class="app" aria-hidden="true">DC</span>
       Duane Cardoso
     </a>
-    <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span></button>
     <nav class="menu" id="menu" aria-label="Menu principal">
       <ul>
         <li><a href="#sobre">Sobre</a></li>
@@ -331,6 +380,13 @@ section{padding:88px 0}
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
+    <div class="status" aria-hidden="true">
+      <span class="relogio">9:41</span>
+      <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.5c2.3 0 4.4.9 6 2.4l1.2-1.3A10.4 10.4 0 0 0 8 .7 10.4 10.4 0 0 0 .8 3.6L2 4.9a8.6 8.6 0 0 1 6-2.4zm0 3.6c1.3 0 2.5.5 3.4 1.3l1.2-1.3A6.7 6.7 0 0 0 8 4.3a6.7 6.7 0 0 0-4.6 1.8l1.2 1.3c.9-.8 2.1-1.3 3.4-1.3zM8 12l2.2-2.4a3.2 3.2 0 0 0-4.4 0z"/></svg>
+      <svg viewBox="0 0 27 12" fill="none"><rect x=".5" y=".5" width="22" height="11" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><path d="M24.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" fill="currentColor" opacity=".4"/></svg>
+    </div>
+    <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span></button>
   </div>
 </header>
 
@@ -338,67 +394,71 @@ section{padding:88px 0}
 
 <!-- ===================== 1. CAPA ===================== -->
 <section class="capa" id="inicio" aria-labelledby="nome-principal">
-  <div class="container">
-    <div class="perfil">
-      <div class="avatar-area">
-        <div class="anel"><div class="anel-dentro"><div class="avatar">
-          <!-- FOTO DE PERFIL: troque o bloco abaixo por
-               <img src="minha-foto.jpg" alt="Foto de Duane Cardoso sorrindo" width="400" height="400">
-               Use uma foto quadrada (1:1), leve (até 150 KB), na mesma pasta do index.html. -->
-          <div class="placeholder g-beleza" role="img" aria-label="Espaço para a foto de perfil de Duane Cardoso"><span class="legenda">foto de perfil 1:1</span></div>
-        </div></div></div>
-        <span class="ao-vivo">AO VIVO</span>
+  <div class="container capa-grade">
+    <div class="capa-texto">
+      <span class="ilha"><i aria-hidden="true"></i>UGC Creator · Valparaíso de Goiás</span>
+      <p class="data-hoje" id="data-hoje">@byduanecardoso</p>
+      <h1 id="nome-principal">Duane Cardoso</h1>
+      <p class="bio">Vídeos de <strong>review e demonstração</strong> que mostram o produto em uso e fazem a sua marca vender mais na Black Friday.</p>
+      <div class="acoes">
+        <a class="botao botao-azul" href="#contato">Falar comigo</a>
+        <a class="botao botao-vidro" href="#trabalhos">Ver os trabalhos</a>
       </div>
-
-      <div class="perfil-info">
-        <p class="usuario">@byduanecardoso</p>
-        <h1 id="nome-principal">Duane Cardoso</h1>
-        <p class="categoria">UGC Creator · Valparaíso de Goiás</p>
-        <p class="bio">Vídeos de <strong>review e demonstração</strong> que mostram o produto em uso e fazem a sua marca vender mais na Black Friday.</p>
-        <div class="acoes">
-          <a class="botao botao-azul" href="#contato">Falar comigo</a>
-          <a class="botao botao-cinza" href="#trabalhos">Ver os trabalhos</a>
-        </div>
-        <!-- Os três números da capa vêm do array "metricas" no script -->
-        <ul class="numeros-capa" id="numeros-capa"></ul>
-      </div>
+      <!-- Os três widgets de números vêm do array "metricas" no script -->
+      <ul class="widgets" id="numeros-capa"></ul>
     </div>
 
-    <!-- Bolinhas de stories em destaque: geradas a partir do array "marcas" -->
-    <h2 class="sr-only">Marcas com quem já trabalhei</h2>
-    <ul class="stories" id="stories" aria-label="Marcas com quem já trabalhei"></ul>
+    <div class="iphone revelar" aria-label="Foto de Duane Cardoso na tela de um celular" role="img">
+      <div class="tela">
+        <!-- FOTO DA CAPA: troque o bloco abaixo por
+             <img src="foto-capa.jpg" alt="" width="600" height="1300">
+             Use uma foto vertical (9:16 ou mais alta), leve (até 200 KB), na mesma pasta do index.html. -->
+        <div class="placeholder g-tela"><span class="legenda">foto da creator vertical 9:16</span></div>
+        <span class="tela-ilha"></span>
+        <div class="tela-hora"><small class="data-curta">hoje</small><b class="relogio">9:41</b></div>
+        <div class="tela-notif">
+          <span class="app" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span>
+          <p><b>Duane Cardoso <em>agora</em></b>Bora criar o vídeo da sua marca?</p>
+        </div>
+        <span class="tela-barra"></span>
+      </div>
+    </div>
   </div>
 
-  <!-- Faixa fina com os nomes das marcas (gerada pelo script) -->
+  <!-- Faixa fina com as marcas (gerada a partir do array "marcas") -->
+  <h2 class="sr-only">Marcas com quem já trabalhei</h2>
+  <p class="sr-only" id="marcas-lista"></p>
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
 </section>
 
 <!-- ===================== 2. SOBRE MIM ===================== -->
-<section id="sobre" class="fundo-cinza" aria-labelledby="titulo-sobre">
+<section id="sobre" aria-labelledby="titulo-sobre">
   <div class="container sobre-grade">
-    <figure class="foto-sobre revelar" style="margin:0">
-      <div class="post-topo" aria-hidden="true"><i></i>byduanecardoso</div>
+    <figure class="foto-sobre revelar">
       <!-- FOTO DO SOBRE: troque o bloco abaixo por
            <img src="foto-sobre.jpg" alt="Duane Cardoso gravando um vídeo de review" width="800" height="1000" loading="lazy">
            Formato vertical 4:5, de preferência em .jpg ou .webp com até 200 KB. -->
-      <div class="placeholder g-stories" role="img" aria-label="Espaço para a foto de Duane Cardoso gravando conteúdo"><span class="legenda">foto da creator 4:5</span></div>
+      <div class="placeholder g-beleza" role="img" aria-label="Espaço para a foto de Duane Cardoso gravando conteúdo"><span class="legenda">foto da creator 4:5</span></div>
+      <figcaption>Duane Cardoso<small>Valparaíso de Goiás</small></figcaption>
     </figure>
 
-    <div class="sobre-texto revelar">
-      <div class="titulo-secao" style="margin-bottom:22px">
-        <span class="chapeu">Sobre mim</span>
-        <h2 id="titulo-sobre">Prazer, eu sou a Duane</h2>
+    <article class="notas cartao revelar">
+      <div class="notas-topo" aria-hidden="true">
+        <span>‹ Notas</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
       </div>
+      <h2 id="titulo-sobre">Prazer, eu sou a Duane</h2>
+      <p class="meta">Sobre mim</p>
       <p>Eu crio vídeos de review e demonstração para marcas de beleza, fitness e lifestyle que querem vender mais na Black Friday, mostrando o uso dos produtos e o que o consumidor precisa saber antes de comprar.</p>
       <p>Gravo daqui de Valparaíso de Goiás, com o jeito de quem conversa com uma amiga: sincero, próximo e sem cara de propaganda. É esse tom que faz alguém parar o dedo no feed e confiar no que está vendo.</p>
-      <ul class="promessas">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Roteiro aprovado por você antes de eu gravar</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Uma rodada de ajuste inclusa em todo vídeo</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Entrega em até 72 horas úteis</li>
+      <ul class="lembretes" aria-label="Minhas promessas">
+        <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Roteiro aprovado por você antes de eu gravar</li>
+        <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Uma rodada de ajuste inclusa em todo vídeo</li>
+        <li><span class="marca-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Entrega em até 72 horas úteis</li>
       </ul>
       <p class="assinatura">Duane Cardoso</p>
       <p class="assinatura-sub">UGC Creator</p>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -406,7 +466,7 @@ section{padding:88px 0}
 <section id="destaques" aria-labelledby="titulo-destaques">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="chapeu">Destaques</span>
+      <span class="rotulo-sec">Destaques</span>
       <h2 id="titulo-destaques">Conteúdos de destaque</h2>
       <p>Três vídeos que mostram como eu apresento um produto. Toque para assistir.</p>
     </div>
@@ -417,16 +477,18 @@ section{padding:88px 0}
 </section>
 
 <!-- ===================== 4. TRABALHOS POR NICHO ===================== -->
-<section id="trabalhos" class="fundo-cinza" aria-labelledby="titulo-trabalhos">
+<section id="trabalhos" aria-labelledby="titulo-trabalhos">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="chapeu">Feed</span>
+      <span class="rotulo-sec">Biblioteca</span>
       <h2 id="titulo-trabalhos">Trabalhos por nicho</h2>
       <p>Escolha um nicho para ver só os trabalhos daquela categoria.</p>
     </div>
-    <div class="abas" id="abas" role="group" aria-label="Filtrar trabalhos por nicho"></div>
-    <div class="feed" id="feed"></div>
-    <p class="feed-aviso" id="feed-aviso" aria-live="polite"></p>
+    <div class="segmentado" id="abas" role="group" aria-label="Filtrar trabalhos por nicho"></div>
+    <div class="fotos revelar">
+      <div class="feed" id="feed"></div>
+      <p class="fotos-rodape" id="feed-aviso" aria-live="polite"></p>
+    </div>
   </div>
 </section>
 
@@ -434,7 +496,7 @@ section{padding:88px 0}
 <section id="servicos" aria-labelledby="titulo-servicos">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="chapeu">Serviços</span>
+      <span class="rotulo-sec">Serviços</span>
       <h2 id="titulo-servicos">Como eu te ajudo</h2>
       <p>Do vídeo único ao pacote do mês, você escolhe o formato que cabe na sua campanha.</p>
     </div>
@@ -443,10 +505,10 @@ section{padding:88px 0}
 </section>
 
 <!-- ===================== 6. NÚMEROS E DEPOIMENTOS ===================== -->
-<section id="numeros" class="fundo-cinza" aria-labelledby="titulo-numeros">
+<section id="numeros" aria-labelledby="titulo-numeros">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="chapeu">Resultados</span>
+      <span class="rotulo-sec">Resultados</span>
       <h2 id="titulo-numeros">Números e depoimentos</h2>
     </div>
     <div class="metricas" id="metricas"></div>
@@ -455,10 +517,7 @@ section{padding:88px 0}
     <div class="resultados" id="resultados"></div>
 
     <h3 class="subtitulo revelar">O que dizem as marcas</h3>
-    <div class="conversa revelar">
-      <div class="conversa-topo"><i aria-hidden="true"></i><div>Mensagens<small>depoimentos de quem já trabalhou comigo</small></div></div>
-      <div class="mensagens" id="depoimentos"></div>
-    </div>
+    <div class="notificacoes" id="depoimentos"></div>
   </div>
 </section>
 
@@ -466,54 +525,61 @@ section{padding:88px 0}
 <section id="contato" aria-labelledby="titulo-contato">
   <div class="container">
     <div class="titulo-secao revelar">
-      <span class="chapeu">Contato</span>
+      <span class="rotulo-sec">Contato</span>
       <h2 id="titulo-contato">Bora criar juntos?</h2>
       <p>Me conta sobre o seu produto e a sua campanha. Eu respondo com uma ideia de roteiro.</p>
     </div>
     <div class="contato-grade">
-      <div class="formulario revelar">
+      <div class="formulario cartao revelar">
         <!-- Este formulário mostra a confirmação na tela, mas ainda não envia para nenhum lugar.
              Para receber as mensagens no seu e-mail, crie um formulário grátis no Formspree
              e coloque o endereço dele no atributo action abaixo (o script já cuida do resto). -->
         <form id="form-contato" action="" novalidate>
-          <div class="campo">
-            <label for="c-nome">Seu nome</label>
-            <input id="c-nome" name="nome" type="text" autocomplete="name" required>
-          </div>
-          <div class="campo">
-            <label for="c-email">Seu e-mail</label>
-            <input id="c-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="campo">
-            <label for="c-msg">Mensagem</label>
-            <textarea id="c-msg" name="mensagem" required placeholder="Qual é o produto, o nicho e o prazo da campanha?"></textarea>
+          <div class="campos">
+            <div class="campo">
+              <label for="c-nome">Nome</label>
+              <input id="c-nome" name="nome" type="text" autocomplete="name" required placeholder="Seu nome">
+            </div>
+            <div class="campo">
+              <label for="c-email">E-mail</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required placeholder="voce@marca.com">
+            </div>
+            <div class="campo">
+              <label for="c-msg">Mensagem</label>
+              <textarea id="c-msg" name="mensagem" required placeholder="Qual é o produto, o nicho e o prazo da campanha?"></textarea>
+            </div>
           </div>
           <button class="botao botao-azul" type="submit">Enviar mensagem</button>
         </form>
         <div class="confirmacao" id="confirmacao" role="status" aria-live="polite" tabindex="-1">
           <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
-          <h3 id="confirmacao-titulo">Mensagem recebida!</h3>
+          <h3 id="confirmacao-titulo">Mensagem enviada!</h3>
           <p>Obrigada pelo contato. Vou te responder o quanto antes no e-mail que você deixou.</p>
-          <button class="botao botao-cinza" type="button" id="nova-mensagem" style="margin-top:16px;width:auto">Enviar outra mensagem</button>
+          <button class="botao botao-vidro" type="button" id="nova-mensagem" style="margin-top:18px">Enviar outra mensagem</button>
         </div>
       </div>
 
       <div class="revelar">
-        <div class="canais">
-          <a class="botao botao-preto" href="https://wa.me/5561993823059?text=Ol%C3%A1%20Duane!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20uma%20campanha." target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2 2.5 4.3 4.6 4.7l1.2-1.2 1.7.8-.4 1.5c-3.6.4-7.4-3.4-7-7l1.5-.4.8 1.7z" fill="currentColor"/></svg>
-            <span>WhatsApp<small>(61) 99382-3059</small></span>
+        <nav class="dock vidro" aria-label="Falar comigo por">
+          <a href="https://wa.me/5561993823059?text=Ol%C3%A1%20Duane!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20uma%20campanha." target="_blank" rel="noopener">
+            <span class="app" style="background:linear-gradient(180deg,#5af27a,#25c244)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5zm5 13.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.2.5.1.6-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span>
+            WhatsApp<small>(61) 99382-3059</small>
           </a>
-          <a class="botao botao-azul" href="mailto:ugcduanecardoso@gmail.com?subject=Parceria%20UGC">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <span>E-mail<small>ugcduanecardoso@gmail.com</small></span>
+          <a href="mailto:ugcduanecardoso@gmail.com?subject=Parceria%20UGC">
+            <span class="app" style="background:linear-gradient(180deg,#4fb0ff,#0a6cf0)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="#fff" stroke="none"/><path d="m3.5 7 8.5 6.5L20.5 7" stroke="#0a6cf0"/></svg></span>
+            E-mail<small>me escreva</small>
           </a>
-          <a class="botao botao-degrade" href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            <span>Instagram<small>@byduanecardoso</small></span>
+          <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener">
+            <span class="app" style="background:linear-gradient(45deg,#feda75,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff"/></svg></span>
+            Instagram<small>@byduanecardoso</small>
           </a>
-        </div>
-        <p class="contato-info">Atendo marcas de todo o Brasil, direto de Valparaíso de Goiás.</p>
+        </nav>
+        <ul class="contato-lista cartao">
+          <li><span>E-mail</span><b>ugcduanecardoso@gmail.com</b></li>
+          <li><span>WhatsApp</span><b>(61) 99382-3059</b></li>
+          <li><span>Cidade</span><b>Valparaíso de Goiás</b></li>
+          <li><span>Atendo</span><b>Marcas de todo o Brasil</b></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -524,12 +590,12 @@ section{padding:88px 0}
 <footer class="rodape">
   <div class="container">
     <p class="rodape-nome">Duane Cardoso<small>UGC Creator · Valparaíso de Goiás</small></p>
-    <nav class="redes" aria-label="Minhas redes">
-      <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram @byduanecardoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+    <nav class="redes vidro" aria-label="Minhas redes">
+      <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram @byduanecardoso"><span class="app" style="background:linear-gradient(45deg,#feda75,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff"/></svg></span></a>
       <!-- TIKTOK: troque o endereço abaixo pelo seu perfil real -->
-      <a href="https://www.tiktok.com/@seuusuario" target="_blank" rel="noopener" aria-label="TikTok (troque pelo seu perfil)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></a>
-      <a href="https://wa.me/5561993823059" target="_blank" rel="noopener" aria-label="WhatsApp (61) 99382-3059"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></a>
-      <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail ugcduanecardoso@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      <a href="https://www.tiktok.com/@seuusuario" target="_blank" rel="noopener" aria-label="TikTok (troque pelo seu perfil)"><span class="app" style="background:#111"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></span></a>
+      <a href="https://wa.me/5561993823059" target="_blank" rel="noopener" aria-label="WhatsApp (61) 99382-3059"><span class="app" style="background:linear-gradient(180deg,#5af27a,#25c244)"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span></a>
+      <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail ugcduanecardoso@gmail.com"><span class="app" style="background:linear-gradient(180deg,#4fb0ff,#0a6cf0)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="#fff"/><path d="m3.5 7 8.5 6.5L20.5 7" stroke="#0a6cf0" stroke-width="2" stroke-linejoin="round"/></svg></span></a>
     </nav>
     <p class="copy">© <span id="ano">2026</span> Duane Cardoso. Todos os direitos reservados.</p>
   </div>
@@ -538,21 +604,24 @@ section{padding:88px 0}
 <!-- ===================== CARD DE CAPTURA (mídia kit) ===================== -->
 <div class="modal-fundo" id="modal-fundo" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-desc">
-    <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar">×</button>
-    <div class="anel-mini" aria-hidden="true"><span>DC</span></div>
+    <span class="puxador" aria-hidden="true"></span>
+    <button class="fechar" type="button" id="modal-fechar" aria-label="Fechar"><span aria-hidden="true">×</span></button>
     <div id="modal-conteudo">
+      <span class="app icone-kit" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
       <h2 id="modal-titulo">Quer meu mídia kit completo?</h2>
       <p id="modal-desc">Deixe seu nome e e-mail e eu te envio valores, formatos e mais trabalhos.</p>
       <!-- Assim como o formulário de contato, este card ainda não envia para nenhum lugar.
            Coloque o endereço do seu Formspree (ou similar) no atributo action para receber os pedidos. -->
       <form id="form-kit" action="" novalidate>
-        <div class="campo">
-          <label for="k-nome">Nome</label>
-          <input id="k-nome" name="nome" type="text" autocomplete="name" required>
-        </div>
-        <div class="campo">
-          <label for="k-email">E-mail</label>
-          <input id="k-email" name="email" type="email" autocomplete="email" required>
+        <div class="campos">
+          <div class="campo">
+            <label for="k-nome">Nome</label>
+            <input id="k-nome" name="nome" type="text" autocomplete="name" required placeholder="Seu nome">
+          </div>
+          <div class="campo">
+            <label for="k-email">E-mail</label>
+            <input id="k-email" name="email" type="email" autocomplete="email" required placeholder="voce@marca.com">
+          </div>
         </div>
         <button class="botao botao-azul" type="submit">Quero receber</button>
       </form>
@@ -567,7 +636,7 @@ section{padding:88px 0}
    Não precisa mexer no HTML.
    ===================================================================== */
 
-/* MARCAS: viram as bolinhas de stories e a faixa da capa */
+/* MARCAS: viram os ícones da faixa da capa */
 const marcas = [
   "Dove", "Pantene", "Eudora", "Niely", "CeraVe", "L’Oréal Elseve", "Phero", "Hey Vera",
   "Prohall", "Yummy", "Teeva", "Dom Casero", "Garnier", "Desinblue", "Muriel", "Dermachem",
@@ -575,13 +644,15 @@ const marcas = [
   "Sace Lady", "Cif", "Bigboom", "Bauny", "Arvensis", "Lady Beauty", "Gota Brasil"
 ];
 
-/* MÉTRICAS: as três marcadas com capa:true aparecem também no topo.
-   valor = número que o contador anima | prefixo e sufixo = o que vem antes e depois */
+/* MÉTRICAS: as três marcadas com capa:true aparecem também nos widgets do topo.
+   valor = número que o contador anima | prefixo e sufixo = o que vem antes e depois
+   titulo = nome curto que aparece no alto do widget
+   icone = video, marca, olho ou grade | cor = cor do ícone */
 const metricas = [
-  { valor: 100, prefixo: "+", sufixo: "",  rotulo: "vídeos entregues", capa: true },
-  { valor: 50,  prefixo: "+", sufixo: "",  rotulo: "marcas atendidas", capa: true },
-  { valor: 1,   prefixo: "",  sufixo: "M", rotulo: "de views somadas", capa: true },
-  { valor: 5,   prefixo: "",  sufixo: "",  rotulo: "nichos atendidos", capa: false }
+  { valor: 100, prefixo: "+", sufixo: "",  rotulo: "vídeos entregues", titulo: "Vídeos", capa: true,  icone: "video", cor: "#ff2d55" },
+  { valor: 50,  prefixo: "+", sufixo: "",  rotulo: "marcas atendidas", titulo: "Marcas", capa: true,  icone: "marca", cor: "#af52de" },
+  { valor: 1,   prefixo: "",  sufixo: "M", rotulo: "de views somadas", titulo: "Views",  capa: true,  icone: "olho",  cor: "#0071e3" },
+  { valor: 5,   prefixo: "",  sufixo: "",  rotulo: "nichos atendidos", titulo: "Nichos", capa: false, icone: "grade", cor: "#ff9500" }
 ];
 
 /* CONTEÚDOS DE DESTAQUE (3 vídeos)
@@ -589,12 +660,12 @@ const metricas = [
    capa = AQUI ENTRA A CAPA: caminho de uma imagem vertical 9:16, ex.: "capa-01.jpg".
           Deixe "" para mostrar o bloco em degradê. */
 const destaques = [
-  { numero: "+00K", rotulo: "views no reels",   titulo: "Título do destaque 01", contexto: "Marca, produto e objetivo do vídeo em uma linha.", nicho: "beleza",   link: "https://www.instagram.com/byduanecardoso/", capa: "" },
-  { numero: "+00K", rotulo: "views no tiktok",  titulo: "Título do destaque 02", contexto: "Marca, produto e objetivo do vídeo em uma linha.", nicho: "skincare", link: "https://www.instagram.com/byduanecardoso/", capa: "" },
+  { numero: "+00K",  rotulo: "views no reels",  titulo: "Título do destaque 01", contexto: "Marca, produto e objetivo do vídeo em uma linha.", nicho: "beleza",   link: "https://www.instagram.com/byduanecardoso/", capa: "" },
+  { numero: "+00K",  rotulo: "views no tiktok", titulo: "Título do destaque 02", contexto: "Marca, produto e objetivo do vídeo em uma linha.", nicho: "skincare", link: "https://www.instagram.com/byduanecardoso/", capa: "" },
   { numero: "+0,0%", rotulo: "de engajamento",  titulo: "Título do destaque 03", contexto: "Marca, produto e objetivo do vídeo em uma linha.", nicho: "fitness",  link: "https://www.instagram.com/byduanecardoso/", capa: "" }
 ];
 
-/* NICHOS: viram os botões de filtro do feed */
+/* NICHOS: viram os botões de filtro dos trabalhos */
 const nichos = [
   { id: "beleza",   nome: "Beleza" },
   { id: "skincare", nome: "Skincare" },
@@ -603,32 +674,32 @@ const nichos = [
   { id: "tech",     nome: "Tech" }
 ];
 
-/* TRABALHOS DO FEED
+/* TRABALHOS
    nicho = um dos ids acima | capa = imagem quadrada 1:1 ("" mostra o degradê)
    link = endereço do vídeo ("" deixa o quadrado sem link) */
 const trabalhos = [
-  { nicho: "beleza",   marca: "Dove",           formato: "Vídeo de review",      capa: "", link: "" },
-  { nicho: "beleza",   marca: "Pantene",        formato: "Demonstração de uso",  capa: "", link: "" },
-  { nicho: "beleza",   marca: "Niely",          formato: "Antes e depois",       capa: "", link: "" },
-  { nicho: "skincare", marca: "CeraVe",         formato: "Rotina de skincare",   capa: "", link: "" },
-  { nicho: "skincare", marca: "Garnier",        formato: "Vídeo de review",      capa: "", link: "" },
-  { nicho: "skincare", marca: "Dermachem",      formato: "Demonstração de uso",  capa: "", link: "" },
-  { nicho: "moda",     marca: "Marca 01",       formato: "Provador",             capa: "", link: "" },
-  { nicho: "moda",     marca: "Marca 02",       formato: "Unboxing",             capa: "", link: "" },
-  { nicho: "fitness",  marca: "Marca 03",       formato: "Demonstração de uso",  capa: "", link: "" },
-  { nicho: "fitness",  marca: "Marca 04",       formato: "Rotina de treino",     capa: "", link: "" },
-  { nicho: "tech",     marca: "Marca 05",       formato: "Unboxing",             capa: "", link: "" },
-  { nicho: "tech",     marca: "Marca 06",       formato: "Vídeo de review",      capa: "", link: "" }
+  { nicho: "beleza",   marca: "Dove",      formato: "Vídeo de review",     capa: "", link: "" },
+  { nicho: "beleza",   marca: "Pantene",   formato: "Demonstração de uso", capa: "", link: "" },
+  { nicho: "beleza",   marca: "Niely",     formato: "Antes e depois",      capa: "", link: "" },
+  { nicho: "skincare", marca: "CeraVe",    formato: "Rotina de skincare",  capa: "", link: "" },
+  { nicho: "skincare", marca: "Garnier",   formato: "Vídeo de review",     capa: "", link: "" },
+  { nicho: "skincare", marca: "Dermachem", formato: "Demonstração de uso", capa: "", link: "" },
+  { nicho: "moda",     marca: "Marca 01",  formato: "Provador",            capa: "", link: "" },
+  { nicho: "moda",     marca: "Marca 02",  formato: "Unboxing",            capa: "", link: "" },
+  { nicho: "fitness",  marca: "Marca 03",  formato: "Demonstração de uso", capa: "", link: "" },
+  { nicho: "fitness",  marca: "Marca 04",  formato: "Rotina de treino",    capa: "", link: "" },
+  { nicho: "tech",     marca: "Marca 05",  formato: "Unboxing",            capa: "", link: "" },
+  { nicho: "tech",     marca: "Marca 06",  formato: "Vídeo de review",     capa: "", link: "" }
 ];
 
-/* SERVIÇOS (seis) */
+/* SERVIÇOS (seis). cor = cor do ícone no estilo dos Ajustes do iPhone */
 const servicos = [
-  { titulo: "Vídeo UGC",               descricao: "Vídeo vertical de review ou demonstração, gravado com roteiro aprovado e linguagem de quem usa de verdade." },
-  { titulo: "Corte para anúncio",      descricao: "Versões curtas com ganchos diferentes nos primeiros segundos, prontas para testar no tráfego pago." },
-  { titulo: "Fotos do produto",        descricao: "Fotos em uso e com textura, com luz natural, para feed, site e marketplace." },
-  { titulo: "Unboxing",                descricao: "A primeira impressão ao abrir a caixa, mostrando embalagem, detalhes e o que vem dentro." },
-  { titulo: "Publicação no meu perfil", descricao: "O vídeo publicado no @byduanecardoso, em collab com a sua marca, para alcançar o meu público." },
-  { titulo: "Pacote mensal",           descricao: "Uma quantidade fixa de vídeos por mês, com calendário combinado e prioridade na entrega." }
+  { titulo: "Vídeo UGC",                cor: "#ff2d55", descricao: "Vídeo vertical de review ou demonstração, gravado com roteiro aprovado e linguagem de quem usa de verdade." },
+  { titulo: "Corte para anúncio",       cor: "#ff9500", descricao: "Versões curtas com ganchos diferentes nos primeiros segundos, prontas para testar no tráfego pago." },
+  { titulo: "Fotos do produto",         cor: "#34c759", descricao: "Fotos em uso e com textura, com luz natural, para feed, site e marketplace." },
+  { titulo: "Unboxing",                 cor: "#0071e3", descricao: "A primeira impressão ao abrir a caixa, mostrando embalagem, detalhes e o que vem dentro." },
+  { titulo: "Publicação no meu perfil", cor: "#af52de", descricao: "O vídeo publicado no @byduanecardoso, em collab com a sua marca, para alcançar o meu público." },
+  { titulo: "Pacote mensal",            cor: "#5856d6", descricao: "Uma quantidade fixa de vídeos por mês, com calendário combinado e prioridade na entrega." }
 ];
 
 /* RESULTADOS DE CAMPANHA (troque pelos seus dados reais) */
@@ -640,10 +711,10 @@ const resultados = [
 
 /* DEPOIMENTOS (troque pelo texto real de cada cliente) */
 const depoimentos = [
-  { texto: "Cole aqui o depoimento real da Cliente 01: o que ela achou do roteiro, da entrega e do resultado.", nome: "Nome do contato", empresa: "Cliente 01" },
-  { texto: "Cole aqui o depoimento real da Cliente 02: como foi trabalhar com você do briefing ao vídeo final.",  nome: "Nome do contato", empresa: "Cliente 02" },
+  { texto: "Cole aqui o depoimento real da Cliente 01: o que ela achou do roteiro, da entrega e do resultado.",  nome: "Nome do contato", empresa: "Cliente 01" },
+  { texto: "Cole aqui o depoimento real da Cliente 02: como foi trabalhar com você do briefing ao vídeo final.",   nome: "Nome do contato", empresa: "Cliente 02" },
   { texto: "Cole aqui o depoimento real da Cliente 03: o que mudou nas vendas ou no engajamento depois do vídeo.", nome: "Nome do contato", empresa: "Cliente 03" },
-  { texto: "Cole aqui o depoimento real da Cliente 04: por que ela indicaria o seu trabalho para outra marca.",    nome: "Nome do contato", empresa: "Cliente 04" }
+  { texto: "Cole aqui o depoimento real da Cliente 04: por que ela indicaria o seu trabalho para outra marca.",     nome: "Nome do contato", empresa: "Cliente 04" }
 ];
 
 /* =====================================================================
@@ -651,6 +722,7 @@ const depoimentos = [
    ===================================================================== */
 document.documentElement.classList.add("js");
 const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const coresApp = ["#ff2d55", "#ff9500", "#34c759", "#0071e3", "#af52de", "#5856d6", "#ff3b30", "#00a3bf"];
 
 function esc(t) {
   return String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -663,30 +735,48 @@ function midia(capa, alt, legenda, gradiente) {
   if (capa) return `<img src="${esc(capa)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   return `<div class="placeholder ${gradiente}" role="img" aria-label="${esc(alt)}"><span class="legenda">${esc(legenda)}</span></div>`;
 }
-const iconeReels = `<svg class="icone-reels" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l3 5.5M14 3l3 5.5"/><path d="m10 12 4.5 2.5L10 17z" fill="currentColor"/></svg>`;
 function formatarNumero(m, atual) {
   const casas = m.valor < 10 && atual !== m.valor ? 1 : 0;
   return m.prefixo + atual.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas }) + m.sufixo;
 }
+const icones = {
+  video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="m15.5 10.5 6-3.5v10l-6-3.5z"/></svg>',
+  marca: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 7z"/><circle cx="7.5" cy="8" r="1.5" fill="currentColor"/></svg>',
+  olho:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  grade: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>'
+};
 
-/* ---------- Capa: números e stories ---------- */
-document.getElementById("numeros-capa").innerHTML = metricas.filter(m => m.capa)
-  .map(m => `<li><strong>${formatarNumero(m, m.valor)}</strong>${esc(m.rotulo)}</li>`).join("");
+/* ---------- Relógio e data ao vivo (tela de bloqueio) ---------- */
+function atualizarRelogio() {
+  const agora = new Date();
+  const hora = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  document.querySelectorAll(".relogio").forEach(el => el.textContent = hora);
+  let data = agora.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
+  data = data.charAt(0).toUpperCase() + data.slice(1);
+  document.querySelectorAll(".data-curta").forEach(el => el.textContent = data);
+}
+atualizarRelogio();
+setInterval(atualizarRelogio, 15000);
 
-document.getElementById("stories").innerHTML = marcas
-  .map(m => `<li class="story"><div class="bola" aria-hidden="true"><span>${esc(iniciais(m))}</span></div><p>${esc(m)}</p></li>`).join("");
+/* ---------- Capa: widgets e faixa de marcas ---------- */
+document.getElementById("numeros-capa").innerHTML = metricas.filter(m => m.capa).map(m => `
+  <li class="widget vidro">
+    <span class="topo-w" style="color:${m.cor}" aria-hidden="true">${icones[m.icone] || ""}${esc(m.titulo)}</span>
+    <strong>${formatarNumero(m, m.valor)}</strong><span>${esc(m.rotulo)}</span>
+  </li>`).join("");
 
-const listaFaixa = `<ul>${marcas.map(m => `<li>${esc(m)}</li>`).join("")}</ul>`;
+const listaFaixa = `<ul>${marcas.map((m, i) => `<li><span class="app" style="background:${coresApp[i % coresApp.length]}">${esc(iniciais(m))}</span>${esc(m)}</li>`).join("")}</ul>`;
 document.getElementById("faixa").innerHTML = listaFaixa + listaFaixa;
+document.getElementById("marcas-lista").textContent = marcas.join(", ") + ".";
 
 /* ---------- Destaques ---------- */
-document.getElementById("destaques-grade").innerHTML = destaques.map((d, i) => `
-  <a class="card-video revelar" href="${esc(d.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(d.titulo)}, ${esc(d.numero)} ${esc(d.rotulo)}">
-    <div class="capa-video">
+document.getElementById("destaques-grade").innerHTML = destaques.map(d => `
+  <a class="card-video cartao revelar" href="${esc(d.link)}" target="_blank" rel="noopener" aria-label="Assistir: ${esc(d.titulo)}, ${esc(d.numero)} ${esc(d.rotulo)}">
+    <div class="moldura"><div class="capa-video">
       ${midia(d.capa, "Capa do vídeo " + d.titulo, "capa do vídeo 9:16", "g-" + d.nicho)}
-      ${iconeReels}
+      <span class="mini-ilha" aria-hidden="true"></span>
       <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-    </div>
+    </div></div>
     <div class="info">
       <p class="numero">${esc(d.numero)}</p>
       <p class="rotulo">${esc(d.rotulo)}</p>
@@ -695,18 +785,18 @@ document.getElementById("destaques-grade").innerHTML = destaques.map((d, i) => `
     </div>
   </a>`).join("");
 
-/* ---------- Feed com filtro ---------- */
+/* ---------- Trabalhos com filtro ---------- */
 const abas = document.getElementById("abas");
-const iconeGrade = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>`;
 abas.innerHTML = [{ id: "todos", nome: "Todos" }, ...nichos]
-  .map((n, i) => `<button class="aba" type="button" data-filtro="${n.id}" aria-pressed="${i === 0}">${i === 0 ? iconeGrade : ""}${esc(n.nome)}</button>`).join("");
+  .map((n, i) => `<button class="seg" type="button" data-filtro="${n.id}" aria-pressed="${i === 0}">${esc(n.nome)}</button>`).join("");
 
+const iconeCamera = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m17 10.5 5-3v9l-5-3z"/></svg>';
 const feed = document.getElementById("feed");
 feed.innerHTML = trabalhos.map(t => {
   const nomeNicho = (nichos.find(n => n.id === t.nicho) || {}).nome || t.nicho;
   const conteudo = `
     ${midia(t.capa, t.formato + " para " + t.marca, "vídeo 1:1", "g-" + t.nicho)}
-    ${iconeReels}
+    <span class="selo-video" aria-hidden="true">${iconeCamera}</span>
     <div class="post-sobreposto" aria-hidden="true"><strong>${esc(t.marca)}</strong><span>${esc(t.formato)}</span><em>${esc(nomeNicho)}</em></div>`;
   return t.link
     ? `<a class="post" data-nicho="${t.nicho}" href="${esc(t.link)}" target="_blank" rel="noopener" aria-label="${esc(t.formato)} para ${esc(t.marca)}, nicho ${esc(nomeNicho)}">${conteudo}</a>`
@@ -714,54 +804,59 @@ feed.innerHTML = trabalhos.map(t => {
 }).join("");
 
 const aviso = document.getElementById("feed-aviso");
+function contarTrabalhos(filtro, nome) {
+  const total = filtro === "todos" ? trabalhos.length : trabalhos.filter(t => t.nicho === filtro).length;
+  aviso.textContent = total
+    ? (filtro === "todos" ? `${total} trabalhos` : `${total} ${total === 1 ? "trabalho" : "trabalhos"} de ${nome}`)
+    : `Ainda não tem trabalho de ${nome} aqui. Em breve!`;
+}
+contarTrabalhos("todos");
 abas.addEventListener("click", e => {
-  const botao = e.target.closest(".aba");
+  const botao = e.target.closest(".seg");
   if (!botao) return;
   const filtro = botao.dataset.filtro;
-  abas.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b === botao)));
-  let total = 0;
-  feed.querySelectorAll(".post").forEach(p => {
-    const mostrar = filtro === "todos" || p.dataset.nicho === filtro;
-    p.hidden = !mostrar;
-    if (mostrar) total++;
-  });
-  const nome = botao.textContent.trim();
-  aviso.textContent = total
-    ? (filtro === "todos" ? `Mostrando todos os ${total} trabalhos.` : `Mostrando ${total} ${total === 1 ? "trabalho" : "trabalhos"} de ${nome}.`)
-    : `Ainda não tem trabalho de ${nome} aqui. Em breve!`;
+  abas.querySelectorAll(".seg").forEach(b => b.setAttribute("aria-pressed", String(b === botao)));
+  feed.querySelectorAll(".post").forEach(p => { p.hidden = !(filtro === "todos" || p.dataset.nicho === filtro); });
+  contarTrabalhos(filtro, botao.textContent.trim());
 });
 
-/* ---------- Serviços ---------- */
-document.getElementById("servicos-grade").innerHTML = servicos.map((s, i) => `
-  <article class="servico revelar">
-    <span class="num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
-    <h3><span class="sr-only">${i + 1}. </span>${esc(s.titulo)}</h3>
-    <p>${esc(s.descricao)}</p>
-  </article>`).join("");
+/* ---------- Serviços (duas listas de três, no estilo Ajustes) ---------- */
+const linhaServico = (s, i) => `
+  <li class="ajuste">
+    <span class="app" style="background:${s.cor}" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+    <div><h3><span class="sr-only">${i + 1}. </span>${esc(s.titulo)}</h3><p>${esc(s.descricao)}</p></div>
+  </li>`;
+const metade = Math.ceil(servicos.length / 2);
+document.getElementById("servicos-grade").innerHTML = [servicos.slice(0, metade), servicos.slice(metade)]
+  .map((grupo, g) => `<ul class="grupo cartao revelar">${grupo.map((s, i) => linhaServico(s, i + g * metade)).join("")}</ul>`).join("");
 
 /* ---------- Métricas, resultados e depoimentos ---------- */
 document.getElementById("metricas").innerHTML = metricas.map((m, i) => `
-  <div class="metrica revelar">
+  <div class="metrica cartao revelar">
+    <span class="topo-w" aria-hidden="true"><span class="app" style="background:${m.cor}">${icones[m.icone] || ""}</span>${esc(m.titulo)}</span>
     <strong class="contador" data-i="${i}" aria-label="${esc(formatarNumero(m, m.valor))}">${formatarNumero(m, m.valor)}</strong>
     <span>${esc(m.rotulo)}</span>
   </div>`).join("");
 
+const seta = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l8 10h-5v6H9v-6H4z"/></svg>';
+const grafico = '<svg class="grafico" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c759" stop-opacity=".35"/><stop offset="1" stop-color="#34c759" stop-opacity="0"/></linearGradient></defs><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4 L200 44 L0 44Z" fill="url(#gv)"/><path d="M0 38 L25 34 L50 36 L75 26 L100 28 L125 18 L150 20 L175 9 L200 4" fill="none" stroke="#34c759" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
 document.getElementById("resultados").innerHTML = resultados.map(r => `
-  <article class="resultado revelar"><div>
-    <strong>${esc(r.numero)}</strong>
-    <p class="rot">${esc(r.rotulo)}</p>
+  <article class="resultado cartao revelar">
     <p class="cli">${esc(r.cliente)}</p>
+    <strong>${seta}${esc(r.numero)}</strong>
+    <p class="rot">${esc(r.rotulo)}</p>
     <p>${esc(r.descricao)}</p>
-  </div></article>`).join("");
+    ${grafico}
+  </article>`).join("");
 
-const gradCli = ["g-beleza", "g-moda", "g-skincare", "g-tech"];
 document.getElementById("depoimentos").innerHTML = depoimentos.map((d, i) => `
-  <figure class="depoimento" style="margin:0">
-    <div class="foto-cli">${midia("", "", "", gradCli[i % 4]).replace('role="img" aria-label=""', 'aria-hidden="true"').replace('<span class="legenda"></span>', iniciais(d.empresa))}</div>
-    <blockquote class="balao" style="margin:0">
-      <p>${esc(d.texto)}</p>
-      <footer><strong>${esc(d.nome)}</strong>, ${esc(d.empresa)}<span class="coracao" aria-hidden="true">♥</span></footer>
-    </blockquote>
+  <figure class="notificacao vidro revelar">
+    <span class="app" style="background:${coresApp[(i * 2) % coresApp.length]}" aria-hidden="true">${esc(iniciais(d.empresa))}</span>
+    <div>
+      <figcaption class="cab"><strong>${esc(d.nome)}</strong><time>agora</time></figcaption>
+      <p class="empresa">${esc(d.empresa)}</p>
+      <blockquote><p>${esc(d.texto)}</p></blockquote>
+    </div>
   </figure>`).join("");
 
 /* ---------- Contador animado ---------- */
@@ -837,7 +932,7 @@ formContato.addEventListener("submit", e => {
   if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
   const nome = formContato.nome.value.trim().split(" ")[0];
   enviar(formContato).then(() => {
-    document.getElementById("confirmacao-titulo").textContent = `Mensagem recebida, ${nome}!`;
+    document.getElementById("confirmacao-titulo").textContent = `Mensagem enviada, ${nome}!`;
     formContato.reset();
     formContato.hidden = true;
     confirmacao.classList.add("ativa");
@@ -893,9 +988,10 @@ formKit.addEventListener("submit", e => {
   const nome = formKit.nome.value.trim().split(" ")[0];
   enviar(formKit).then(() => {
     document.getElementById("modal-conteudo").innerHTML = `
+      <span class="app icone-kit" style="background:#34c759" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>
       <h2 id="modal-titulo" tabindex="-1">Pedido feito, ${esc(nome)}!</h2>
       <p>Meu mídia kit completo vai chegar no seu e-mail em breve.</p>
-      <button class="botao botao-cinza" type="button" id="kit-ok">Voltar ao portfólio</button>`;
+      <button class="botao botao-vidro" type="button" id="kit-ok" style="width:100%">Voltar ao portfólio</button>`;
     document.getElementById("kit-ok").addEventListener("click", fecharModal);
     document.getElementById("modal-titulo").focus();
   });
