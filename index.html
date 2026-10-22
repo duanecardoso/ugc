@@ -1044,6 +1044,17 @@ section{padding:96px 0}
   </div>
 </div>
 
+<!-- Estatísticas (GoatCounter): conta visitas, origem, vídeos abertos e cliques. Sem cookies e sem dados pessoais. Os números aparecem no Creator. -->
+<script>
+  // Todas as visitas contam na mesma página; o ?ref=bio / ?ref=dm vira a origem da visita.
+  window.goatcounter = { path: function () { return location.pathname || "/"; } };
+  function contar(caminho, titulo) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: caminho, title: titulo || caminho, event: true });
+    } catch (e) { /* estatística nunca atrapalha o site */ }
+  }
+</script>
+<script data-goatcounter="https://duanecardoso.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script>
 /* =====================================================================
    DADOS DO PORTFÓLIO
@@ -1680,7 +1691,7 @@ function aplicarIdioma(novo, salvar) {
 
 document.querySelector(".idioma").addEventListener("click", e => {
   const b = e.target.closest("button[data-lang]");
-  if (b && b.dataset.lang !== idioma) aplicarIdioma(b.dataset.lang, true);
+  if (b && b.dataset.lang !== idioma) { aplicarIdioma(b.dataset.lang, true); contar("idioma-" + b.dataset.lang, "Trocou idioma para " + b.dataset.lang.toUpperCase()); }
 });
 
 /* ---------- Filtro dos trabalhos ---------- */
@@ -1775,6 +1786,7 @@ const confirmacao = document.getElementById("confirmacao");
 formContato.addEventListener("submit", e => {
   e.preventDefault();
   if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
+  contar("form-contato", "Formulário de contato enviado");
   const nomeCompleto = formContato.nome.value.trim();
   const nome = nomeCompleto.split(" ")[0];
   const texto = tr(
@@ -1843,6 +1855,7 @@ const formKit = document.getElementById("form-kit");
 formKit.addEventListener("submit", e => {
   e.preventDefault();
   if (!formKit.checkValidity()) { formKit.reportValidity(); return; }
+  contar("form-kit", "Formulário do kit enviado");
   const nomeCompleto = formKit.nome.value.trim();
   const nome = nomeCompleto.split(" ")[0];
   const marca = formKit.marca.value.trim();
@@ -1878,6 +1891,7 @@ function tocar(i) {
   const nome = (card.getAttribute("aria-label") || "").replace(/^(Assistir|Watch): /, "") || tr("Vídeo", "Video");
   playerTela.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=${ehEn() ? "en" : "pt-BR"}" title="${esc(nome)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
   document.getElementById("player-titulo").textContent = nome;
+  contar("video-" + id, "Vídeo: " + nome);
   document.getElementById("player-youtube").href = "https://youtube.com/shorts/" + id;
 }
 function abrirPlayer(card) {
@@ -2009,6 +2023,31 @@ gradeDestaques.addEventListener("scroll", () => {
 /* ---------- Ano automático no rodapé ---------- */
 document.getElementById("ano").textContent = new Date().getFullYear();
 
+
+/* ---------- Estatísticas: cliques de contato e até onde a pessoa rolou ---------- */
+document.addEventListener("click", e => {
+  const a = e.target.closest && e.target.closest("a[href]");
+  if (!a) return;
+  const h = a.getAttribute("href") || "";
+  const tipo = /wa\.me|whatsapp/i.test(h) ? "whatsapp"
+    : /^mailto:/i.test(h) ? "email"
+    : /instagram\.com/i.test(h) ? "instagram"
+    : /tiktok\.com/i.test(h) ? "tiktok"
+    : a.id === "player-youtube" ? "youtube" : null;
+  if (tipo) contar("clique-" + tipo, "Clique: " + tipo);
+}, true);
+if ("IntersectionObserver" in window) {
+  const vistas = new Set();
+  const nomes = { trabalhos: "Trabalhos", servicos: "Serviços", numeros: "Números", contato: "Contato" };
+  const obs = new IntersectionObserver(entradas => entradas.forEach(en => {
+    const id = en.target.id;
+    if (!en.isIntersecting || vistas.has(id)) return;
+    vistas.add(id);
+    obs.unobserve(en.target);
+    contar("secao-" + id, "Viu a seção " + nomes[id]);
+  }), { rootMargin: "0px 0px -50% 0px" });
+  Object.keys(nomes).forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+}
 </script>
 </body>
 </html>
