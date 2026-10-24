@@ -667,7 +667,7 @@ section{padding:96px 0}
 /* =====================================================================
    COMO CONTRATAR, PERGUNTAS FREQUENTES E FORMULÁRIO
    ===================================================================== */
-.resumo-contratar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.resumo-contratar{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:22px}
 .resumo-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:14px 16px;box-shadow:var(--sombra)}
 .resumo-item .app{width:40px;height:40px;font-size:1.15rem}
 .resumo-item small{display:block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2)}
@@ -690,7 +690,6 @@ section{padding:96px 0}
   .resumo-item:hover{transform:translateY(-4px);box-shadow:var(--sombra-forte)}
   .resumo-item:hover .app{transform:scale(1.1) rotate(-6deg)}
 }
-@media (max-width:860px){ .resumo-contratar{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:420px){ .resumo-contratar{grid-template-columns:1fr} }
 .select-caixa{position:relative}
 .select-caixa::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--texto-2);border-bottom:2px solid var(--texto-2);transform:translateY(-70%) rotate(45deg);pointer-events:none}
@@ -1328,7 +1327,7 @@ const servicos = [
 ];
 
 /* COMO CONTRATAR: informações que aparecem em Serviços.
-   precoAPartirDe = valor inicial, ex.: "R$ 300". Deixe "" para aparecer "sob consulta". */
+   precoAPartirDe = valor inicial, ex.: "R$ 300". Deixe "" para não mostrar preço. */
 const precoAPartirDe = "";
 
 /* PERGUNTAS FREQUENTES (aparecem em Serviços). {preco} é trocado pelo valor acima. */
@@ -1714,15 +1713,15 @@ function desenharTudo() {
     </li>`;
   /* Resumo para contratar + perguntas frequentes */
   document.getElementById("resumo-contratar").innerHTML = [
-    ["💸", tr("Investimento", "Investment"), precoAPartirDe ? tr(`a partir de ${precoAPartirDe}`, `from ${precoAPartirDe}`) : tr("sob consulta", "on request"), "c-rosa"],
+    precoAPartirDe ? ["💸", tr("Investimento", "Investment"), tr(`a partir de ${precoAPartirDe}`, `from ${precoAPartirDe}`), "c-rosa"] : null,
     ["⏱️", tr("Entrega", "Delivery"), tr("até 5 dias úteis", "up to 5 business days"), "c-manteiga"],
     ["📣", tr("Uso em anúncio", "Ad usage"), tr("3 meses inclusos", "3 months included"), "c-rosa-claro"],
     ["🗓️", tr("Pacote mensal", "Monthly package"), tr("4, 8 ou 12 vídeos", "4, 8 or 12 videos"), "c-marrom"]
-  ].map(([e, rot, val, cor]) => `<li class="resumo-item"><span class="app ${cor}" aria-hidden="true">${e}</span><span><small>${esc(rot)}</small><b>${esc(val)}</b></span></li>`).join("");
+  ].filter(Boolean).map(([e, rot, val, cor]) => `<li class="resumo-item"><span class="app ${cor}" aria-hidden="true">${e}</span><span><small>${esc(rot)}</small><b>${esc(val)}</b></span></li>`).join("");
   document.getElementById("faq").innerHTML = perguntas.map((q, i) => `
     <details class="faq-item"${i === 0 ? " open" : ""}>
       <summary><span>${esc(campo(q, "p"))}</span><span class="faq-seta" aria-hidden="true"></span></summary>
-      <p>${esc(precoAPartirDe ? campo(q, "r").replace("{preco}", precoAPartirDe) : campo(q, "r").replace(/(Projetos a partir de|Projects start at) \{preco\}\./, tr("Valores sob consulta.", "Pricing on request.")))}</p>
+      <p>${esc(precoAPartirDe ? campo(q, "r").replace("{preco}", precoAPartirDe) : campo(q, "r").replace(/(Projetos a partir de|Projects start at) \{preco\}\. /, "").replace("O valor final", "O valor").replace("The final price", "The price"))}</p>
     </details>`).join("");
 
   const metade = Math.ceil(servicos.length / 2);
