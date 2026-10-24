@@ -664,6 +664,43 @@ section{padding:96px 0}
 .conversa-corpo{background:linear-gradient(160deg,var(--rosa-suave),var(--manteiga-suave))}
 .conversa-topo .selo-ok{background:var(--manteiga);color:var(--marrom)}
 
+/* =====================================================================
+   COMO CONTRATAR, PERGUNTAS FREQUENTES E FORMULÁRIO
+   ===================================================================== */
+.resumo-contratar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.resumo-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:14px 16px;box-shadow:var(--sombra)}
+.resumo-item .app{width:40px;height:40px;font-size:1.15rem}
+.resumo-item small{display:block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2)}
+.resumo-item b{display:block;font-size:.98rem;font-weight:700;line-height:1.25}
+.faq{margin-top:40px}
+.faq-titulo{font-size:1.45rem;font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
+.faq-lista{border-radius:var(--r);overflow:hidden;padding:0}
+.faq-item{position:relative}
+.faq-item + .faq-item::before{content:"";position:absolute;top:0;left:20px;right:0;height:1px;background:var(--linha)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;font-weight:700;font-size:1.02rem;list-style:none;cursor:pointer;min-height:56px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-seta{flex:none;width:28px;height:28px;border-radius:50%;background:var(--cinza);position:relative;transition:transform .35s var(--mola),background .2s}
+.faq-seta::before{content:"";position:absolute;left:50%;top:45%;width:8px;height:8px;border-right:2px solid var(--texto);border-bottom:2px solid var(--texto);transform:translate(-50%,-50%) rotate(45deg)}
+.faq-item[open] .faq-seta{transform:rotate(180deg);background:var(--manteiga)}
+.faq-item p{padding:0 20px 18px;color:var(--texto-2);max-width:760px}
+@media (hover:hover) and (pointer:fine){
+  .faq-item summary{transition:background .2s}
+  .faq-item summary:hover{background:var(--cinza)}
+  .resumo-item{transition:transform .4s var(--mola),box-shadow .3s}
+  .resumo-item:hover{transform:translateY(-4px);box-shadow:var(--sombra-forte)}
+  .resumo-item:hover .app{transform:scale(1.1) rotate(-6deg)}
+}
+@media (max-width:860px){ .resumo-contratar{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:420px){ .resumo-contratar{grid-template-columns:1fr} }
+.select-caixa{position:relative}
+.select-caixa::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--texto-2);border-bottom:2px solid var(--texto-2);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.campo select{width:100%;appearance:none;-webkit-appearance:none;border:1px solid var(--linha);background:#fff;border-radius:14px;padding:12px 40px 12px 14px;font-size:1rem;min-height:48px;outline:none;color:var(--texto);font-family:inherit}
+.campo select:focus{border-color:var(--texto);box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+.resposta-24h{display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:12px 16px 16px;font-size:.85rem;font-weight:600;color:var(--texto-2)}
+#form-contato > .alerta-botao.leve{border-top:1px solid var(--linha)}
+.logo-conversa{overflow:hidden;padding:0;background:#fff;border-radius:50%}
+.logo-conversa img{width:100%;height:100%;object-fit:cover}
+
 /* Quem prefere menos movimento: sem animações */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -727,7 +764,7 @@ section{padding:96px 0}
       <p class="data-hoje"><span id="data-hoje">Hoje</span> <em>· @byduanecardoso</em></p>
       <h1 id="nome-principal"><span>Duane</span><span>Cardoso<span class="ponto">.</span></span></h1>
       <!-- APRESENTAÇÃO (até 3 linhas) -->
-      <p class="bio" data-i18n="bio">Sou a <strong>Duane Cardoso</strong>, UGC creator em Valparaíso de Goiás. Gravo vídeos de <strong>review e demonstração</strong> para marcas de beleza, moda, fitness e tech, mostrando o produto em uso e o que o consumidor precisa saber antes de comprar. Já entreguei mais de 100 vídeos para mais de 50 marcas.</p>
+      <p class="bio" data-i18n="bio"><strong>UGC creator de conversão.</strong> Do primeiro segundo à decisão de compra, cada detalhe pensado para conectar, envolver e converter.</p>
       <div class="acoes">
         <a class="botao botao-principal" href="#contato" data-i18n="bt-falar">Falar comigo</a>
         <a class="botao botao-claro" href="#trabalhos" data-i18n="bt-trabalhos">Ver os trabalhos</a>
@@ -855,6 +892,13 @@ section{padding:96px 0}
       <figure class="polaroid revelar"><img src="fotos/extra.webp" alt="Duane Cardoso olhando para o lado, de blusa prateada" data-i18n-attr="alt:a-polaroid" width="640" height="800" loading="lazy" decoding="async"><figcaption data-i18n="polaroid">bastidores ✨</figcaption></figure>
     </div>
     <div class="servicos-grade" id="servicos-grade"></div>
+
+    <!-- COMO CONTRATAR: resumo rápido + perguntas frequentes (gerados a partir de "precoAPartirDe" e "perguntas" no script) -->
+    <ul class="resumo-contratar revelar" id="resumo-contratar" aria-label="Resumo para contratar"></ul>
+    <div class="faq revelar">
+      <h3 class="faq-titulo" data-i18n="faq-titulo">Perguntas frequentes</h3>
+      <div class="faq-lista cartao" id="faq"></div>
+    </div>
   </div>
 </section>
 
@@ -924,11 +968,31 @@ section{padding:96px 0}
               <input id="c-email" name="email" type="email" autocomplete="email" required>
             </div>
             <div class="campo">
+              <label for="c-marca" data-i18n="lb-marca">Marca</label>
+              <input id="c-marca" name="marca" type="text" autocomplete="organization" required placeholder="nome da marca" data-i18n-attr="placeholder:ph-marca">
+            </div>
+            <div class="campo">
+              <label for="c-orcamento" data-i18n="lb-orcamento">Orçamento</label>
+              <div class="select-caixa">
+                <select id="c-orcamento" name="orcamento">
+                  <option value="prefiro não dizer" data-i18n="orc-0">prefiro não dizer</option>
+                  <option value="até R$ 2.000" data-i18n="orc-1">até R$ 2.000</option>
+                  <option value="R$ 2.000 a R$ 5.000" data-i18n="orc-2">R$ 2.000 a R$ 5.000</option>
+                  <option value="R$ 5.000 a R$ 10.000" data-i18n="orc-3">R$ 5.000 a R$ 10.000</option>
+                  <option value="R$ 10.000 a R$ 20.000" data-i18n="orc-4">R$ 10.000 a R$ 20.000</option>
+                  <option value="acima de R$ 20.000" data-i18n="orc-5">acima de R$ 20.000</option>
+                  <option value="pacote mensal recorrente" data-i18n="orc-6">pacote mensal recorrente</option>
+                </select>
+              </div>
+            </div>
+            <div class="campo">
               <label for="c-msg" data-i18n="lb-msg">Mensagem</label>
-              <textarea id="c-msg" name="mensagem" required placeholder="Produto, nicho e prazo da campanha" data-i18n-attr="placeholder:ph-msg"></textarea>
+              <textarea id="c-msg" name="mensagem" required placeholder="Objetivo da campanha, produto e prazo" data-i18n-attr="placeholder:ph-msg"></textarea>
             </div>
           </div>
           <button class="alerta-botao" type="submit" data-i18n="bt-enviar">Enviar pelo WhatsApp</button>
+          <button class="alerta-botao leve" type="button" id="enviar-email" data-i18n="bt-email">Prefiro e-mail</button>
+          <p class="resposta-24h"><span aria-hidden="true">⏱️</span> <span data-i18n="resposta-24h">Resposta em até 24h úteis</span></p>
         </form>
         <div class="confirmacao" id="confirmacao" role="status" aria-live="polite" tabindex="-1">
           <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
@@ -952,7 +1016,7 @@ section{padding:96px 0}
           <span class="app c-marrom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></span>
           <span><b>TikTok</b><small>@aanecardoso</small></span><span class="seta" aria-hidden="true">›</span>
         </a>
-        <a class="canal" href="mailto:ugcduanecardoso@gmail.com?subject=Parceria%20UGC">
+        <a class="canal" href="mailto:ugcduanecardoso@gmail.com?subject=Or%C3%A7amento%20UGC%20-%20%5Bsua%20marca%5D">
           <span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span>
           <span><b>E-mail</b><small>ugcduanecardoso@gmail.com</small></span><span class="seta" aria-hidden="true">›</span>
         </a>
@@ -971,7 +1035,7 @@ section{padding:96px 0}
       <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram @byduanecardoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
       <a href="https://www.tiktok.com/@aanecardoso/" target="_blank" rel="noopener" aria-label="TikTok @aanecardoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></a>
       <a href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></a>
-      <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail ugcduanecardoso@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></a>
+      <a href="mailto:ugcduanecardoso@gmail.com?subject=Or%C3%A7amento%20UGC%20-%20%5Bsua%20marca%5D" aria-label="E-mail ugcduanecardoso@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></a>
     </nav>
     <p class="copy">© <span id="ano">2026</span> Duane Cardoso. <span data-i18n="direitos">Todos os direitos reservados.</span></p>
   </div>
@@ -982,7 +1046,7 @@ section{padding:96px 0}
   <a href="https://wa.me/message/3T3RGVIR6SXPG1" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="app c-rosa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4-2.2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span><span class="dica" aria-hidden="true">WhatsApp</span></a>
   <a href="https://www.instagram.com/byduanecardoso/" target="_blank" rel="noopener" aria-label="Instagram"><span class="app c-rosa-claro" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff"/></svg></span><span class="dica" aria-hidden="true">Instagram</span></a>
   <a href="https://www.tiktok.com/@aanecardoso/" target="_blank" rel="noopener" aria-label="TikTok"><span class="app c-marrom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></span><span class="dica" aria-hidden="true">TikTok</span></a>
-  <a href="mailto:ugcduanecardoso@gmail.com" aria-label="E-mail"><span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span><span class="dica" aria-hidden="true">E-mail</span></a>
+  <a href="mailto:ugcduanecardoso@gmail.com?subject=Or%C3%A7amento%20UGC%20-%20%5Bsua%20marca%5D" aria-label="E-mail"><span class="app c-manteiga" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg></span><span class="dica" aria-hidden="true">E-mail</span></a>
   <button type="button" id="abrir-kit" aria-label="Pedir tabela de investimento" data-i18n-attr="aria-label:a-kit"><span class="app c-branco" aria-hidden="true" style="font-size:1.4rem">💌</span><span class="dica" aria-hidden="true" data-i18n="dica-kit">Tabela e pacotes</span></button>
 </nav>
 
@@ -1167,7 +1231,7 @@ const metricas = [
 const destaques = [
   { emoji: "💇‍♀️", cor: "c-rosa-claro", titulo: "Eudora · cabelos", titulo_en: "Eudora · haircare",
     contexto: "O produto em uso no cabelo, com textura e resultado na hora.", contexto_en: "The product in use on the hair, showing texture and results in real time.", link: "https://youtube.com/shorts/pEPI7L7Gc6c", capa: "" },
-  { emoji: "👗", cor: "c-manteiga", titulo: "Moda · vestido", titulo_en: "Fashion · dress",
+  { emoji: "👗", cor: "c-manteiga", titulo: "Mag Modas · vestido", titulo_en: "Mag Modas · dress",
     contexto: "Vestido no corpo real, com caimento e movimento.", contexto_en: "A dress on a real body, with fit and movement.", link: "https://youtube.com/shorts/dC3cfngqx-g", capa: "" },
   { emoji: "📣", cor: "c-marrom", titulo: "Reclame Aqui · anúncio", titulo_en: "Reclame Aqui · ad",
     contexto: "Vídeo no formato de anúncio para tráfego pago.", contexto_en: "Video in ad format for paid traffic.", link: "https://youtube.com/shorts/c1vmPbmJ7r8", capa: "" }
@@ -1208,22 +1272,22 @@ const videos = [
   { nicho: "beleza", categoria: "Bodycare", marca: "Dove",     produto: "Desodorante",            link: "https://youtube.com/shorts/3D3aVYfw3KA" },
   { nicho: "beleza", categoria: "Skincare", marca: "L’Oréal",  produto: "Protetor solar com cor", link: "https://youtube.com/shorts/_D2ZceAxQHg" },
   { nicho: "beleza", categoria: "Skincare", marca: "Garnier",  produto: "Hidratante",             link: "https://youtube.com/shorts/9XgO6tjbF8k" },
-  { nicho: "beleza", categoria: "Skincare", marca: "",         produto: "Esfoliante",             link: "https://youtube.com/shorts/bserwEeUEuw" },
+  { nicho: "beleza", categoria: "Skincare", marca: "Muriel",   produto: "Esfoliante",             link: "https://youtube.com/shorts/bserwEeUEuw" },
   /* MODA */
-  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Vestido",    link: "https://youtube.com/shorts/dC3cfngqx-g" },
-  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Vestido",    link: "https://youtube.com/shorts/gVZDlC9YPh0" },
-  { nicho: "moda", categoria: "Roupas",              marca: "", produto: "Casacos",    link: "https://youtube.com/shorts/e2Prll2ls1I" },
-  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Bolsas",     link: "https://youtube.com/shorts/AXmkA3sm4HE" },
-  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/u2gbF8c-wZI" },
-  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "", produto: "Acessórios", link: "https://youtube.com/shorts/hbch7H4Li60" },
+  { nicho: "moda", categoria: "Roupas",              marca: "Mag Modas",   produto: "Vestido",    link: "https://youtube.com/shorts/dC3cfngqx-g" },
+  { nicho: "moda", categoria: "Roupas",              marca: "Caju Store",  produto: "Vestido",    link: "https://youtube.com/shorts/gVZDlC9YPh0" },
+  { nicho: "moda", categoria: "Roupas",              marca: "Shein",       produto: "Casacos",    link: "https://youtube.com/shorts/e2Prll2ls1I" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "Santa Lola",  produto: "Bolsas",     link: "https://youtube.com/shorts/AXmkA3sm4HE" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "Shop Lala",   produto: "Acessórios", link: "https://youtube.com/shorts/u2gbF8c-wZI" },
+  { nicho: "moda", categoria: "Bolsas e acessórios", marca: "Orion",       produto: "Acessórios", link: "https://youtube.com/shorts/hbch7H4Li60" },
   /* FITNESS */
-  { nicho: "fitness", categoria: "Suplementos",    marca: "", produto: "Creatina",   link: "https://youtube.com/shorts/J0F4rpBC8is" },
-  { nicho: "fitness", categoria: "Suplementos",    marca: "", produto: "Cappuccino", link: "https://youtube.com/shorts/-_G1ITunHDg" },
-  { nicho: "fitness", categoria: "Roupas fitness", marca: "", produto: "Macaquinho", link: "https://youtube.com/shorts/3oBvDX_Co94" },
+  { nicho: "fitness", categoria: "Suplementos",    marca: "Thermolife", produto: "Creatina",   link: "https://youtube.com/shorts/J0F4rpBC8is" },
+  { nicho: "fitness", categoria: "Suplementos",    marca: "Thermolife", produto: "Cappuccino", link: "https://youtube.com/shorts/-_G1ITunHDg" },
+  { nicho: "fitness", categoria: "Roupas fitness", marca: "Avvi",       produto: "Macaquinho", link: "https://youtube.com/shorts/3oBvDX_Co94" },
   /* TECH */
   { nicho: "tech", categoria: "", marca: "Reclame Aqui", produto: "Aplicativo e serviço", link: "https://youtube.com/shorts/c1vmPbmJ7r8" },
-  { nicho: "tech", categoria: "", marca: "",             produto: "Bastão de LED",        link: "https://youtube.com/shorts/82jBYR9iPQ4" },
-  { nicho: "tech", categoria: "", marca: "",             produto: "Pistola de massagem",  link: "https://youtube.com/shorts/URuykdM1Kr8" }
+  { nicho: "tech", categoria: "", marca: "Choice",       produto: "Bastão de LED",        link: "https://youtube.com/shorts/82jBYR9iPQ4" },
+  { nicho: "tech", categoria: "", marca: "Shopee",       produto: "Pistola de massagem",  link: "https://youtube.com/shorts/URuykdM1Kr8" }
 ];
 
 /* FOTOS UGC (na ordem em que aparecem; poses parecidas ficam separadas)
@@ -1252,15 +1316,41 @@ const servicos = [
   { titulo: "Fotos do produto", titulo_en: "Product photos", cor: "c-rosa-claro",
     descricao: "Fotos em uso e com textura, com luz natural, para feed, site e marketplace.",
     descricao_en: "In-use and texture photos in natural light, for feed, website and marketplace." },
-  { titulo: "Unboxing", titulo_en: "Unboxing", cor: "c-manteiga",
-    descricao: "A primeira impressão ao abrir a caixa, mostrando embalagem, detalhes e o que vem dentro.",
-    descricao_en: "The first impression of opening the box, showing packaging, details and what comes inside." },
+  { titulo: "TikTok Shop", titulo_en: "TikTok Shop", cor: "c-manteiga",
+    descricao: "Vídeos pensados para vender dentro do TikTok Shop, com o produto em uso, benefício claro e chamada para o carrinho.",
+    descricao_en: "Videos built to sell inside TikTok Shop, with the product in use, a clear benefit and a call to add to cart." },
   { titulo: "Publicação no meu perfil", titulo_en: "Post on my profile", cor: "c-rosa",
     descricao: "O vídeo publicado no @byduanecardoso, em collab com a sua marca, para alcançar o meu público.",
     descricao_en: "The video published on @byduanecardoso as a collab with your brand, to reach my audience." },
   { titulo: "Pacote mensal", titulo_en: "Monthly package", cor: "c-marrom",
     descricao: "Uma quantidade fixa de vídeos por mês, com calendário combinado e prioridade na entrega.",
     descricao_en: "A fixed number of videos per month, with an agreed calendar and priority delivery." }
+];
+
+/* COMO CONTRATAR: informações que aparecem em Serviços.
+   precoAPartirDe = valor inicial, ex.: "R$ 300". Deixe "" para aparecer "sob consulta". */
+const precoAPartirDe = "";
+
+/* PERGUNTAS FREQUENTES (aparecem em Serviços). {preco} é trocado pelo valor acima. */
+const perguntas = [
+  { p: "Quanto custa?", p_en: "How much does it cost?",
+    r: "Projetos a partir de {preco}. O valor final depende da quantidade de vídeos, dos formatos e dos direitos de uso. Me conta o que você precisa que eu mando a proposta.",
+    r_en: "Projects start at {preco}. The final price depends on the number of videos, formats and usage rights. Tell me what you need and I'll send a proposal." },
+  { p: "Qual o prazo de entrega?", p_en: "What's the delivery time?",
+    r: "Até 5 dias úteis depois que o produto chega e o roteiro é aprovado. Uma rodada de ajuste já está inclusa.",
+    r_en: "Up to 5 business days after the product arrives and the script is approved. One round of revisions is included." },
+  { p: "Posso usar o vídeo em anúncio?", p_en: "Can I use the video in ads?",
+    r: "Sim. O uso orgânico nas redes sociais e no marketplace da marca já está incluso. O uso em tráfego pago é liberado por 3 meses, com renovação ou prazo maior negociados à parte.",
+    r_en: "Yes. Organic use on the brand's social media and marketplace is included. Paid ads usage is granted for 3 months, and renewals or longer terms are negotiated separately." },
+  { p: "Como funciona o pacote mensal?", p_en: "How does the monthly package work?",
+    r: "Você escolhe entre 4, 8 ou 12 vídeos por mês, com calendário combinado, prioridade na entrega e valor por vídeo menor que no avulso.",
+    r_en: "Choose 4, 8 or 12 videos per month, with an agreed calendar, priority delivery and a lower price per video than single orders." },
+  { p: "Tem exclusividade?", p_en: "Is there exclusivity?",
+    r: "Pode ter. Exclusividade de nicho ou de concorrente é negociada no contrato.",
+    r_en: "It can. Niche or competitor exclusivity is negotiated in the contract." },
+  { p: "Como eu contrato?", p_en: "How do I hire you?",
+    r: "1. Você me manda o briefing pelo formulário, WhatsApp ou e-mail. 2. Eu envio proposta e roteiro para aprovar. 3. Você envia o produto e eu gravo e entrego.",
+    r_en: "1. Send me the brief via the form, WhatsApp or email. 2. I send a proposal and script for approval. 3. You ship the product and I film and deliver." }
 ];
 
 /* RESULTADOS DE CAMPANHA (além do estudo de caso da Phero, que fica direto no HTML da seção de números)
@@ -1270,26 +1360,27 @@ const servicos = [
 const resultados = [];
 
 /* DEPOIMENTOS (mensagens reais que as marcas mandaram no WhatsApp)
-   marca = nome que aparece no topo | selo = etiqueta curta | reacao = emoji opcional
+   marca = nome que aparece no topo | contato = quem mandou | logo = arquivo em fotos/logos ("" usa um emoji)
+   selo = etiqueta curta | reacao = emoji opcional
    mensagens = cada balão, com o horário (texto_en = tradução para o inglês) */
 const depoimentos = [
-  { marca: "Marca parceira", selo: "vídeo aprovado", reacao: "❤️", mensagens: [
+  { marca: "Comû Agência", contato: "Equipe da agência", contato_en: "Agency team", logo: "logo-comu.webp", selo: "vídeo aprovado", reacao: "❤️", mensagens: [
     { texto: "Oiee boa tarde", texto_en: "Hiii good afternoon", hora: "14:00" },
     { texto: "Amiga que lindo ver esse vídeo, sério tá magnífico dms, amo a maneira como você fala do produto indicando sem aquela pressão sabe? Aquece meu coraçãozinho 🥹🥹",
       texto_en: "Girl, how lovely to see this video, seriously it's so magnificent, I love the way you talk about the product and recommend it without that pressure, you know? It warms my little heart 🥹🥹", hora: "14:01" } ] },
-  { marca: "Marca parceira", selo: "vídeos e fotos", reacao: "", mensagens: [
+  { marca: "Orion Acessórios", contato: "Dona da marca", contato_en: "Brand owner", logo: "logo-orion.webp", selo: "vídeos e fotos", reacao: "", mensagens: [
     { texto: "bomm dia ✨💜", texto_en: "good morninggg ✨💜", hora: "08:20" },
     { texto: "Mulher do céu, super aprovado os vídeos e fotos!!! Era bem nesse estilo que eu queria mesmo, arrasou",
       texto_en: "Oh my goodness, the videos and photos are super approved!!! This was exactly the style I wanted, you nailed it", hora: "08:21" },
     { texto: "Pode colocar lá no drive??", texto_en: "Can you upload them to the drive??", hora: "08:22" } ] },
-  { marca: "Marca parceira", selo: "contrato fechado", reacao: "", mensagens: [
+  { marca: "Unique Essence", contato: "Eduardo", contato_en: "Eduardo", logo: "", selo: "contrato fechado", reacao: "", mensagens: [
     { texto: "Uauuu", texto_en: "Wowww", hora: "10:07" },
     { texto: "Contrato fechado kkkk", texto_en: "Deal closed haha", hora: "10:07" },
     { texto: "Top demais", texto_en: "So good", hora: "10:07" },
     { texto: "Gostei demais viu", texto_en: "Loved it so much", hora: "10:08" } ] },
-  { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "", mensagens: [
+  { marca: "Fitcorp", contato: "Marketing", contato_en: "Marketing", logo: "", selo: "roteiro aprovado", reacao: "", mensagens: [
     { texto: "Aprovadoo! Nós amamos a narrativa, ficou ótima 😍", texto_en: "Approveddd! We loved the storytelling, it turned out great 😍", hora: "13:48" } ] },
-  { marca: "Marca parceira", selo: "roteiro aprovado", reacao: "❤️", mensagens: [
+  { marca: "Comû Agência", contato: "Geovana, social media", contato_en: "Geovana, social media", logo: "logo-comu.webp", selo: "roteiro aprovado", reacao: "❤️", mensagens: [
     { texto: "Bom diaaa, tudo bem?", texto_en: "Good morninggg, how are you?", hora: "10:33" },
     { texto: "Super aprovado 💖 Amamos!", texto_en: "Super approved 💖 We loved it!", hora: "10:33" } ] }
 ];
@@ -1331,7 +1422,7 @@ const traducoes = {
   "menu-numeros": "Results",
   "menu-contato": "Contact",
   "ilha": "available for new brands",
-  "bio": "I'm <strong>Duane Cardoso</strong>, a UGC creator from Valparaíso de Goiás, Brazil. I make <strong>review and demo</strong> videos for beauty, fashion, fitness and tech brands, showing the product in use and what shoppers need to know before they buy. I've delivered 100+ videos for 50+ brands.",
+  "bio": "<strong>Conversion-focused UGC creator.</strong> From the first second to the buying decision, every detail is designed to connect, engage and convert.",
   "bt-falar": "Let's talk",
   "bt-trabalhos": "See my work",
   "a-capa": "Duane Cardoso holding a phone in a bright studio",
@@ -1393,7 +1484,20 @@ const traducoes = {
   "lb-nome": "Your name",
   "lb-email": "Your email",
   "lb-msg": "Message",
-  "ph-msg": "Product, niche and campaign deadline",
+  "ph-msg": "Campaign goal, product and deadline",
+  "lb-marca": "Brand",
+  "ph-marca": "brand name",
+  "lb-orcamento": "Budget",
+  "orc-0": "rather not say",
+  "orc-1": "up to R$ 2,000",
+  "orc-2": "R$ 2,000 to R$ 5,000",
+  "orc-3": "R$ 5,000 to R$ 10,000",
+  "orc-4": "R$ 10,000 to R$ 20,000",
+  "orc-5": "over R$ 20,000",
+  "orc-6": "recurring monthly package",
+  "bt-email": "I prefer email",
+  "resposta-24h": "Reply within 24 business hours",
+  "faq-titulo": "Frequently asked questions",
   "bt-enviar": "Send via WhatsApp",
   "conf-h3": "Message sent!",
   "conf-p": "I opened WhatsApp with your message ready. Just tap send and it comes straight to me.",
@@ -1608,6 +1712,19 @@ function desenharTudo() {
       <span class="app ${s.cor}" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
       <div><h3><span class="sr-only">${i + 1}. </span>${esc(campo(s, "titulo"))}</h3><p>${esc(campo(s, "descricao"))}</p></div>
     </li>`;
+  /* Resumo para contratar + perguntas frequentes */
+  document.getElementById("resumo-contratar").innerHTML = [
+    ["💸", tr("Investimento", "Investment"), precoAPartirDe ? tr(`a partir de ${precoAPartirDe}`, `from ${precoAPartirDe}`) : tr("sob consulta", "on request"), "c-rosa"],
+    ["⏱️", tr("Entrega", "Delivery"), tr("até 5 dias úteis", "up to 5 business days"), "c-manteiga"],
+    ["📣", tr("Uso em anúncio", "Ad usage"), tr("3 meses inclusos", "3 months included"), "c-rosa-claro"],
+    ["🗓️", tr("Pacote mensal", "Monthly package"), tr("4, 8 ou 12 vídeos", "4, 8 or 12 videos"), "c-marrom"]
+  ].map(([e, rot, val, cor]) => `<li class="resumo-item"><span class="app ${cor}" aria-hidden="true">${e}</span><span><small>${esc(rot)}</small><b>${esc(val)}</b></span></li>`).join("");
+  document.getElementById("faq").innerHTML = perguntas.map((q, i) => `
+    <details class="faq-item"${i === 0 ? " open" : ""}>
+      <summary><span>${esc(campo(q, "p"))}</span><span class="faq-seta" aria-hidden="true"></span></summary>
+      <p>${esc(precoAPartirDe ? campo(q, "r").replace("{preco}", precoAPartirDe) : campo(q, "r").replace(/(Projetos a partir de|Projects start at) \{preco\}\./, tr("Valores sob consulta.", "Pricing on request.")))}</p>
+    </details>`).join("");
+
   const metade = Math.ceil(servicos.length / 2);
   document.getElementById("servicos-grade").innerHTML = [servicos.slice(0, metade), servicos.slice(metade)]
     .map((grupo, g) => `<ul class="grupo cartao revelar">${grupo.map((s, i) => linhaServico(s, i + g * metade)).join("")}</ul>`).join("");
@@ -1634,8 +1751,8 @@ function desenharTudo() {
   document.getElementById("depoimentos").innerHTML = depoimentos.map((d, i) => `
     <figure class="conversa revelar">
       <figcaption class="conversa-topo">
-        <span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${emojisConversa[i % emojisConversa.length]}</span>
-        <span><b>${esc(termo(d.marca))}</b><small>WhatsApp</small></span>
+        ${d.logo ? `<span class="app logo-conversa" aria-hidden="true"><img src="fotos/logos/${esc(d.logo)}" alt="" width="36" height="36" loading="lazy"></span>` : `<span class="app ${coresApp[i % coresApp.length]}" aria-hidden="true">${emojisConversa[i % emojisConversa.length]}</span>`}
+        <span><b>${esc(termo(d.marca))}</b><small>${esc(campo(d, "contato") || "WhatsApp")}</small></span>
         <span class="selo-ok">${esc(termo(d.selo))}</span>
       </figcaption>
       <blockquote class="conversa-corpo">
@@ -1783,15 +1900,28 @@ function enviar(form) {
 
 const formContato = document.getElementById("form-contato");
 const confirmacao = document.getElementById("confirmacao");
+const emailDuane = "ugcduanecardoso@gmail.com";
+function textoDoFormulario() {
+  const f = formContato;
+  const orc = f.orcamento.options[f.orcamento.selectedIndex].text;
+  return tr(
+    `Oi, Duane! Aqui é ${f.nome.value.trim()}, da marca ${f.marca.value.trim()} (${f.email.value.trim()}).\nOrçamento: ${orc}\n\n${f.mensagem.value.trim()}`,
+    `Hi Duane! This is ${f.nome.value.trim()} from ${f.marca.value.trim()} (${f.email.value.trim()}).\nBudget: ${orc}\n\n${f.mensagem.value.trim()}`);
+}
+/* Botão "Prefiro e-mail": abre o e-mail com assunto "Orçamento UGC - marca" e a mensagem pronta */
+document.getElementById("enviar-email").addEventListener("click", () => {
+  if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
+  contar("form-email", "Formulário de contato enviado por e-mail");
+  const assunto = `${tr("Orçamento UGC", "UGC quote")} - ${formContato.marca.value.trim()}`;
+  window.location.href = `mailto:${emailDuane}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoDoFormulario())}`;
+});
 formContato.addEventListener("submit", e => {
   e.preventDefault();
   if (!formContato.checkValidity()) { formContato.reportValidity(); return; }
   contar("form-contato", "Formulário de contato enviado");
   const nomeCompleto = formContato.nome.value.trim();
   const nome = nomeCompleto.split(" ")[0];
-  const texto = tr(
-    `Oi, Duane! Aqui é ${nomeCompleto} (${formContato.email.value.trim()}).\n\n${formContato.mensagem.value.trim()}`,
-    `Hi Duane! This is ${nomeCompleto} (${formContato.email.value.trim()}).\n\n${formContato.mensagem.value.trim()}`);
+  const texto = textoDoFormulario();
   const link = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(texto)}`;
   window.open(link, "_blank", "noopener"); // abre o WhatsApp com a mensagem pronta
   document.getElementById("conf-whats").href = link;
